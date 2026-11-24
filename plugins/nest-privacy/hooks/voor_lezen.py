@@ -50,6 +50,8 @@ def main() -> int:
     bestand = Path(pad) if os.path.isabs(pad) else Path(data.get("cwd") or ".") / pad
     import kluis
     if bestand.resolve().suffix.lower() == ".tabel" or bestand.resolve() == (kluis.MAP / "sleutel").resolve():
+        print("Nest-privacy: dit is een vertaaltabel of de sleutel van Nest-privacy. Die blijft lokaal en wordt niet gelezen. "
+              "Gebruik /nest-privacy:terugzetten om codes terug te zetten.", file=sys.stderr)
         return 2
     if bestand.suffix.lower() not in DATA or not bestand.is_file() or bestand.stat().st_size > MAX_BYTES:
         return 0

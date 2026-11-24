@@ -34,7 +34,15 @@ geloof, afkomst, geaardheid, strafrecht). Bedragen, bedrijfsnamen en plaatsen bl
 **Beter met het lokale taalmodel (aanbevolen):** typ `/nest-privacy:taalmodel`, of draai
 `python scripts/model_installeren.py`. Dat zet Privacy Kit (bards-ai, Apache-2.0, geen torch) eenmalig in een eigen omgeving
 in `~/.koekoek/nest-privacy/model` (een paar minuten, ongeveer 0,5 GB). Daarna werkt het offline; er gaat geen tekst over het netwerk.
-De twee metingen gebruiken elk 300 Nederlandse en Engelse zinnen met verzonnen gegevens. Sommige blinde voornamen staan in de herkenner. De meting telt volledig afgedekte waarden en geraakte controlewoorden. De controlewoorden zijn een selectie. Eerdere modelscores in `tests/namen/UITSLAG.md` gebruikten de oude telling.
+Gemeten op twee sets van elk 300 Nederlandse en Engelse zinnen met verzonnen gegevens (zie `tests/namen/UITSLAG.md`).
+Een waarde telt alleen als weg als hij helemaal is afgedekt; "te veel" telt een selectie gewone woorden die moeten blijven.
+
+| | weg | te veel weg |
+|---|---|---|
+| zonder model | 81 tot 92% | 13 tot 24% |
+| met model | **98,3 tot 99,7%** | **0%** |
+
+Eerlijk: de zinnen zijn door ons gemaakt, en een deel van de voornamen in de blinde set staat ook in de namenlijst van de regels.
 
 Geen enkel hulpmiddel vindt alles. Controleer de uitkomst bij belangrijke data zelf.
 
@@ -87,7 +95,7 @@ Wil je ook review en scans met de regels van Koekoek op een eigen, door ons behe
 | `/nest-privacy:controleer` | Checks your code for personal data (Dutch BSN with checksum, IBAN with mod-97, e-mail, phone, address, postcode, IP address, date of birth, names after a title) and for secrets. |
 | `/nest-privacy:anonimiseer <file>` | Turns a text or CSV file with real data into a copy where personal data is replaced by `[TYPE]`, so you can test with it or give it to an AI. Optional keyed pseudonyms. |
 | `/nest-privacy:terugzetten <file>` | Turns codes like `[NAAM-3cd5a9aa4bca]` back into the real data, on your own computer. Let Claude draft a reply with codes, then put the real names back locally. |
-| `/nest-privacy:taalmodel` | Installs the local language model (Privacy Kit, Apache-2.0) once, in its own environment (~0.5 GB). Then it runs offline and also finds unknown names. See `tests/namen/UITSLAG.md` for the measurement method and results. |
+| `/nest-privacy:taalmodel` | Installs the local language model (Privacy Kit, Apache-2.0) once, in its own environment (~0.5 GB). Then it runs offline and also finds unknown names. Measured on 600 made-up Dutch and English sentences: 98.3–99.7% fully removed, 0% of a selection of ordinary words removed (without the model: 81–92%). Method and limits: `tests/namen/UITSLAG.md`. |
 | `/nest-privacy:geheimen` | Looks for API keys (AWS, GitHub, Stripe, Anthropic, OpenAI, Google, Slack), private keys, JWTs and passwords in code or URLs. |
 | **Customer data stays out of Claude** | A `PreToolUse` hook on Claude's Read tool checks data files (CSV, TXT, JSON, LOG, …) locally. If they contain personal data, the file is not read, so its contents never reach the model; Claude suggests anonymising it first. |
 | **Before every push** | A `PreToolUse` hook on `git push` checks the changed files and blocks the push if it finds personal data or secrets. It shows file, line and type, never the value. |
