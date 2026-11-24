@@ -38,6 +38,8 @@ def _negeer(bestand: Path) -> bool:
 
 
 def main() -> int:
+    # Een hook moet binnen seconden beslissen: standaard de snelle regels, het taalmodel alleen als je dat zelf instelt.
+    os.environ.setdefault("NEST_PRIVACY_HERKENNER", "regels")
     if hasattr(sys.stderr, "reconfigure"):
         sys.stderr.reconfigure(encoding="utf-8")
     try:

@@ -30,23 +30,49 @@ class _Stuk:
 
 
 class _ProcesDetector:
-    """Privacy Kit in de eigen modelomgeving (model_installeren.py), als lokaal proces. Geen netwerk."""
+    """Privacy Kit in de eigen modelomgeving (model_installeren.py), als lokaal proces. Geen netwerk.
+    Het proces start één keer en blijft draaien: het model laden duurt seconden, een tekst daarna milliseconden."""
 
     def __init__(self, python: str):
         self.python = python
+        self._proces = None
 
-    def detect(self, tekst: str) -> list:
-        import json
+    def _start(self):
+        import atexit
         import subprocess
         from pathlib import Path
 
         import model_installeren
 
-        r = subprocess.run([self.python, str(Path(__file__).with_name("model_proces.py"))], input=tekst.encode("utf-8"),
-                           capture_output=True, timeout=600, env={**model_installeren.omgeving(), "HF_HUB_OFFLINE": "1"})
-        if r.returncode != 0:
+        self._proces = subprocess.Popen([self.python, str(Path(__file__).with_name("model_proces.py")), "--doorlopend"],
+                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                                        env={**model_installeren.omgeving(), "HF_HUB_OFFLINE": "1"})
+        atexit.register(self.stop)
+
+    def stop(self) -> None:
+        if self._proces and self._proces.poll() is None:
+            try:
+                self._proces.stdin.close()
+                self._proces.wait(timeout=10)
+            except Exception:  # noqa: BLE001
+                self._proces.kill()
+        self._proces = None
+
+    def detect(self, tekst: str) -> list:
+        import json
+
+        if self._proces is None or self._proces.poll() is not None:
+            self._start()
+        self._proces.stdin.write((json.dumps({"tekst": tekst}) + "\n").encode("utf-8"))
+        self._proces.stdin.flush()
+        regel = self._proces.stdout.readline()
+        if not regel:
+            self.stop()
             raise RuntimeError("het lokale taalmodel gaf een fout")
-        return [_Stuk(int(s["begin"]), int(s["eind"]), str(s["soort"])) for s in json.loads(r.stdout.decode("utf-8") or "[]")]
+        antwoord = json.loads(regel.decode("utf-8"))
+        if antwoord is None:
+            raise RuntimeError("het lokale taalmodel gaf een fout")
+        return [_Stuk(int(s["begin"]), int(s["eind"]), str(s["soort"])) for s in antwoord]
 
 
 @lru_cache(maxsize=1)
