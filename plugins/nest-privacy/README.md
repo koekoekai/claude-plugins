@@ -15,6 +15,8 @@ Gratis plugin van [Koekoek](https://koekoek.ai) voor Claude Code. Houdt persoons
 
 ## Installeren
 
+Nieuw met Claude Code? Volg de [installatiehandleiding voor Windows en Mac](../../docs/installeren.md).
+
 ```
 /plugin marketplace add koekoekai/claude-plugins
 /plugin install nest-privacy@koekoek
