@@ -207,3 +207,11 @@ def test_lees_hook_houdt_het_teruggezette_bestand_tegen(tmp_path, monkeypatch):
     pseudoniem.terugzetten(tmp_path / "x.code.txt", tmp_path / "terug.txt")
     assert _lees_hook(tmp_path / "terug.txt").returncode == 2
     assert _lees_hook(tmp_path / "x.code.txt").returncode == 0  # de versie met codes mag Claude wel lezen
+
+
+def test_naamherkenning_haalt_de_lat():
+    """Gewone set: alles herkend. Moeilijke set: minstens de helft. Nooit een woord onterecht weg."""
+    sys.path.insert(0, str(HIER / "tests" / "namen"))
+    import meet
+    m = meet.meet()
+    assert m["herkend"] >= 0.95 and m["vals"] == 0

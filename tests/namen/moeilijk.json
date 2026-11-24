@@ -1,0 +1,23 @@
+{
+  "uitleg": "Moeilijke gevallen: geen aanhef, geen label, onbekende namen, kleine letters, buitenlandse namen, gewone woorden aan het begin van een zin.",
+  "zinnen": [
+    {"t": "Wij hebben Brinkhorst gisteren gebeld over de levering.", "namen": ["Brinkhorst"], "blijven": ["levering"]},
+    {"t": "Volgens Kowalski is de server weer stabiel.", "namen": ["Kowalski"], "blijven": ["server"]},
+    {"t": "de klant (pietersen) wil een terugbelverzoek", "namen": ["pietersen"], "blijven": ["klant"]},
+    {"t": "Yusuf Demir en Priya Sharma tekenen het contract.", "namen": ["Yusuf", "Demir", "Priya", "Sharma"], "blijven": ["contract"]},
+    {"t": "Het gesprek met Femke ging over haar verlof.", "namen": ["Femke"], "blijven": ["verlof"]},
+    {"t": "We sturen het rapport naar Bram en Ilse.", "namen": ["Bram", "Ilse"], "blijven": ["rapport"]},
+    {"t": "Ask Siobhan O'Neill whether the payment arrived.", "namen": ["Siobhan", "Neill"], "blijven": ["payment"]},
+    {"t": "Mohammed Benali heeft de sleutel opgehaald bij Kees.", "namen": ["Mohammed", "Benali", "Kees"], "blijven": ["sleutel"]},
+    {"t": "Dank je wel, Wouter!", "namen": ["Wouter"], "blijven": ["Dank"]},
+    {"t": "Ingrid van Oosterhout-Kramer is de nieuwe contactpersoon.", "namen": ["Ingrid", "Oosterhout", "Kramer"], "blijven": ["nieuwe"]},
+    {"t": "Groen licht van de directie, schreef Annelies.", "namen": ["Annelies"], "blijven": ["Groen", "directie"]},
+    {"t": "Werkt Vrijdag ook voor jou? Laat het Tim weten.", "namen": ["Tim"], "blijven": ["Vrijdag"]},
+    {"t": "Rotterdam en Eindhoven krijgen een nieuwe vestiging.", "namen": [], "blijven": ["Rotterdam", "Eindhoven", "vestiging"]},
+    {"t": "Excel en Word zijn bijgewerkt, ook Teams.", "namen": [], "blijven": ["Excel", "Word", "Teams"]},
+    {"t": "Belangrijk: Klanten krijgen vanaf Maandag een nieuwe Portal.", "namen": [], "blijven": ["Belangrijk", "Klanten", "Maandag", "Portal"]},
+    {"t": "Support Team Benelux reageert binnen een dag.", "namen": [], "blijven": ["Support", "Benelux"]},
+    {"t": "Rose gold and silver are both in stock.", "namen": [], "blijven": ["Rose", "silver"]},
+    {"t": "Will the Summer sale start in May?", "namen": [], "blijven": ["Will", "Summer", "May"]}
+  ]
+}

@@ -1,6 +1,7 @@
 """Pseudoniemen met terugzetten, helemaal lokaal.
 
     python pseudoniem.py maak <invoer> -o <uitvoer>            # persoonsgegevens -> [SOORT-code], tabel lokaal bewaard
+    python pseudoniem.py maak <invoer> -o <uitvoer> --maskeren # persoonsgegevens -> [SOORT], niet terug te zetten, geen tabel
     python pseudoniem.py terugzetten <invoer> -o <uitvoer>     # [SOORT-code] -> echte waarden (uitvoer bevat weer persoonsgegevens!)
     python pseudoniem.py wis [--alles]                         # tabellen ouder dan 30 dagen weg, of alles
 
@@ -24,9 +25,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import anonimiseren  # noqa: E402
 import kluis  # noqa: E402
+import namen  # noqa: E402
 
 BEWAARTERMIJN = 30 * 86400
 CODE = re.compile(r"\[[A-Z]+-[0-9a-f]{12}\]")
+NAAMKOLOM = re.compile(r"(?i)^(?:naam|name|voornaam|achternaam|tussenvoegsel|first[_ ]?name|last[_ ]?name|full[_ ]?name|klant(?:naam)?|contact(?:persoon)?|customer(?:[_ ]?name)?|client(?:[_ ]?name)?|patiënt|patient|medewerker|employee|aanvrager|afzender|sender)$")
 
 
 def sleutel() -> bytes:
@@ -49,8 +52,9 @@ def opruimen(alles: bool = False) -> int:
     return weg
 
 
-def maak(invoer: Path, uitvoer: Path) -> tuple[dict, int]:
-    """Pseudonimiseert het bestand en bewaart de vertaaltabel. Geeft (aantallen per soort, aantal codes in de tabel)."""
+def maak(invoer: Path, uitvoer: Path, maskeren: bool = False) -> tuple[dict, int]:
+    """Pseudonimiseert (of maskeert) het bestand en bewaart bij pseudoniemen de vertaaltabel.
+    Herkent ook namen zonder aanhef en spelvarianten (namen.py). Geeft (aantallen per soort, aantal codes in de tabel)."""
     tabel: dict[str, str] = {}
     origineel = anonimiseren._vervanging
 
@@ -60,14 +64,27 @@ def maak(invoer: Path, uitvoer: Path) -> tuple[dict, int]:
         return code
 
     tekst = invoer.read_text(encoding="utf-8-sig")
+    gevonden = namen.zoek_namen(tekst)
+    tekst = namen.normaliseer(tekst, gevonden.varianten)  # spelfouten krijgen dezelfde code als de gevonden naam
+    opties = {"modus": "maskeren"} if maskeren else {"modus": "pseudoniem", "sleutel": sleutel()}
     anonimiseren._vervanging = onthoud  # tijdelijk: zelfde vervanging, maar we onthouden de waarde
     try:
         if invoer.suffix.lower() == ".csv":
-            r = anonimiseren.anonimiseer_csv(tekst, modus="pseudoniem", sleutel=sleutel())
+            kop = next(iter(tekst.splitlines()), "")
+            scheiding = max((";", ",", "	"), key=kop.count)
+            kolommen = [k.strip().strip('"') for k in kop.split(scheiding)]
+            r = anonimiseren.anonimiseer_csv(tekst, naam_kolommen=[k for k in kolommen if NAAMKOLOM.match(k)], **opties)
+            # vrije tekst in andere kolommen: ook de gevonden namen eruit
+            if gevonden.namen:
+                r2 = anonimiseren.anonimiseer(r.tekst, soorten=["NAAM"], extra_termen=gevonden.namen, **opties)
+                r.vondsten.update(r2.vondsten)
+                r = anonimiseren.Resultaat(r2.tekst, r.vondsten)
         else:
-            r = anonimiseren.anonimiseer(tekst, modus="pseudoniem", sleutel=sleutel())
+            r = anonimiseren.anonimiseer(tekst, extra_termen=gevonden.namen, **opties)
     finally:
         anonimiseren._vervanging = origineel
+    if maskeren:
+        tabel.clear()
     uitvoer.write_text(r.tekst, encoding="utf-8", newline="")
     if tabel:
         kluis.bewaar(f"tabellen/{int(time.time())}-{secrets.token_hex(4)}.tabel", json.dumps(tabel).encode())
@@ -124,7 +141,7 @@ def main(argv: list[str]) -> int:
         print("Kies een ander uitvoerbestand dan het invoerbestand.", file=sys.stderr)
         return 2
     if argv[0] == "maak":
-        vondsten, codes = maak(invoer, uitvoer)
+        vondsten, codes = maak(invoer, uitvoer, maskeren="--maskeren" in argv)
         samenvatting = ", ".join(f"{s} {n}" for s, n in sorted(vondsten.items())) or "niets gevonden"
         print(f"vervangen: {samenvatting} · {codes} code(s) in de lokale vertaaltabel · uitvoer: {uitvoer.name}")
     else:
