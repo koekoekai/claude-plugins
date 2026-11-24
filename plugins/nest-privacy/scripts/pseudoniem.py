@@ -16,6 +16,11 @@ Toont nooit waarden; alleen aantallen. Alleen de standaardbibliotheek.
 """
 from __future__ import annotations
 
+import csv
+import io
+import os
+import tempfile
+import hmac
 import json
 import re
 import secrets
@@ -27,7 +32,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import anonimiseren  # noqa: E402
 import kluis  # noqa: E402
 import gevoelig  # noqa: E402
-import namen  # noqa: E402
 
 BEWAARTERMIJN = 30 * 86400
 CODE = re.compile(r"\[[A-Z]+-[0-9a-f]{12}\]")
@@ -63,24 +67,35 @@ def maak(invoer: Path, uitvoer: Path, maskeren: bool = False, extra: tuple[str, 
 
     def onthoud(soort: str, waarde: str, modus: str, sleutel_: bytes | None) -> str:
         code = origineel(soort, waarde, modus, sleutel_)
-        tabel.setdefault(code, waarde)
+        if modus == "pseudoniem":
+            if waarde != anonimiseren._normaliseer(soort, waarde):
+                digest = hmac.digest(sleutel_, ("exact:" + soort + ":" + waarde).encode(), "sha256").hex()
+                code = f"[{soort}-{digest[:12]}]"
+            tabel.setdefault(code, waarde)
         return code
 
     tekst = invoer.read_text(encoding="utf-8-sig")
-    gevonden = namen.zoek_namen(tekst)
-    tekst = namen.normaliseer(tekst, gevonden.varianten)  # spelfouten krijgen dezelfde code als de gevonden naam
     opties = {"modus": "maskeren"} if maskeren else {"modus": "pseudoniem", "sleutel": sleutel()}
     anonimiseren._vervanging = onthoud  # tijdelijk: zelfde vervanging, maar we onthouden de waarde
     try:
         if invoer.suffix.lower() == ".csv":
-            kop = next(iter(tekst.splitlines()), "")
-            scheiding = max((";", ",", "	"), key=kop.count)
-            kolommen = [k.strip().strip('"') for k in kop.split(scheiding)]
-            r = anonimiseren.anonimiseer_csv(tekst, naam_kolommen=[k for k in kolommen if NAAMKOLOM.match(k)], **opties)
-            # vrije tekst in andere kolommen: alle overige gevoelige gegevens eruit (codes die er al staan, blijven staan)
-            rest, telling = gevoelig.vervang(r.tekst, extra=extra, **opties)
-            r.vondsten.update(telling)
-            r = anonimiseren.Resultaat(rest, r.vondsten)
+            try:
+                sep = csv.Sniffer().sniff(tekst[:8192], delimiters=",;\t").delimiter
+            except csv.Error:
+                sep = ","
+            kolommen = next(csv.reader(io.StringIO(tekst), delimiter=sep), [])
+            r = anonimiseren.anonimiseer_csv(tekst, naam_kolommen=[k for k in kolommen if NAAMKOLOM.match(k)],
+                                             scheidingsteken=sep, **opties)
+            stroom = io.StringIO(newline="")
+            schrijver = csv.writer(stroom, delimiter=sep, lineterminator="\n")
+            for rij in csv.reader(io.StringIO(r.tekst, newline=""), delimiter=sep):
+                nieuw = []
+                for cel in rij:
+                    uit, telling = gevoelig.vervang(cel, extra=extra, **opties)
+                    r.vondsten.update(telling)
+                    nieuw.append(uit)
+                schrijver.writerow(nieuw)
+            r = anonimiseren.Resultaat(stroom.getvalue(), r.vondsten)
         else:
             # alle AVG-soorten: onze controles, namen, taalmodel, bijzondere persoonsgegevens en de eigen woordenlijst
             uit, telling = gevoelig.vervang(tekst, extra=extra, **opties)
@@ -89,10 +104,20 @@ def maak(invoer: Path, uitvoer: Path, maskeren: bool = False, extra: tuple[str, 
         anonimiseren._vervanging = origineel
     if maskeren:
         tabel.clear()
-    uitvoer.write_text(r.tekst, encoding="utf-8", newline="")
     if tabel:
         kluis.bewaar(f"tabellen/{int(time.time())}-{secrets.token_hex(4)}.tabel", json.dumps(tabel).encode())
+    _schrijf(uitvoer, r.tekst)
     return dict(r.vondsten), len(tabel)
+
+
+def _schrijf(pad: Path, tekst: str) -> None:
+    fd, tijdelijk = tempfile.mkstemp(dir=pad.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as bestand:
+            bestand.write(tekst)
+        os.replace(tijdelijk, pad)
+    finally:
+        Path(tijdelijk).unlink(missing_ok=True)
 
 
 def alle_tabellen() -> dict[str, str]:
@@ -118,7 +143,7 @@ def terugzetten(invoer: Path, uitvoer: Path) -> tuple[int, int]:
         teller["onbekend"] += 1
         return m.group(0)
 
-    uitvoer.write_text(CODE.sub(vervang, tekst), encoding="utf-8", newline="")
+    _schrijf(uitvoer, CODE.sub(vervang, tekst))
     return teller["terug"], teller["onbekend"]
 
 

@@ -1,10 +1,10 @@
 """Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]
-Maakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De namen, straten en plaatsen
-hieronder staan bewust NIET in de lijsten van namen.py en plaatsen.py, zodat we generalisatie meten en niet het opzoeken.
+Maakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De set bevat zowel bekende als onbekende namen. De blinde zinnen zijn vooraf vastgelegd.
 Vaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn)."""
 from __future__ import annotations
 
 import json
+import re
 import random
 import sys
 from pathlib import Path
@@ -134,16 +134,25 @@ def meet(zinnen: list[dict]) -> dict:
     tot = weg = bl = vals = 0
     mis, ont = {}, {}
     for z in zinnen:
-        uit, _ = gevoelig.vervang(z["t"], modus="maskeren", eigen_woorden=[])
+        tekst = z["t"]
+        bedekt = set()
+        for begin, eind, _ in gevoelig.vind(tekst, eigen_woorden=[]):
+            bedekt.update(range(begin, eind))
+
+        def posities(woord):
+            return {i for m in re.finditer(re.escape(woord), tekst)
+                    for i in range(m.start(), m.end()) if not tekst[i].isspace()}
+
         for w in z["weg"]:
             tot += 1
-            if w in uit:
+            verwacht = posities(w)
+            if not verwacht or not verwacht <= bedekt:
                 mis[w] = mis.get(w, 0) + 1
             else:
                 weg += 1
         for w in z["blijven"]:
             bl += 1
-            if w not in uit:
+            if posities(w) & bedekt:
                 vals += 1
                 ont[w] = ont.get(w, 0) + 1
     return {"weg": weg / tot, "vals": vals / bl, "n": tot, "b": bl,
@@ -161,6 +170,6 @@ if __name__ == "__main__":
     print(f"{len(zinnen)} zinnen in tests/namen/{naam}")
     if "--meet" in sys.argv:
         m = meet(zinnen)
-        print(f"{naam}  weg {m['weg']:.1%} van {m['n']}  vals {m['vals']:.1%} van {m['b']}")
+        print(f"{naam}  weg {m['weg']:.1%} van {m['n']}  geselecteerde controlewoorden geraakt {m['vals']:.1%} van {m['b']}")
         print("  meest gemist:", m["gemist"])
         print("  meest onterecht weg:", m["onterecht"])

@@ -34,12 +34,7 @@ geloof, afkomst, geaardheid, strafrecht). Bedragen, bedrijfsnamen en plaatsen bl
 **Beter met het lokale taalmodel (aanbevolen):** typ `/nest-privacy:taalmodel`, of draai
 `python scripts/model_installeren.py`. Dat zet Privacy Kit (bards-ai, Apache-2.0, geen torch) eenmalig in een eigen omgeving
 in `~/.koekoek/nest-privacy/model` (een paar minuten, ongeveer 0,5 GB). Daarna werkt het offline; er gaat geen tekst over het netwerk.
-Gemeten op 600 nieuwe Nederlandse en Engelse zinnen met namen die niet in onze lijsten staan (zie `tests/namen/UITSLAG.md`):
-
-| | weg | te veel weg |
-|---|---|---|
-| zonder model | 82 tot 93% | 13 tot 24% |
-| met model | **98 tot 99,7%** | **0%** |
+De twee metingen gebruiken elk 300 Nederlandse en Engelse zinnen met verzonnen gegevens. Sommige blinde voornamen staan in de herkenner. De meting telt volledig afgedekte waarden en geraakte controlewoorden. De controlewoorden zijn een selectie. Eerdere modelscores in `tests/namen/UITSLAG.md` gebruikten de oude telling.
 
 Geen enkel hulpmiddel vindt alles. Controleer de uitkomst bij belangrijke data zelf.
 

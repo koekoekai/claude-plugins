@@ -48,8 +48,14 @@ def test() -> bool:
 def installeer() -> int:
     print(f"Eigen omgeving in {MAP} ...", flush=True)
     MAP.parent.mkdir(parents=True, exist_ok=True)
+    marker = MAP / "nest-privacy.json"
+    if MAP.is_symlink() or (MAP.exists() and any(MAP.iterdir()) and not marker.is_file()):
+        print("De modelmap bevat al bestanden van onbekende herkomst.", file=sys.stderr)
+        return 1
+    MAP.mkdir(exist_ok=True)
+    marker.write_text(json.dumps({"pakket": PAKKET}), encoding="utf-8")
     if not python_van_model().is_file():
-        venv.EnvBuilder(with_pip=True, clear=True).create(MAP)
+        venv.EnvBuilder(with_pip=True).create(MAP)
     py = str(python_van_model())
     print("Privacy Kit installeren (eenmalig, een paar minuten) ...", flush=True)
     r = subprocess.run([py, "-m", "pip", "install", "-q", "--disable-pip-version-check", "--timeout", "180", PAKKET], env=omgeving())

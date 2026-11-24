@@ -98,7 +98,10 @@ def _pk_stukken(tekst: str) -> tuple[tuple[int, int, str], ...] | None:
     detector = _privacykit()
     if detector is None:
         return None
-    return tuple((s.start, s.end, s.label) for s in detector.detect(tekst))
+    try:
+        return tuple((s.start, s.end, s.label) for s in detector.detect(tekst))
+    except Exception:  # Een onvolledige modelomgeving kan ook tijdens detectie falen.
+        return None
 
 
 def personen(tekst: str) -> set[str] | None:

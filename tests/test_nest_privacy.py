@@ -352,3 +352,56 @@ def test_review_regelovergang_en_overlap():
     assert gevoelig.vervang("Jan\nPiet", "maskeren")[0] == "[NAAM]\n[NAAM]"
     uit = gevoelig.vervang("Jan Jansen project [DIABETES]", "maskeren", eigen_woorden=["Jansen project"])[0]
     assert all(w not in uit for w in ("Jan", "project", "DIABETES"))
+
+
+def test_review_terugzetten(tmp_path, monkeypatch):
+    import os
+    pseudoniem, _ = _pseudoniem(tmp_path, monkeypatch)
+    bron, codes, terug = [tmp_path / n for n in ("bron.txt", "codes.txt", "terug.txt")]
+    tekst = "Beste Jansen,\nJasnen. JANSEN."
+    bron.write_text(tekst, encoding="utf-8")
+    pseudoniem.maak(bron, codes)
+    assert "jasnen" not in codes.read_text().lower()
+    terug.write_text("oud")
+    pseudoniem.terugzetten(codes, terug)
+    assert terug.read_text(encoding="utf-8") == tekst
+    if os.name == "posix":
+        assert terug.stat().st_mode & 0o777 == 0o600
+
+
+def test_review_csv_rijen(tmp_path):
+    import csv
+    import pseudoniem
+    bron, uit = tmp_path / "bron.csv", tmp_path / "uit.csv"
+    bron.write_text("notitie\nJan\nPiet\n")
+    pseudoniem.maak(bron, uit, maskeren=True)
+    assert list(csv.reader(uit.read_text().splitlines())) == [["notitie"], ["[NAAM]"], ["[NAAM]"]]
+
+
+def test_review_modelterugval(monkeypatch):
+    import taalmodel
+    class Kapot:
+        def detect(self, tekst):
+            raise RuntimeError()
+    monkeypatch.setattr(taalmodel, "_privacykit", Kapot)
+    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "auto")
+    monkeypatch.setattr(taalmodel, "_gliner", lambda: None)
+    assert taalmodel.spans("synthetische terugvalproef") is None
+
+
+def test_review_installer_behoudt_bestand(tmp_path, monkeypatch):
+    import model_installeren
+    monkeypatch.setattr(model_installeren, "MAP", tmp_path)
+    klant = tmp_path / "bestaand"
+    klant.write_text("proef")
+    assert model_installeren.installeer() == 1
+    assert klant.read_text() == "proef"
+
+
+def test_review_deellek(monkeypatch):
+    sys.path.insert(0, str(HIER / "tests/namen"))
+    import grote_set
+    import gevoelig
+    monkeypatch.setattr(gevoelig, "vind", lambda *a, **kw: [(6, 8, "ADRES")])
+    resultaat = grote_set.meet([{"t": "Straat12 klaar", "weg": ["Straat12"], "blijven": ["klaar"]}])
+    assert resultaat["weg"] == resultaat["vals"] == 0
