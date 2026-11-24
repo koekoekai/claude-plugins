@@ -62,3 +62,22 @@ van controle.json. Op de blinde sets heeft het filter geen invloed gehad behalve
 
 **Advies:** GLiNER als standaard op een server die wij beheren (Eigen server); regels als terugval in de gratis plugin.
 GLiNER: model ongeveer 1,1 GB, CPU, ongeveer 0,3 s per zin na het laden. Nodig: gliner, torch (CPU), sentencepiece.
+
+## Ronde 5: bestaande tools naast elkaar (24-11-2026)
+
+`python tests/namen/vergelijk_tools.py <tool>`: elke tool kaal (alleen zijn eigen herkenning van personen). Gecontroleerd dat
+de tools bestaan (GitHub, PyPI, Hugging Face); "Shadow" bleek niet te bestaan.
+
+| Tool (licentie) | blind.json | blind2.json | Opvallend |
+|---|---|---|---|
+| Privacy Kit, bards-ai (Apache-2.0, ONNX, geen torch) | 100% / 0% | 100% / 0% | mist namen in kleine letters (e-mail, -sen) |
+| GLiNER multi PII, detector van PasteGuard (Apache-2.0, torch) | 100% / 9% | 100% / 0% | zwaar |
+| Presidio + spaCy md (MIT) | 100% / 27% | 100% / 10% | haalt veel gewone Nederlandse woorden weg |
+| Alleen onze regels | 82% / 36% | 100% / 19% | sterk in kleine letters, e-mail, -sen |
+
+**Combinatie Privacy Kit + onze regels** (`NEST_PRIVACY_HERKENNER=privacykit python tests/namen/vergelijk.py`):
+**100% gevonden en 0% valse treffers op alle vijf de sets**, in ongeveer 6 seconden voor alle sets samen.
+Model `bardsai/eu-pii-anonimization-multilang`: Apache-2.0.
+
+**Eerlijke grens:** de sets zijn klein (105 namen, 136 woorden die moeten blijven) en door ons geschreven. Vóór verkoop:
+een grotere, onafhankelijke testset (bijv. geanonimiseerde echte mails van een pilotklant, met toestemming).

@@ -1,7 +1,8 @@
 """Optionele herkenning van personen met een bestaand, lokaal taalmodel. Zonder model: None, en namen.py valt terug op regels.
 
 Keuze met NEST_PRIVACY_HERKENNER:
-  auto    (standaard) GLiNER als die er is, anders spaCy, anders regels. Stuurt nooit tekst naar een server.
+  auto    (standaard) Privacy Kit, anders GLiNER, anders spaCy, anders regels. Stuurt nooit tekst naar een server.
+  privacykit  Privacy Kit (EU-model met Nederlands, geen torch)   pip install "privacy-kit @ git+https://github.com/bards-ai/privacy-kit"
   server  de eigen Nest-server van de klant (NEST_URL en NEST_TOKEN; tool herken_personen, alleen aan met installeer.sh --namen).
           Alleen expliciet: NEST_URL kan ook naar de gedeelde Koekoek-server wijzen, en daar hoort geen klanttekst.
   gliner  GLiNER (meertalig, gemaakt voor persoonsgegevens)   pip install gliner
@@ -59,6 +60,16 @@ def _via_server(tekst: str) -> set[str] | None:
 
 
 @lru_cache(maxsize=1)
+def _privacykit():
+    """Privacy Kit (bards-ai, Apache-2.0): EU-model met Nederlands, ONNX, geen torch nodig."""
+    try:
+        from privacy_kit.core.detectors import BardsAiOnnxDetector  # type: ignore
+        return BardsAiOnnxDetector()
+    except Exception:  # noqa: BLE001 - niet geïnstalleerd of model niet te laden
+        return None
+
+
+@lru_cache(maxsize=1)
 def _gliner():
     try:
         from gliner import GLiNER  # type: ignore
@@ -90,6 +101,12 @@ def personen(tekst: str) -> set[str] | None:
         return None
     if k == "server":  # alleen als dat expliciet zo is ingesteld: NEST_URL kan ook naar een gedeelde server wijzen
         return _via_server(tekst)
+    if k in ("auto", "privacykit"):
+        detector = _privacykit()
+        if detector is not None:
+            return {tekst[s.start:s.end].strip() for s in detector.detect(tekst) if s.label == "PERSON_NAME"}
+        if k == "privacykit":
+            return None
     if k in ("auto", "gliner"):
         model = _gliner()
         if model is not None:
