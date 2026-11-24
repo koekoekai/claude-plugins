@@ -29,3 +29,18 @@ Meet daarna opnieuw op een nieuwe blinde set.
 Plaatsen gaan goed, onbekende merken (Pipedrive, Salesforce, Figma, Visma) niet. "in + naam" kost soms een naam ("loop in Aoife").
 **Conclusie:** met regels blijf je schuiven tussen namen missen en merken wegpoetsen. Volgende stap: een bestaand lokaal taalmodel
 voor namen (spaCy of GLiNER) als optionele herkenner; de vaste regels blijven voor BSN, IBAN en telefoon, en de vertaaltabel blijft.
+
+## Ronde 3: bestaand taalmodel (spaCy 3.8, nl_core_news_md en en_core_web_md)
+
+`NEST_PRIVACY_HERKENNER=spacy python tests/namen/vergelijk.py` (met spaCy geïnstalleerd)
+
+| Set | Regels: gevonden / vals | spaCy: gevonden / vals |
+|---|---|---|
+| testset.json | 100% / 0% | 100% / 3% |
+| moeilijk.json | 100% / 0% | 86% / 0% |
+| controle.json | 100% / 3% | 91% / 3% |
+| **blind.json** | 82% / 36% | **91% / 0%** |
+| **blind2.json** | 100% / 19% | **100% / 0%** |
+
+Met een bestaand model zakken de valse treffers op de blinde sets naar 0%. Licenties: spaCy MIT, en_core_web_md MIT,
+nl_core_news_md CC BY-SA 4.0 (de gebruiker installeert het zelf; wij leveren het model niet mee).

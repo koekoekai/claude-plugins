@@ -16,6 +16,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+import taalmodel
 from plaatsen import PLAATSEN
 
 # Veelvoorkomende voornamen (NL en EN), kleine letters. Bewust geen woorden die meestal iets anders betekenen.
@@ -178,6 +179,11 @@ def zoek_namen(tekst: str) -> Namen:
         if naam:
             r.namen.add(naam)
 
+    # 0. Een lokaal taalmodel, als dat er is (taalmodel.py). Het vervangt de zwakke regel "hoofdletter midden in een zin".
+    model = taalmodel.personen(tekst)
+    for naam in model or ():
+        voeg_toe(naam)
+
     # 1. Aanwijzingen in de tekst
     for patroon in (AANHEF, AFSLUITING, LABEL, VOORLETTERNAAM, TUSSENNAAM):
         for m in patroon.finditer(tekst):
@@ -201,7 +207,7 @@ def zoek_namen(tekst: str) -> Namen:
                 voeg_toe(w)
         elif laag in ACHTERNAMEN or _afgeleid(w):
             voeg_toe(w)
-        elif (_midden_in_zin(tekst, m.start()) and laag not in GEWONE_WOORDEN and laag not in GEEN_PERSOON
+        elif (model is None and _midden_in_zin(tekst, m.start()) and laag not in GEWONE_WOORDEN and laag not in GEEN_PERSOON
               and len(w) >= 3 and not GEEN_NAAM_EINDE.search(w) and not _is_merk_of_code(w)
               and not _is_plaats(tekst, m.start(), w)):
             # Midden in een zin met hoofdletter: in het Nederlands bijna altijd een naam, plaats of merk.
