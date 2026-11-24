@@ -215,3 +215,69 @@ def test_naamherkenning_haalt_de_lat():
     import meet
     m = meet.meet()
     assert m["herkend"] >= 0.95 and m["vals"] == 0
+
+
+# ---------- naamherkenning via de eigen Nest-server (taalmodel.py) ----------
+
+class _NepAntwoord:
+    def __init__(self, data):
+        self._data = json.dumps(data).encode()
+
+    def read(self):
+        return self._data
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def test_server_alleen_met_eigen_adres_en_sleutel(monkeypatch):
+    import taalmodel
+    gevraagd = []
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: gevraagd.append(req) or _NepAntwoord({}))
+    monkeypatch.delenv("NEST_URL", raising=False)
+    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
+    assert taalmodel._via_server("tekst") is None and gevraagd == []  # geen standaardadres: nooit per ongeluk naar buiten
+    monkeypatch.setenv("NEST_URL", "http://onveilig.voorbeeld/mcp")
+    assert taalmodel._via_server("tekst") is None and gevraagd == []  # alleen https
+
+
+def test_server_geeft_personen(monkeypatch):
+    import taalmodel
+    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
+    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
+    gevraagd = []
+
+    def nep(req, timeout=0):
+        gevraagd.append(json.loads(req.data))
+        return _NepAntwoord({"result": {"structuredContent": {"personen": ["Kowalski", "Priya Sharma"]}}})
+    monkeypatch.setattr("urllib.request.urlopen", nep)
+    assert taalmodel._via_server("Volgens Kowalski ...") == {"Kowalski", "Priya Sharma"}
+    assert gevraagd[0]["params"]["name"] == "herken_personen"
+
+
+def test_server_uit_of_onbereikbaar_valt_terug(monkeypatch):
+    import taalmodel
+    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
+    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
+    uit = {"result": {"content": [{"type": "text", "text": json.dumps({"fout": "Naamherkenning staat uit op deze server."})}]}}
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: _NepAntwoord(uit))
+    assert taalmodel._via_server("tekst") is None
+
+    def kapot(req, timeout=0):
+        raise OSError("geen verbinding")
+    monkeypatch.setattr("urllib.request.urlopen", kapot)
+    assert taalmodel._via_server("tekst") is None
+
+
+def test_auto_stuurt_nooit_naar_een_server(monkeypatch):
+    import taalmodel
+    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
+    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
+    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "auto")
+    gevraagd = []
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: gevraagd.append(req) or _NepAntwoord({}))
+    taalmodel.personen("Volgens Kowalski werkt het.")
+    assert gevraagd == []
