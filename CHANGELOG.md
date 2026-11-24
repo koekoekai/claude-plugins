@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.0 · 24-11-2026 · Nest-privacy 0.5.0: klaar voor de pilot
+
+- `/nest-privacy:pilotmeting` (`scripts/pilotmeting.py`): een klant markeert gevoelige stukken in zijn eigen teksten met `[[...]]` en meet lokaal wat er gemist of te veel weggehaald wordt. Het rapport toont alleen aantallen, een percentage en of de lat gehaald is; nooit de gegevens zelf. Uitleg: `docs/pilotmeting.md`.
+- Installatiehandleiding voor wie geen ontwikkelaar is: `docs/installeren.md` (Windows en Mac).
+- Het taalmodel draait als één doorlopend proces (600 zinnen in 13 seconden); de hooks gebruiken standaard de snelle regels.
+- Workflow **Modelmeting**: meet elke week en bij elke wijziging met het echte taalmodel op een schone machine (lat 97% weg, hooguit 1% te veel).
+- Windows: geen crash meer bij een bestand op een ander station. CI op Windows, macOS en Linux.
+- Doel in `AGENTS.md`, AVG-verantwoording in `docs/dpia-*.md` en 20 verbeteringen uit een onafhankelijke review (0.4.x).
+
 ## 0.12.0 · 24-11-2026 · Nest-privacy 0.4.0: taalmodel met één opdracht
 
 - `/nest-privacy:taalmodel` (`scripts/model_installeren.py`): zet Privacy Kit eenmalig in een eigen omgeving; daarna offline, via een lokaal proces (`model_proces.py`).

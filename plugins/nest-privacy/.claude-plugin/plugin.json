@@ -1,7 +1,7 @@
 {
   "name": "nest-privacy",
   "displayName": "Nest-privacy",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Houdt alle gevoelige gegevens volgens de AVG uit je code en uit Claude: namen, adressen, nummers, gezondheid en andere bijzondere persoonsgegevens, IBAN, betaalkaarten, wachtwoorden en sleutels. Vervangt ze door codes die je lokaal terugzet, en houdt een git push tegen als er iets in staat. Alles draait op je eigen computer.",
   "author": {
     "name": "Koekoek",
