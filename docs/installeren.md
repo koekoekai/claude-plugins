@@ -8,7 +8,7 @@ Met Nest-privacy maak je op je eigen computer een kopie van een tekst waarin per
 
 | Wat heb je nodig? | Hoe controleer je het? | Hoe kom je eraan? |
 |---|---|---|
-| Claude Code met toegang via je abonnement | Typ `claude --version`. Zie je een versienummer, dan staat het programma erop. Vraag bij een werkaccount of Claude Code aanstaat voor jou. | Anthropic noemt Pro, Max, Ultra, Team en Enterprise. Volg op de officiële pagina stap 1 voor **Windows PowerShell** of **macOS**. [Claude Code installeren bij Anthropic](https://code.claude.com/docs/en/quickstart) |
+| Claude Code met toegang via je abonnement | Typ `claude --version`. Zie je een versienummer, dan staat het programma erop. Vraag bij een werkaccount of Claude Code aanstaat voor jou. | Je hebt een betaald Claude-abonnement of een werkaccount met Claude Code nodig; welke abonnementen dat zijn, staat bij Anthropic. Volg op de officiële pagina de stap voor **Windows PowerShell** of **macOS**. [Claude Code installeren bij Anthropic](https://code.claude.com/docs/en/quickstart) |
 | Python 3.9 of nieuwer | Typ op Windows `python --version` en op de Mac `python3 --version`. Een versie als 3.12 is goed. | Kies de download voor je computer. [Python downloaden](https://www.python.org/downloads/) |
 | Git (om de plugin en het taalmodel op te halen) | Typ `git --version`. Je moet een versienummer zien. Zoek op Windows ook in Start naar **Git Bash**. Dat heeft de automatische controle nodig. | Installeer op Windows [Git for Windows](https://git-scm.com/downloads/win). Biedt de Mac aan om hulpprogramma’s te installeren, kies dan **Installeer**. [Git voor Mac](https://git-scm.com/downloads/mac) |
 
