@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1 · 24-11-2026 · Eigen Nest-server per klant
+
+- README: review en scan lopen via een eigen Nest-server op het Hetzner-account van de klant, opgezet en beheerd door Koekoek. Verbinden met `NEST_URL` en `NEST_TOKEN`.
+
 ## 0.8.0 · 24-11-2026 · Gratis controle, README en CI
 
 - **Nest-pro 0.4.0:** nieuwe opdracht `/nest-pro:controleer`. Gratis en offline: controleert je code op persoonsgegevens, zonder sleutel.

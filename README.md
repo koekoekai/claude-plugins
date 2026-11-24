@@ -2,11 +2,11 @@
 
 Plugins van [Koekoek](https://koekoek.ai) voor Claude Code. Ze zorgen dat code veilig en netjes gebouwd wordt, en dat persoonsgegevens niet in je code of bij een ander terechtkomen.
 
-De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents op maat, doet migraties en beheert oplossingen in de EU. Zie [koekoek.ai](https://koekoek.ai).
+De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents op maat, doet migraties en beheert servers en oplossingen in de EU. Zie [koekoek.ai](https://koekoek.ai).
 
 | Plugin | Voor wie | Wat |
 |---|---|---|
-| **Nest-pro** (`nest-pro`) | iedereen | **Gratis:** je code offline controleren op persoonsgegevens. **Met een Nest-sleutel:** review en scan met de regels van Koekoek, via de Nest-server. |
+| **Nest-pro** (`nest-pro`) | iedereen | **Gratis:** je code offline controleren op persoonsgegevens. **Met een eigen Nest-server:** review en scan met de regels van Koekoek, op je eigen server die wij beheren. |
 | **Nest-local** (`nest`) | teams die met Koekoek werken | De hele fabriek in je eigen Claude: werkregels, bouwstenen, poorten vóór elke push, review met drie agenten, release en deploy. Vraagt toegang tot `koekoekai/bouwstenen`. |
 | **Nest-anoniem** (`nest-anoniem`) | teams die met Koekoek werken | Bestanden anonimiseren, lokaal en offline. Vraagt toegang tot `koekoekai/anonimiseren`. |
 
@@ -28,18 +28,20 @@ Bijwerken: `/plugin marketplace update koekoek`, of zet automatisch bijwerken aa
 | `/nest-pro:review` | ja | Kijkt je wijzigingen na op beveiliging, privacy en kwaliteit, met één VERDICT. |
 | `/nest-pro:scan` | ja | Laat open scanners (gitleaks, semgrep, osv, pip-audit, npm-audit) draaien en zet de risico's op volgorde. |
 
-**Je data blijft van jou.** Bij `review` anonimiseert de plugin de wijzigingen eerst op je eigen computer: namen, e-mail, telefoon, IBAN, BSN, adressen en dergelijke worden `[SOORT]`. Alleen die versie gaat naar de Nest-server. De server kijkt hem na in het geheugen, bewaart niets en logt alleen metadata (grootte en aantal bevindingen). De regels zelf blijven op de server; je krijgt alleen bevindingen.
+**Je data blijft van jou.** Bij `review` anonimiseert de plugin de wijzigingen eerst op je eigen computer: namen, e-mail, telefoon, IBAN, BSN, adressen en dergelijke worden `[SOORT]`. Alleen die versie gaat naar je eigen Nest-server. De server kijkt hem na in het geheugen, bewaart niets en logt alleen metadata (grootte en aantal bevindingen). De regels zelf blijven op de server; je krijgt alleen bevindingen.
 
-### Verbinden met de Nest-server
+### Verbinden met je eigen Nest-server
 
-1. Vraag een sleutel aan via [koekoek.ai/#prijzen](https://koekoek.ai/#prijzen) (de eerste maand is gratis). Je ziet de sleutel **één keer**. Bewaar hem veilig.
-2. Zet de sleutel in je omgeving, bijvoorbeeld in `~/.claude/settings.json`:
+Review en scan lopen via een **eigen Nest-server**: een server alleen voor jou, op **je eigen Hetzner-account** in de EU. Koekoek zet hem op en beheert hem: updates, back-ups, bewaking en beveiliging. Jij bent eigenaar; er staat niets van jou op een gedeelde server.
+
+1. Vraag een eigen Nest-server aan via [koekoek.ai/#prijzen](https://koekoek.ai/#prijzen).
+2. Je krijgt het adres van je server en een sleutel. De sleutel zie je **één keer**; bewaar hem veilig.
+3. Zet beide in je omgeving, bijvoorbeeld in `~/.claude/settings.json`:
    ```json
-   { "env": { "NEST_TOKEN": "nest_..." } }
+   { "env": { "NEST_URL": "https://<jouw-server>/mcp", "NEST_TOKEN": "nest_..." } }
    ```
-   Of als omgevingsvariabele (Windows: `setx NEST_TOKEN "nest_..."`, macOS/Linux: `export NEST_TOKEN=nest_...` in je shellprofiel).
-3. Start Claude Code opnieuw. De plugin praat met `https://nest.koekoek.ai/mcp`. Een eigen Nest-server (bijvoorbeeld op je eigen VPS, bij Op maat) zet je met `NEST_URL`.
-4. Controleer: typ `/mcp` in Claude Code. De server `nest` moet verbonden zijn.
+   Of als omgevingsvariabelen (Windows: `setx NEST_URL "..."` en `setx NEST_TOKEN "..."`, macOS/Linux: `export` in je shellprofiel).
+4. Start Claude Code opnieuw en typ `/mcp`: de server `nest` moet verbonden zijn.
 
 Zonder sleutel werkt `/nest-pro:controleer` gewoon. De server `nest` staat dan als niet verbonden in `/mcp`; dat is normaal.
 Sleutel kwijt of opzeggen: via [koekoek.ai](https://koekoek.ai/#contact). Bij opzeggen gaat de sleutel uit.
