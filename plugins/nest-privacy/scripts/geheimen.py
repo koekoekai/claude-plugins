@@ -69,7 +69,10 @@ def controleer_bestanden(paden: list[str], map_: str = ".") -> list[Vondst]:
     negeer = _negeer(map_)
     vondsten: list[Vondst] = []
     for pad in paden:
-        rel = os.path.relpath(pad, map_).replace(os.sep, "/")
+        try:
+            rel = os.path.relpath(pad, map_).replace(os.sep, "/")
+        except ValueError:  # Windows: ander station dan de map, dus ook geen negeerpatroon van de map
+            rel = os.path.abspath(pad).replace(os.sep, "/")
         if rel == ".nest-geheim-negeer" or any(fnmatch.fnmatch(rel, p) for p in negeer):
             continue
         if not os.path.isfile(pad) or os.path.islink(pad) or os.path.getsize(pad) > MAX_BYTES:

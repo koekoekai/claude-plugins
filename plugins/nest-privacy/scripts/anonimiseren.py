@@ -1,4 +1,4 @@
-# bouwsteen: anonimiseren/kern-python 0.1.6  (bron: github.com/koekoekai/anonimiseren)
+# bouwsteen: anonimiseren/kern-python 0.1.7  (bron: github.com/koekoekai/anonimiseren)
 """Persoonsgegevens in tekst en CSV vinden en vervangen. Alleen de standaardbibliotheek, werkt offline.
 
 Gebruik:
@@ -435,7 +435,10 @@ def controleer_bestanden(paden: Iterable[str], map_: str = ".", basis: str | Non
     repo = os.path.realpath(map_)
     meldingen: list[Melding] = []
     for pad in paden:
-        rel = os.path.relpath(pad, map_).replace(os.sep, "/")
+        try:
+            rel = os.path.relpath(pad, map_).replace(os.sep, "/")
+        except ValueError:  # Windows: ander station dan de map, dus ook geen negeerpatroon van de map
+            rel = os.path.abspath(pad).replace(os.sep, "/")
         if any(fnmatch.fnmatch(rel, p) for p in negeer):
             continue
         if os.path.islink(pad):
