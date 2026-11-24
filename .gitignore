@@ -1,0 +1,49 @@
+# bouwsteen: nieuw-project/gitignore 1.1.0
+# Geheimen en gegevens: nooit in git
+.env
+.env.*
+!.env.voorbeeld
+!.env.example
+data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.jwk.json
+secrets*.json
+config.json
+!config.example.json
+auth.json
+backups/
+exports/
+logs/
+*.log
+
+# Omgeving en build
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+node_modules/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+coverage/
+
+# Systeem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uitkomst van /nest:review (lokaal, voor de release-seal)
+.nest-review.txt
+
+# Eigen voor deze repo
+__pycache__/
+*.pyc
+.nest-review.txt
+.nest-review.diff

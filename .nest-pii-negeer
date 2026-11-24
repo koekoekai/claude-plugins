@@ -1,0 +1,4 @@
+# Nepdata in tests
+tests/*
+# Detector voor persoonsgegevens (bouwsteen anonimiseren): bevat voorbeeldwaarden in uitleg en patronen
+plugins/nest-pro/scripts/anonimiseren.py

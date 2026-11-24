@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "nest": {
+      "type": "http",
+      "url": "${NEST_URL:-https://nest.koekoek.ai/mcp}",
+      "headers": { "Authorization": "Bearer ${NEST_TOKEN}" }
+    }
+  }
+}

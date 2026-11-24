@@ -1,0 +1,64 @@
+{
+  "description": "Nest: werkregels en bouwstenen bij de start; vóór git push de poorten; vóór gh pr create een verse review; na afgerond werk zelf reviewen.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" sessie.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "if": "Bash(git push *)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_push.py",
+            "timeout": 120
+          },
+          {
+            "if": "Bash(git push)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_push.py",
+            "timeout": 120
+          },
+          {
+            "if": "Bash(gh pr create *)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_pr.py",
+            "timeout": 30
+          },
+          {
+            "if": "Bash(gh pr create)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_pr.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" na_werk.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "nest-anoniem",
+  "displayName": "Nest-anoniem",
+  "description": "Persoonsgegevens uit tekst en CSV halen met de Koekoek-anonimiseerder (NL: BSN, IBAN, adres, ...), lokaal en offline. Optioneel naast de plugin nest.",
+  "author": {
+    "name": "Koekoek"
+  },
+  "homepage": "https://github.com/koekoekai/anonimiseren",
+  "keywords": [
+    "anonimiseren",
+    "avg",
+    "privacy",
+    "persoonsgegevens"
+  ],
+  "icon": "./icon.png"
+}

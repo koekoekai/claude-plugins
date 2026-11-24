@@ -1,0 +1,27 @@
+{
+  "name": "koekoek",
+  "description": "Claude Code-plugins van Koekoek. Privé: alleen wie leesrechten heeft op deze repo (en op koekoekai/bouwstenen of koekoekai/anonimiseren) kan ze gebruiken.",
+  "owner": {
+    "name": "Koekoek"
+  },
+  "plugins": [
+    {
+      "name": "nest",
+      "displayName": "Nest-local",
+      "source": "./plugins/nest",
+      "description": "Software factory: werkregels, bouwstenen, CI/CD-poorten vóór elke push, code-review, nieuw project, aansluiten."
+    },
+    {
+      "name": "nest-anoniem",
+      "displayName": "Nest-anoniem",
+      "source": "./plugins/nest-anoniem",
+      "description": "Optioneel: data anonimiseren (BSN, IBAN, adres, namen, ...) lokaal en offline."
+    },
+    {
+      "name": "nest-pro",
+      "displayName": "Nest-pro",
+      "source": "./plugins/nest-pro",
+      "description": "Nest via de Nest-server: review, scans en releasepoort. De regels blijven op de server. Nodig: NEST_URL en NEST_TOKEN (aan te vragen bij Koekoek)."
+    }
+  ]
+}
