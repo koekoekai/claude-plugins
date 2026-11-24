@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.1 · 24-11-2026 · Zonder garantie
+
+- README's: in gewone taal dat de plugins hulpmiddelen zijn zonder garantie, en dat je de uitkomst zelf controleert.
+
 ## 0.9.0 · 24-11-2026 · Nest-privacy (gratis)
 
 - Nieuwe plugin **Nest-privacy** (MIT): controleert op persoonsgegevens en geheimen, anonimiseert databestanden en houdt een push tegen als er iets in staat. Leest Claude een databestand met persoonsgegevens, dan houdt een hook dat tegen, zodat de inhoud niet naar het model gaat. Alles lokaal, zonder server. Klaar voor de catalogus van Anthropic: icoon, licentie, links naar privacy en support, en een README.

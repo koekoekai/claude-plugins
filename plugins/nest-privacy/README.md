@@ -38,6 +38,10 @@ Markeer nepdata met `pii: ok` of `geheim: ok` op de regel, of zet een patroon pe
 
 De lees-hook houdt de Read-tool tegen, niet elke andere manier van lezen (bijvoorbeeld een shell-opdracht). Zet echte klantdata dus liever niet in je project. Losse namen zonder aanhef ("dhr.", "mevrouw") herkent de plugin niet; daarvoor is een taalmodel nodig. De geheimencontrole is een basiscontrole: gebruik in CI ook een volledige scanner zoals gitleaks.
 
+## Zonder garantie
+
+Nest-privacy is een hulpmiddel, geen garantie. Hij vindt veel, maar niet alles: losse namen zonder aanhef bijvoorbeeld niet, en een nieuw soort sleutel misschien ook niet. Controleer de uitkomst dus zelf. Je gebruikt de plugin op eigen risico; Koekoek is niet aansprakelijk voor schade door het gebruik ervan (zie ook de [licentie](LICENSE)).
+
 ## Meer van Koekoek
 
 Wil je ook review en scans met de regels van Koekoek op een eigen, door ons beheerde server, of software en AI-agents op maat? Zie [koekoek.ai](https://koekoek.ai/#prijzen).

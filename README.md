@@ -11,6 +11,8 @@ De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents
 | **Nest-local** (`nest`) | teams die met Koekoek werken | De hele fabriek in je eigen Claude: werkregels, bouwstenen, poorten vóór elke push, review met drie agenten, release en deploy. Vraagt toegang tot `koekoekai/bouwstenen`. |
 | **Nest-anoniem** (`nest-anoniem`) | teams die met Koekoek werken | Bestanden anonimiseren, lokaal en offline. Vraagt toegang tot `koekoekai/anonimiseren`. |
 
+De plugins zijn hulpmiddelen zonder garantie: controleer de uitkomst zelf. Gebruik is op eigen risico; zie de licentie per plugin.
+
 ## Installeren (eenmalig, in Claude Code)
 
 ```
