@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 · 24-11-2026 · Nest-privacy 0.2.0: codes en terugzetten
+
+- `/nest-privacy:anonimiseer` kan codes maken in plaats van `[SOORT]`: dezelfde persoon krijgt overal dezelfde code (`scripts/pseudoniem.py maak`).
+- Nieuw: `/nest-privacy:terugzetten` zet de codes in een antwoord of rapport weer om naar de echte gegevens, op je eigen computer.
+- De sleutel en de vertaaltabel staan alleen lokaal, beschermd: op Windows met DPAPI (je eigen account), op macOS en Linux met rechten 600. Claude ziet ze nooit; tabellen worden na 30 dagen vanzelf gewist (`scripts/kluis.py`).
+
 ## 0.9.2 · 24-11-2026 · Engels en een beveiligingsmeldpunt
 
 - Nest-privacy: README ook in het Engels (voor reviewers en buitenlandse gebruikers).

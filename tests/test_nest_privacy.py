@@ -125,3 +125,85 @@ def test_lees_hook_laat_code_schone_data_en_negeerlijst_door(tmp_path):
     nep.write_text(f"bsn\n{BSN}\n", encoding="utf-8")
     (p / ".nest-pii-negeer").write_text("nep.csv\n", encoding="utf-8")
     assert _lees_hook(nep).returncode == 0
+
+
+# ---------- codes en terugzetten (pseudoniem.py, kluis.py) ----------
+
+
+
+MAIL = "piet.jansen@" + "bedrijfje.nl"
+
+
+def _pseudoniem(tmp_path, monkeypatch):
+    import kluis
+    import pseudoniem
+    monkeypatch.setattr(kluis, "MAP", tmp_path / "kluis")
+    return pseudoniem, kluis
+
+
+def test_codes_heen_en_terug_zonder_waarden_in_de_uitvoer(tmp_path, monkeypatch, capsys):
+    pseudoniem, kluis = _pseudoniem(tmp_path, monkeypatch)
+    invoer = tmp_path / "mail.txt"
+    invoer.write_text(f"Beste dhr. Jansen, uw BSN is {BSN} en uw mail {MAIL}.\n", encoding="utf-8")
+    assert pseudoniem.main(["maak", str(invoer), "-o", str(tmp_path / "mail.code.txt")]) == 0
+    code_tekst = (tmp_path / "mail.code.txt").read_text(encoding="utf-8")
+    assert BSN not in code_tekst and MAIL not in code_tekst and "[BSN-" in code_tekst
+    uit = capsys.readouterr().out
+    assert BSN not in uit and MAIL not in uit and "vervangen:" in uit
+
+    codes = pseudoniem.CODE.findall(code_tekst)
+    antwoord = tmp_path / "antwoord.code.txt"
+    antwoord.write_text(f"Geachte {codes[0]}, we hebben {codes[-1]} bijgewerkt. [NAAM-000000000000]\n", encoding="utf-8")
+    assert pseudoniem.main(["terugzetten", str(antwoord), "-o", str(tmp_path / "antwoord.txt")]) == 0
+    terug = (tmp_path / "antwoord.txt").read_text(encoding="utf-8")
+    assert "Jansen" in terug and MAIL in terug and "[NAAM-000000000000]" in terug  # onbekende code blijft staan
+    uit = capsys.readouterr().out
+    assert "teruggezet: 2" in uit and "onbekende codes: 1" in uit and MAIL not in uit
+
+
+def test_zelfde_persoon_zelfde_code_ook_in_een_ander_bestand(tmp_path, monkeypatch):
+    pseudoniem, _ = _pseudoniem(tmp_path, monkeypatch)
+    for naam in ("a", "b"):
+        (tmp_path / f"{naam}.txt").write_text(f"mail: {MAIL}\n", encoding="utf-8")
+        pseudoniem.maak(tmp_path / f"{naam}.txt", tmp_path / f"{naam}.code.txt")
+    a = pseudoniem.CODE.findall((tmp_path / "a.code.txt").read_text(encoding="utf-8"))
+    b = pseudoniem.CODE.findall((tmp_path / "b.code.txt").read_text(encoding="utf-8"))
+    assert a and a == b
+
+
+def test_sleutel_en_tabel_niet_leesbaar_en_alleen_voor_jou(tmp_path, monkeypatch):
+    pseudoniem, kluis = _pseudoniem(tmp_path, monkeypatch)
+    (tmp_path / "x.txt").write_text(f"mail: {MAIL}\n", encoding="utf-8")
+    pseudoniem.maak(tmp_path / "x.txt", tmp_path / "x.code.txt")
+    tabellen = list((kluis.MAP / "tabellen").glob("*.tabel"))
+    assert len(tabellen) == 1
+    ruw = tabellen[0].read_bytes()
+    if sys.platform == "win32":
+        assert MAIL.encode() not in ruw  # versleuteld met DPAPI
+    else:
+        assert oct(tabellen[0].stat().st_mode & 0o777) == "0o600"
+        assert oct((kluis.MAP / "sleutel").stat().st_mode & 0o777) == "0o600"
+
+
+def test_wissen_en_oude_tabellen_verdwijnen_vanzelf(tmp_path, monkeypatch):
+    import os
+    import time
+    pseudoniem, kluis = _pseudoniem(tmp_path, monkeypatch)
+    (tmp_path / "x.txt").write_text(f"mail: {MAIL}\n", encoding="utf-8")
+    pseudoniem.maak(tmp_path / "x.txt", tmp_path / "x.code.txt")
+    tabel = next((kluis.MAP / "tabellen").glob("*.tabel"))
+    oud = time.time() - 31 * 86400
+    os.utime(tabel, (oud, oud))
+    assert pseudoniem.opruimen() == 1
+    pseudoniem.maak(tmp_path / "x.txt", tmp_path / "x.code.txt")
+    assert pseudoniem.main(["wis", "--alles"]) == 0
+    assert not list((kluis.MAP / "tabellen").glob("*.tabel"))
+
+
+def test_lees_hook_houdt_het_teruggezette_bestand_tegen(tmp_path, monkeypatch):
+    pseudoniem, _ = _pseudoniem(tmp_path, monkeypatch)
+    (tmp_path / "x.txt").write_text(f"klant;bsn\nKlant;{BSN}\n", encoding="utf-8")
+    pseudoniem.maak(tmp_path / "x.txt", tmp_path / "x.code.txt")
+    pseudoniem.terugzetten(tmp_path / "x.code.txt", tmp_path / "terug.txt")
+    assert _lees_hook(tmp_path / "terug.txt").returncode == 2
+    assert _lees_hook(tmp_path / "x.code.txt").returncode == 0  # de versie met codes mag Claude wel lezen

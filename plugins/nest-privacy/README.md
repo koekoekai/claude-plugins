@@ -8,6 +8,7 @@ Gratis plugin van [Koekoek](https://koekoek.ai) voor Claude Code. Houdt persoons
 |---|---|
 | `/nest-privacy:controleer` | Controleert je code op persoonsgegevens (BSN met elfproef, IBAN met mod-97, e-mail, telefoon, adres, postcode, IP-adres, geboortedatum, namen na een aanhef) en op geheimen. |
 | `/nest-privacy:anonimiseer <bestand>` | Zet een tekst- of CSV-bestand met echte data om naar een versie met `[SOORT]` in plaats van persoonsgegevens, zodat je veilig kunt testen of het aan een AI kunt geven. Optioneel pseudoniemen met een eigen sleutel. |
+| `/nest-privacy:terugzetten <bestand>` | Zet codes zoals `[NAAM-3cd5a9aa4bca]` weer om naar de echte gegevens. Zo laat je Claude een antwoord schrijven met codes, en zet je daarna op je eigen computer de echte namen erin. |
 | `/nest-privacy:geheimen` | Zoekt naar API-sleutels (AWS, GitHub, Stripe, Anthropic, OpenAI, Google, Slack), privésleutels, JWT's en wachtwoorden in code of URL's. |
 | **Geen klantdata naar het model** | Wil Claude een databestand lezen (CSV, TXT, JSON, LOG, …) waar persoonsgegevens in staan, dan houdt een hook dat tegen. De inhoud gaat dan niet naar het model; Claude stelt voor om eerst te anonimiseren. |
 | **Automatisch vóór elke push** | Een hook controleert de gewijzigde bestanden zodra Claude `git push` wil doen. Staat er iets in, dan houdt hij de push tegen en laat hij bestand, regel en soort zien (nooit de waarde). |
@@ -21,9 +22,16 @@ Gratis plugin van [Koekoek](https://koekoek.ai) voor Claude Code. Houdt persoons
 
 Nodig: Python 3.9 of nieuwer (`python` of `python3`) en git. Op Windows heeft Claude Code Git for Windows (Git Bash) nodig voor de hook.
 
+## Hoe anonimiseren werkt zonder dat Claude de data leest
+
+1. **Een programma op je eigen computer doet het werk.** Claude start alleen `anonimiseren.py` of `pseudoniem.py` met de bestandsnaam. Het programma leest het bestand, vervangt de persoonsgegevens en schrijft een nieuw bestand. Claude ziet alleen aantallen, zoals `vervangen: NAAM 12, EMAIL 30`.
+2. **Een slot op het lezen.** Wil Claude een databestand met persoonsgegevens openen, dan houdt de plugin dat tegen.
+3. **Codes en terugzetten (pseudoniemen).** Dezelfde persoon krijgt overal dezelfde code, bijv. `[NAAM-3cd5a9aa4bca]`. De **sleutel** wordt bij het eerste gebruik willekeurig gemaakt en de **vertaaltabel** (code → echte waarde) wordt bewaard, allebei **alleen op jouw computer**: op Windows versleuteld met je eigen account (DPAPI), op macOS en Linux in een bestand dat alleen jij kunt lezen (`~/.koekoek/nest-privacy`). Claude ziet de tabel nooit. Tabellen worden na 30 dagen vanzelf gewist.
+
 ## Wat de plugin draait
 
 - `scripts/anonimiseren.py`: herkennen en vervangen van persoonsgegevens (alleen de standaardbibliotheek van Python).
+- `scripts/pseudoniem.py` en `scripts/kluis.py`: codes maken en terugzetten; sleutel en vertaaltabel lokaal en beschermd.
 - `scripts/geheimen.py`: herkennen van geheimen (alleen de standaardbibliotheek).
 - `hooks/voor_lezen.py`: vóór de Read-tool van Claude, alleen bij databestanden: lokaal controleren op persoonsgegevens; zo ja, wordt het bestand niet gelezen.
 - `hooks/voor_push.py`: vóór `git push` beide controles op de bestanden die sinds de upstream-branch (of `origin/main`) veranderden. Gebruikt alleen lokale `git`-opdrachten.
@@ -62,9 +70,12 @@ Wil je ook review en scans met de regels van Koekoek op een eigen, door ons behe
 |---|---|
 | `/nest-privacy:controleer` | Checks your code for personal data (Dutch BSN with checksum, IBAN with mod-97, e-mail, phone, address, postcode, IP address, date of birth, names after a title) and for secrets. |
 | `/nest-privacy:anonimiseer <file>` | Turns a text or CSV file with real data into a copy where personal data is replaced by `[TYPE]`, so you can test with it or give it to an AI. Optional keyed pseudonyms. |
+| `/nest-privacy:terugzetten <file>` | Turns codes like `[NAAM-3cd5a9aa4bca]` back into the real data, on your own computer. Let Claude draft a reply with codes, then put the real names back locally. |
 | `/nest-privacy:geheimen` | Looks for API keys (AWS, GitHub, Stripe, Anthropic, OpenAI, Google, Slack), private keys, JWTs and passwords in code or URLs. |
 | **Customer data stays out of Claude** | A `PreToolUse` hook on Claude's Read tool checks data files (CSV, TXT, JSON, LOG, …) locally. If they contain personal data, the file is not read, so its contents never reach the model; Claude suggests anonymising it first. |
 | **Before every push** | A `PreToolUse` hook on `git push` checks the changed files and blocks the push if it finds personal data or secrets. It shows file, line and type, never the value. |
+
+**Pseudonyms and restoring:** the key is created randomly on first use and the lookup table (code → real value) is stored **only on your computer**: on Windows encrypted with your own account (DPAPI), on macOS/Linux in a file only you can read (`~/.koekoek/nest-privacy`). Claude never sees the table. Tables are deleted automatically after 30 days.
 
 **What it runs:** `scripts/anonimiseren.py` and `scripts/geheimen.py` (Python standard library only), `hooks/voor_lezen.py` and `hooks/voor_push.py` (started by `hooks/py.sh`, which picks `python` or `python3`). The hooks only use local `git` commands. The plugin reads files in your project and writes only the output file you name for `anonimiseer`.
 

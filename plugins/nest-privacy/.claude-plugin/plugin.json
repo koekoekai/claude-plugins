@@ -1,13 +1,24 @@
 {
   "name": "nest-privacy",
   "displayName": "Nest-privacy",
-  "version": "0.1.0",
-  "description": "Houdt persoonsgegevens en geheimen uit je code. Controleert op BSN, IBAN, e-mail, telefoon, adressen en API-sleutels, anonimiseert klantdata naar nepdata, en houdt een git push tegen als er iets in staat. Alles draait op je eigen computer; er gaat niets naar buiten.",
-  "author": { "name": "Koekoek", "url": "https://koekoek.ai" },
+  "version": "0.2.0",
+  "description": "Houdt persoonsgegevens en geheimen uit je code. Controleert op BSN, IBAN, e-mail, telefoon, adressen en API-sleutels, anonimiseert klantdata (ook met codes die je later lokaal terugzet), en houdt een git push tegen als er iets in staat. Alles draait op je eigen computer; er gaat niets naar buiten.",
+  "author": {
+    "name": "Koekoek",
+    "url": "https://koekoek.ai"
+  },
   "homepage": "https://koekoek.ai/#prijzen",
   "repository": "https://github.com/koekoekai/claude-plugins",
   "license": "MIT",
-  "keywords": ["privacy", "avg", "gdpr", "persoonsgegevens", "anonimiseren", "geheimen", "secrets"],
+  "keywords": [
+    "privacy",
+    "avg",
+    "gdpr",
+    "persoonsgegevens",
+    "anonimiseren",
+    "geheimen",
+    "secrets"
+  ],
   "icon": "./icon.png",
   "documentationUrl": "https://github.com/koekoekai/claude-plugins/tree/main/plugins/nest-privacy",
   "supportUrl": "https://koekoek.ai/#contact",
