@@ -10,15 +10,22 @@ permissions:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.13"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      NEST_PRIVACY_HERKENNER: regels
     steps:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python }}
       - name: Tests
         run: |
           python -m pip install --disable-pip-version-check -q pytest
