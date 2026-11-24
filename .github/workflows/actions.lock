@@ -6,6 +6,9 @@ workflows:
     '.github/workflows/ci.yml':
         - 'actions/checkout@v5'
         - 'actions/setup-python@v6'
+    '.github/workflows/modelmeting.yml':
+        - 'actions/checkout@v5'
+        - 'actions/setup-python@v6'
 dependencies:
     'actions/checkout@v5':
         ref: 'v5'

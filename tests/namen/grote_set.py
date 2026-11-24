@@ -173,3 +173,19 @@ if __name__ == "__main__":
         print(f"{naam}  weg {m['weg']:.1%} van {m['n']}  geselecteerde controlewoorden geraakt {m['vals']:.1%} van {m['b']}")
         print("  meest gemist:", m["gemist"])
         print("  meest onterecht weg:", m["onterecht"])
+        # --lat 97,1: minstens 97% volledig weg en hooguit 1% controlewoorden geraakt, anders exitcode 1 (voor de CI)
+        lat = next((sys.argv[i + 1] for i, a in enumerate(sys.argv[:-1]) if a == "--lat"), None)
+        import os
+        import taalmodel
+
+        model = taalmodel._privacykit() is not None
+        print(f"  herkenner: {taalmodel.keuze()}, taalmodel geladen: {'ja' if model else 'nee'}")
+        if os.environ.get("GITHUB_STEP_SUMMARY"):
+            with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+                f.write(f"| {naam} | {m['weg']:.1%} van {m['n']} | {m['vals']:.1%} van {m['b']} | {'ja' if model else 'nee'} |\n")
+        if lat:
+            min_weg, max_vals = (float(x) for x in lat.split(","))
+            if m["weg"] * 100 < min_weg or m["vals"] * 100 > max_vals:
+                print(f"ONDER DE LAT: nodig minstens {min_weg}% weg en hooguit {max_vals}% geraakt", file=sys.stderr)
+                sys.exit(1)
+            print(f"  boven de lat ({min_weg}% weg, hooguit {max_vals}% geraakt)")

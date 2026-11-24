@@ -1,0 +1,59 @@
+name: Modelmeting
+
+# Bewijs dat Nest-privacy met het echte taalmodel (Privacy Kit) werkt, op een schone machine van GitHub.
+# Installeert het model zoals een gebruiker dat doet (/nest-privacy:taalmodel) en meet 600 verzonnen zinnen.
+# Rood als minder dan 97% van de gevoelige gegevens weg is of meer dan 1% van de controlewoorden geraakt wordt.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+  push:
+    branches: [main]
+    paths:
+      - "plugins/nest-privacy/scripts/**"
+      - "tests/namen/grote_set.py"
+      - ".github/workflows/modelmeting.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: modelmeting
+  cancel-in-progress: true
+
+jobs:
+  meten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEST_PRIVACY_HERKENNER: privacykit
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      PYTHONWARNINGS: ignore
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Taalmodel installeren (zoals een gebruiker)
+        run: |
+          export NEST_PRIVACY_MAP="$RUNNER_TEMP/nest-privacy"
+          echo "NEST_PRIVACY_MAP=$NEST_PRIVACY_MAP" >> "$GITHUB_ENV"
+          python plugins/nest-privacy/scripts/model_installeren.py
+          python plugins/nest-privacy/scripts/model_installeren.py --status
+      - name: Meten
+        run: |
+          {
+            echo "## Modelmeting Nest-privacy"
+            echo
+            echo "| Set | volledig weg | controlewoorden geraakt | taalmodel geladen |"
+            echo "|---|---|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+          python tests/namen/grote_set.py 300 --meet --lat 97,1
+          python tests/namen/grote_set.py 300 --meet --blind --lat 97,1
+          {
+            echo
+            echo "Lat: minstens 97% volledig weg, hooguit 1% van de controlewoorden geraakt. Alle zinnen zijn verzonnen."
+          } >> "$GITHUB_STEP_SUMMARY"
