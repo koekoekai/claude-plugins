@@ -1,4 +1,4 @@
-# bouwsteen: anonimiseren/kern-python 0.1.5  (bron: github.com/koekoekai/anonimiseren)
+# bouwsteen: anonimiseren/kern-python 0.1.6  (bron: github.com/koekoekai/anonimiseren)
 """Persoonsgegevens in tekst en CSV vinden en vervangen. Alleen de standaardbibliotheek, werkt offline.
 
 Gebruik:
