@@ -44,3 +44,21 @@ voor namen (spaCy of GLiNER) als optionele herkenner; de vaste regels blijven vo
 
 Met een bestaand model zakken de valse treffers op de blinde sets naar 0%. Licenties: spaCy MIT, en_core_web_md MIT,
 nl_core_news_md CC BY-SA 4.0 (de gebruiker installeert het zelf; wij leveren het model niet mee).
+
+## Ronde 4: GLiNER (urchade/gliner_multi_pii-v1, Apache-2.0), plus lijstfilter op de uitkomst van het model
+
+`NEST_PRIVACY_HERKENNER=gliner python tests/namen/vergelijk.py` (met gliner, torch en sentencepiece geïnstalleerd)
+
+| Set | Regels | spaCy | GLiNER |
+|---|---|---|---|
+| testset.json | 100% / 0% | 100% / 3% | 100% / 0% |
+| moeilijk.json | 100% / 0% | 86% / 0% | 100% / 0% |
+| controle.json | 100% / 3% | 91% / 0% | 100% / 0% |
+| blind.json | 82% / 36% | 91% / 0% | 100% / 5% |
+| blind2.json | 100% / 19% | 100% / 0% | 100% / 0% |
+
+(gevonden namen / valse treffers). Let op: het lijstfilter (plaatsen en merken winnen van het model) is gemaakt met kennis
+van controle.json. Op de blinde sets heeft het filter geen invloed gehad behalve bij GLiNER op blind.json.
+
+**Advies:** GLiNER als standaard op een server die wij beheren (Eigen server); regels als terugval in de gratis plugin.
+GLiNER: model ongeveer 1,1 GB, CPU, ongeveer 0,3 s per zin na het laden. Nodig: gliner, torch (CPU), sentencepiece.

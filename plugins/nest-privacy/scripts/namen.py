@@ -182,7 +182,10 @@ def zoek_namen(tekst: str) -> Namen:
     # 0. Een lokaal taalmodel, als dat er is (taalmodel.py). Het vervangt de zwakke regel "hoofdletter midden in een zin".
     model = taalmodel.personen(tekst)
     for naam in model or ():
-        voeg_toe(naam)
+        # Twijfelt het model bij een plaats, merk of gewoon woord, dan wint de lijst.
+        if not all(d.lower() in PLAATSEN or d.lower() in GEEN_PERSOON or d.lower() in GEWONE_WOORDEN
+                   for d in re.split(r"[\s-]+", naam.strip()) if d):
+            voeg_toe(naam)
 
     # 1. Aanwijzingen in de tekst
     for patroon in (AANHEF, AFSLUITING, LABEL, VOORLETTERNAAM, TUSSENNAAM):
