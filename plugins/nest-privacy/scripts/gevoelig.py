@@ -196,6 +196,8 @@ def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | Non
     for soort, patroon in BIJZONDER_RE.items():
         for m in patroon.finditer(tekst):
             zet(m.start(), m.end(), soort, 2)
+    for m in re.finditer(r"(?i)\bziek(?=[ \t]+gemeld\b)", tekst):
+        zet(m.start(), m.end(), "GEZONDHEID", 2)
     for m in POLITIEK_LANG.finditer(tekst):
         zet(m.start(), m.end(), "VAKBOND" if "union" in m.group(0).lower() else "POLITIEK", 2)
     # 6. eigen woordenlijst

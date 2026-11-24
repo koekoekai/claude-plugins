@@ -10,8 +10,8 @@ import anonimiseren  # noqa: E402
 import namen  # noqa: E402
 
 
-def meet() -> dict:
-    data = json.loads((HIER / "testset.json").read_text(encoding="utf-8"))
+def meet(bestand: str = "testset.json") -> dict:
+    data = json.loads((HIER / bestand).read_text(encoding="utf-8"))
     totaal = gevonden = blijven = vals = 0
     gemist, onterecht = [], []
     for z in data["zinnen"]:

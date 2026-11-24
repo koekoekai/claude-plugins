@@ -1,5 +1,5 @@
 {
- "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De namen, straten en plaatsen\nhieronder staan bewust NIET in de lijsten van namen.py en plaatsen.py, zodat we generalisatie meten en niet het opzoeken.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
+ "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De set bevat zowel bekende als onbekende namen. De blinde zinnen zijn vooraf vastgelegd.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
  "zinnen": [
   {
    "t": "Beste Siebren, je factuur van € 9460,70 van Kade Analytics staat klaar.",
@@ -68,6 +68,7 @@
    "t": "Marit heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Marit",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -360,6 +361,7 @@
    "t": "Boudewijn heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Boudewijn",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -419,6 +421,7 @@
    "t": "Caoimhe heeft zich ziek gemeld met kanker.",
    "weg": [
     "Caoimhe",
+    "ziek",
     "kanker"
    ],
    "blijven": [
@@ -429,6 +432,7 @@
    "t": "Gijsbert heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Gijsbert",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -583,6 +587,7 @@
    "t": "Esmée heeft zich ziek gemeld met depressie.",
    "weg": [
     "Esmée",
+    "ziek",
     "depressie"
    ],
    "blijven": [
@@ -744,6 +749,7 @@
    "t": "Harriet heeft zich ziek gemeld met astma.",
    "weg": [
     "Harriet",
+    "ziek",
     "astma"
    ],
    "blijven": [
@@ -852,6 +858,7 @@
    "t": "Youssef heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Youssef",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -979,6 +986,7 @@
    "t": "Callum heeft zich ziek gemeld met depressie.",
    "weg": [
     "Callum",
+    "ziek",
     "depressie"
    ],
    "blijven": [
@@ -1236,6 +1244,7 @@
    "t": "Elif heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Elif",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -1277,6 +1286,7 @@
    "t": "Declan heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Declan",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -1298,6 +1308,7 @@
    "t": "Folkert heeft zich ziek gemeld met kanker.",
    "weg": [
     "Folkert",
+    "ziek",
     "kanker"
    ],
    "blijven": [
@@ -1318,6 +1329,7 @@
    "t": "Youssef heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Youssef",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -1453,6 +1465,7 @@
    "t": "Liesbeth heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Liesbeth",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -1520,6 +1533,7 @@
    "t": "Caoimhe heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Caoimhe",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -1568,6 +1582,7 @@
    "t": "Rutger heeft zich ziek gemeld met burn-out.",
    "weg": [
     "Rutger",
+    "ziek",
     "burn-out"
    ],
    "blijven": [
@@ -1596,6 +1611,7 @@
    "t": "Raj heeft zich ziek gemeld met depressie.",
    "weg": [
     "Raj",
+    "ziek",
     "depressie"
    ],
    "blijven": [
@@ -1721,6 +1737,7 @@
    "t": "Folkert heeft zich ziek gemeld met kanker.",
    "weg": [
     "Folkert",
+    "ziek",
     "kanker"
    ],
    "blijven": [
@@ -1768,6 +1785,7 @@
    "t": "Rutger heeft zich ziek gemeld met kanker.",
    "weg": [
     "Rutger",
+    "ziek",
     "kanker"
    ],
    "blijven": [
@@ -1810,6 +1828,7 @@
    "t": "Thijmen heeft zich ziek gemeld met burn-out.",
    "weg": [
     "Thijmen",
+    "ziek",
     "burn-out"
    ],
    "blijven": [
@@ -2097,6 +2116,7 @@
    "t": "Esmée heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Esmée",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -2316,6 +2336,7 @@
    "t": "Sietske heeft zich ziek gemeld met burn-out.",
    "weg": [
     "Sietske",
+    "ziek",
     "burn-out"
    ],
    "blijven": [
@@ -2389,6 +2410,7 @@
    "t": "Jurre heeft zich ziek gemeld met diabetes.",
    "weg": [
     "Jurre",
+    "ziek",
     "diabetes"
    ],
    "blijven": [
@@ -2577,6 +2599,7 @@
    "t": "Bethany heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Bethany",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -2699,6 +2722,7 @@
    "t": "Mehmet heeft zich ziek gemeld met astma.",
    "weg": [
     "Mehmet",
+    "ziek",
     "astma"
    ],
    "blijven": [
@@ -2729,6 +2753,7 @@
    "t": "Camille heeft zich ziek gemeld met epilepsie.",
    "weg": [
     "Camille",
+    "ziek",
     "epilepsie"
    ],
    "blijven": [
@@ -2803,6 +2828,7 @@
    "t": "Samira heeft zich ziek gemeld met astma.",
    "weg": [
     "Samira",
+    "ziek",
     "astma"
    ],
    "blijven": [
@@ -2821,6 +2847,7 @@
    "t": "Youssef heeft zich ziek gemeld met burn-out.",
    "weg": [
     "Youssef",
+    "ziek",
     "burn-out"
    ],
    "blijven": [

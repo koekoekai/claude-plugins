@@ -69,7 +69,7 @@ def maak(aantal: int, seed: int = 2026) -> list[dict]:
             (f"Het nieuwe adres is {straat} {nr} in {plaats}, schreef {v}.", [f"{straat} {nr}", v], ["nieuwe"]),
             (f"Graag het salaris overmaken naar {iban(r)} t.n.v. {naam}.", [naam.split()[0], "NL"], ["salaris"]),
             (f"BSN van de medewerker: {bsn(r)}. Telefoon {telefoon(r)}.", ["BSN_WAARDE", "TEL_WAARDE"], ["medewerker"]),
-            (f"{v} heeft zich ziek gemeld met {r.choice(ZIEKTES)}.", [v, "ZIEKTE"], ["gemeld"]),  # "ziek" zelf is ook een gezondheidsgegeven (AP)
+            (f"{v} heeft zich ziek gemeld met {r.choice(ZIEKTES)}.", [v, "ziek", "ZIEKTE"], ["gemeld"]),  # "ziek" zelf is ook een gezondheidsgegeven (AP)
             (f"Please ask {naam} to send the signed contract to {bedrijf}.", [v, a], ["contract", bedrijf.split()[0]]),
             (f"{v} mentioned an {r.choice(ZIEKTES_EN)} diagnosis during the meeting.", [v, "ZIEKTE"], ["meeting"]),
             (f"Ticket #{r.randint(1000, 9999)}: {product} geeft een foutmelding bij het exporteren.", [], [product, "foutmelding"]),

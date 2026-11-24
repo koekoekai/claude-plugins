@@ -216,6 +216,8 @@ def test_naamherkenning_haalt_de_lat():
     import meet
     m = meet.meet()
     assert m["herkend"] >= 0.95 and m["vals"] == 0
+    moeilijk = meet.meet("moeilijk.json")
+    assert moeilijk["herkend"] >= 0.5 and moeilijk["vals"] == 0
 
 
 # ---------- naamherkenning via de eigen Nest-server (taalmodel.py) ----------
@@ -405,3 +407,9 @@ def test_review_deellek(monkeypatch):
     monkeypatch.setattr(gevoelig, "vind", lambda *a, **kw: [(6, 8, "ADRES")])
     resultaat = grote_set.meet([{"t": "Straat12 klaar", "weg": ["Straat12"], "blijven": ["klaar"]}])
     assert resultaat["weg"] == resultaat["vals"] == 0
+
+
+def test_review_ziekmelding():
+    import gevoelig
+    assert gevoelig.vervang("Jan ziek gemeld met diabetes.", "maskeren")[0] == (
+        "[NAAM] [GEZONDHEID] gemeld met [GEZONDHEID].")

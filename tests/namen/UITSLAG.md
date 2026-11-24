@@ -100,8 +100,11 @@ Van begin tot eind getest: maken, terugzetten geeft exact het origineel terug.
 ## Ronde 7: grote set en blinde set (600 zinnen)
 
 `python tests/namen/grote_set.py 300 --meet` en `... --blind`: zinnen uit sjablonen (mails, tickets, HR, notities, NL en EN) met
-namen, straten en plaatsen die niet in namen.py of plaatsen.py staan. De blinde set (andere zinsbouw, andere namen) is
-vastgelegd vóór het meten.
+verzonnen namen, straten en plaatsen. De blinde set is vooraf vastgelegd. Dertien van de 24
+blinde voornamen staan ook in de woordenlijsten van de herkenner.
+
+De onderstaande historische telling beschouwde een gedeeltelijk afgedekte waarde als verwijderd.
+De kolom voor te veel verwijderen keek alleen naar geselecteerde controlewoorden.
 
 | Set | zonder model (weg / te veel) | met Privacy Kit (weg / te veel) |
 |---|---|---|
@@ -114,3 +117,11 @@ gevonden voornaam. "ziek" zelf blijft weg: een ziekmelding is ook een gezondheid
 
 Nog gemist: een enkele onbekende voornaam aan het begin van een zin (Thijmen, Caoimhe), en een straat zonder straatwoord
 (Ossekop 231). **Eerlijke grens:** de zinnen zijn nog steeds door ons gemaakt. Vóór verkoop een pilot met echte, toegestane data.
+
+
+### Hermeting na de privacyreview
+
+De regelherkenner bedekte 80,7% van de 482 gevoelige waarden volledig op de gewone set en
+92,2% van de 348 op de blinde set. Hij raakte respectievelijk 24,0% van 446 en 13,3% van
+555 geselecteerde controlewoorden. De gewone set telt nu ook het woord “ziek” bij ziekmeldingen.
+Voor het taalmodel is er nog geen score volgens de nieuwe telling.

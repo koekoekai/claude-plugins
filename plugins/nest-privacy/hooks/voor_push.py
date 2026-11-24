@@ -3,6 +3,8 @@
 Vondst -> exit 2: Claude Code houdt de push tegen en krijgt bestand, regel en soort te zien (nooit de waarde).
 Alles wat geen echte vondst is (geen git-repo, fout in het script) laat de push door. Draait lokaal; stuurt niets naar buiten.
 """
+from __future__ import annotations
+
 import json
 import os
 import re

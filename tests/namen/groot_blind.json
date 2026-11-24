@@ -1,5 +1,5 @@
 {
- "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De namen, straten en plaatsen\nhieronder staan bewust NIET in de lijsten van namen.py en plaatsen.py, zodat we generalisatie meten en niet het opzoeken.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
+ "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De set bevat zowel bekende als onbekende namen. De blinde zinnen zijn vooraf vastgelegd.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
  "zinnen": [
   {
    "t": "Notitie: Zeynep Dekker wil voortaan op dinsdag werken.",
