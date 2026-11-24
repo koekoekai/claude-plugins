@@ -124,4 +124,8 @@ Nog gemist: een enkele onbekende voornaam aan het begin van een zin (Thijmen, Ca
 De regelherkenner bedekte 80,7% van de 482 gevoelige waarden volledig op de gewone set en
 92,2% van de 348 op de blinde set. Hij raakte respectievelijk 24,0% van 446 en 13,3% van
 555 geselecteerde controlewoorden. De gewone set telt nu ook het woord “ziek” bij ziekmeldingen.
-Voor het taalmodel is er nog geen score volgens de nieuwe telling.
+Met Privacy Kit volgens de nieuwe telling (24-11-2026, Windows): **98,3% van 482 en 99,7% van 348 volledig bedekt,
+0,0% van 446 en 555 geselecteerde controlewoorden geraakt.** Gemist: een paar onbekende voornamen aan het begin van een
+zin (Thijmen, Caoimhe, Rutger, Jurre, Nikita), El Amrani, Hoogland en een straat zonder straatwoord (Ossekop 231).
+Let op: 13 van de 24 blinde voornamen staan ook in de namenlijst; voor de regels is de blinde set dus deels bekend.
+Het taalmodel gebruikt die lijst niet.
