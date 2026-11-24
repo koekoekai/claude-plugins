@@ -1,11 +1,11 @@
 {
   "name": "nest-pro",
   "displayName": "Nest-pro",
-  "version": "0.3.0",
-  "description": "Koekoek Nest via de Nest-server: review, scans en releasepoort. Je code wordt eerst op je eigen computer geanonimiseerd; alleen die versie gaat naar de server, en die bewaart niets.",
+  "version": "0.4.0",
+  "description": "Gratis: controleer je code offline op persoonsgegevens (/nest-pro:controleer). Met een Nest-sleutel ook review en scan via de Nest-server: je code wordt eerst op je eigen computer geanonimiseerd en de server bewaart niets.",
   "author": {
     "name": "Koekoek"
   },
   "icon": "./icon.png",
-  "homepage": "https://koekoek.ai/nest"
+  "homepage": "https://koekoek.ai/#prijzen"
 }

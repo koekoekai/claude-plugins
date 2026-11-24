@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0 · 24-11-2026 · Gratis controle, README en CI
+
+- **Nest-pro 0.4.0:** nieuwe opdracht `/nest-pro:controleer`. Gratis en offline: controleert je code op persoonsgegevens, zonder sleutel.
+- README voor iedereen: wat elke plugin doet, hoe je installeert en hoe je met de Nest-server verbindt (`NEST_TOKEN`, `NEST_URL`).
+- CI op deze openbare repo: tests en een controle op persoonsgegevens.
+
 ## 0.7.0 · 24-11-2026 · Nest-pro klaar voor klanten
 
 - **Nest-pro anonimiseert eerst op je eigen computer.** `/nest-pro:review` haalt namen, e-mail, telefoon, IBAN, BSN, adressen en dergelijke uit de diff (bouwsteen `anonimiseren/kern-python`, offline). Alleen die versie gaat naar de server, en de server bewaart niets. Persoonsgegevens in de code zelf meldt hij als bevinding. Voorheen ging de ruwe diff naar de server.

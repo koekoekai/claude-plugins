@@ -1,24 +1,50 @@
-# Koekoek Claude Code-plugins
+# Koekoek-plugins voor Claude Code
 
-Privé plugin-catalogus van Koekoek. Ieder werkt met zijn **eigen Claude-account**; de plugins zorgen dat iedereen op dezelfde manier werkt: volgens de software factory in [`koekoekai/bouwstenen`](https://github.com/koekoekai/bouwstenen) (Nest).
+Plugins van [Koekoek](https://koekoek.ai) voor Claude Code. Ze zorgen dat code veilig en netjes gebouwd wordt, en dat persoonsgegevens niet in je code of bij een ander terechtkomen.
 
-| Plugin | Wat | |
+De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents op maat, doet migraties en beheert oplossingen in de EU. Zie [koekoek.ai](https://koekoek.ai).
+
+| Plugin | Voor wie | Wat |
 |---|---|---|
-| **nest** | werkregels, bouwstenen, CI/CD-poorten vóór elke push, code- en security-review met eigen agenten, release-seal, begeleide deploy, nieuw project, aansluiten | standaard |
-| **nest-anoniem** | data anonimiseren (BSN, IBAN, adres, namen, …) lokaal en offline, met [`koekoekai/anonimiseren`](https://github.com/koekoekai/anonimiseren) | optioneel |
+| **Nest-pro** (`nest-pro`) | iedereen | **Gratis:** je code offline controleren op persoonsgegevens. **Met een Nest-sleutel:** review en scan met de regels van Koekoek, via de Nest-server. |
+| **Nest-local** (`nest`) | teams die met Koekoek werken | De hele fabriek in je eigen Claude: werkregels, bouwstenen, poorten vóór elke push, review met drie agenten, release en deploy. Vraagt toegang tot `koekoekai/bouwstenen`. |
+| **Nest-anoniem** (`nest-anoniem`) | teams die met Koekoek werken | Bestanden anonimiseren, lokaal en offline. Vraagt toegang tot `koekoekai/anonimiseren`. |
 
 ## Installeren (eenmalig, in Claude Code)
 
 ```
 /plugin marketplace add koekoekai/claude-plugins
-/plugin install nest@koekoek
-/plugin install nest-anoniem@koekoek        # optioneel
+/plugin install nest-pro@koekoek
 ```
 
-Je hebt leesrechten nodig op deze repo en op `koekoekai/bouwstenen` (en `koekoekai/anonimiseren` voor nest-anoniem). Je git moet zonder vragen kunnen inloggen bij GitHub (bijv. Git Credential Manager of `gh auth setup-git`).
+Teams die met Koekoek werken installeren daarnaast `nest@koekoek` en eventueel `nest-anoniem@koekoek`.
 Bijwerken: `/plugin marketplace update koekoek`, of zet automatisch bijwerken aan onder `/plugin` → Marketplaces.
 
-## Wat de plugin afdwingt
+## Nest-pro
+
+| Opdracht | Sleutel nodig | Wat |
+|---|---|---|
+| `/nest-pro:controleer` | nee | Controleert je code op persoonsgegevens (BSN, IBAN, e-mail, telefoon, adres, …). Helemaal offline; er gaat niets naar Koekoek. |
+| `/nest-pro:review` | ja | Kijkt je wijzigingen na op beveiliging, privacy en kwaliteit, met één VERDICT. |
+| `/nest-pro:scan` | ja | Laat open scanners (gitleaks, semgrep, osv, pip-audit, npm-audit) draaien en zet de risico's op volgorde. |
+
+**Je data blijft van jou.** Bij `review` anonimiseert de plugin de wijzigingen eerst op je eigen computer: namen, e-mail, telefoon, IBAN, BSN, adressen en dergelijke worden `[SOORT]`. Alleen die versie gaat naar de Nest-server. De server kijkt hem na in het geheugen, bewaart niets en logt alleen metadata (grootte en aantal bevindingen). De regels zelf blijven op de server; je krijgt alleen bevindingen.
+
+### Verbinden met de Nest-server
+
+1. Vraag een sleutel aan via [koekoek.ai/#prijzen](https://koekoek.ai/#prijzen) (de eerste maand is gratis). Je ziet de sleutel **één keer**. Bewaar hem veilig.
+2. Zet de sleutel in je omgeving, bijvoorbeeld in `~/.claude/settings.json`:
+   ```json
+   { "env": { "NEST_TOKEN": "nest_..." } }
+   ```
+   Of als omgevingsvariabele (Windows: `setx NEST_TOKEN "nest_..."`, macOS/Linux: `export NEST_TOKEN=nest_...` in je shellprofiel).
+3. Start Claude Code opnieuw. De plugin praat met `https://nest.koekoek.ai/mcp`. Een eigen Nest-server (bijvoorbeeld op je eigen VPS, bij Op maat) zet je met `NEST_URL`.
+4. Controleer: typ `/mcp` in Claude Code. De server `nest` moet verbonden zijn.
+
+Zonder sleutel werkt `/nest-pro:controleer` gewoon. De server `nest` staat dan als niet verbonden in `/mcp`; dat is normaal.
+Sleutel kwijt of opzeggen: via [koekoek.ai](https://koekoek.ai/#contact). Bij opzeggen gaat de sleutel uit.
+
+## Nest-local: wat de plugin afdwingt
 
 Werk je met Claude in een project, dan gaat het werk vanzelf langs de fabriek:
 
