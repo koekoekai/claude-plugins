@@ -2,6 +2,20 @@
 
 Openbare repo van Koekoek met Claude Code-plugins. Schrijf in het Nederlands, in korte, gewone zinnen.
 
+## Doel (van Joshua, 24-11-2026)
+
+**Nest-privacy wordt een product dat MKB-bedrijven vertrouwen om AI te gebruiken met klantgegevens, zonder dat de AI die gegevens ziet.**
+De plugin is gratis en open; Koekoek verdient aan inrichten voor teams, de Eigen server (vanaf €99 per maand, excl. server, op het Hetzner-account van de klant) en maatwerk.
+
+Marktrijp betekent:
+1. **Betrouwbaar:** op echte klantteksten mist hij minder dan 2% van de persoonsgegevens (met taalmodel) en nooit een BSN, IBAN of gezondheidsgegeven; de tekst blijft bruikbaar.
+2. **Makkelijk:** een medewerker zonder IT-kennis installeert en gebruikt het zelf, op Windows en Mac.
+3. **Aantoonbaar:** eerlijke metingen, een DPIA die de klant zelf invult, en een pilot met 3 tot 5 klanten waarin de klant zelf meet.
+4. **Veilig en privé:** er gaat nooit tekst naar Koekoek of een server; de codelijst blijft lokaal.
+5. **Verkoopbaar:** de pilot levert minstens één betalende klant op (inrichten, Eigen server of maatwerk).
+
+Kies bij elke taak wat dit doel het meest dichterbij brengt. Twijfel je of iets past, vraag het aan `owner` met `msg_send` in plaats van te gokken.
+
 ## Samenwerken via de Agent Hub
 
 Claude verdeelt het werk en doet de eindcontrole. Codex bouwt, test en reviewt in een eigen Git-worktree. De eigenaar is `owner`.
