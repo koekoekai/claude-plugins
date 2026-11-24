@@ -16,6 +16,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from plaatsen import PLAATSEN
+
 # Veelvoorkomende voornamen (NL en EN), kleine letters. Bewust geen woorden die meestal iets anders betekenen.
 VOORNAMEN = set("""
 aad aafke aart abdel abdul abel abraham adam adri adriaan adrie agnes ahmed aisha albert alex alexander alexandra ali alice
@@ -146,6 +148,18 @@ def _midden_in_zin(tekst: str, begin: int) -> bool:
     return bool(voor) and voor[-1] not in ".!?:;•-–—"
 
 
+PLAATS_VOOR = re.compile(r"(?i)\b(?:in|uit|te|vanuit|richting|regio|gemeente|provincie|stad|city)\s+$")
+
+
+def _is_merk_of_code(woord: str) -> bool:
+    """HubSpot, PostNL, iDEAL, SharePoint, B2B: hoofdletters of cijfers middenin = merk of code, geen persoonsnaam."""
+    return any(c.isdigit() for c in woord) or any(c.isupper() for c in woord[1:]) and "-" not in woord and "'" not in woord
+
+
+def _is_plaats(tekst: str, begin: int, woord: str) -> bool:
+    return woord.lower() in PLAATSEN or bool(PLAATS_VOOR.search(tekst[:begin]))
+
+
 def _afgeleid(woord: str) -> bool:
     """Pietersen, Hendriksen, Gerritsen, Johnson: een voornaam met een achtervoegsel."""
     w = woord.lower()
@@ -188,7 +202,8 @@ def zoek_namen(tekst: str) -> Namen:
         elif laag in ACHTERNAMEN or _afgeleid(w):
             voeg_toe(w)
         elif (_midden_in_zin(tekst, m.start()) and laag not in GEWONE_WOORDEN and laag not in GEEN_PERSOON
-              and len(w) >= 3 and not GEEN_NAAM_EINDE.search(w)):
+              and len(w) >= 3 and not GEEN_NAAM_EINDE.search(w) and not _is_merk_of_code(w)
+              and not _is_plaats(tekst, m.start(), w)):
             # Midden in een zin met hoofdletter: in het Nederlands bijna altijd een naam, plaats of merk.
             # Plaatsen en merken staan in GEEN_PERSOON; wat overblijft behandelen we als naam (liever te veel dan te weinig).
             begin = m.start()

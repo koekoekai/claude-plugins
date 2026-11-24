@@ -18,3 +18,14 @@ tekst wordt er minder bruikbaar van.
 **Volgende stap voor echte kwaliteit:** een lijst met Nederlandse woonplaatsen (open data van het CBS), een regel voor
 "in/uit/te + plaats", en optioneel een lokaal taalmodel voor namen (spaCy nl), als dat geïnstalleerd is.
 Meet daarna opnieuw op een nieuwe blinde set.
+
+## Tweede ronde (plaatsenlijst, regel "in/uit/te + plaats")
+
+| Set | Namen gevonden | Valse treffers |
+|---|---|---|
+| blind.json (nu deels bekend) | 82% | 36% |
+| **blind2.json (nieuw, niet op afgestemd)** | **100% (10)** | **19% (21)** |
+
+Plaatsen gaan goed, onbekende merken (Pipedrive, Salesforce, Figma, Visma) niet. "in + naam" kost soms een naam ("loop in Aoife").
+**Conclusie:** met regels blijf je schuiven tussen namen missen en merken wegpoetsen. Volgende stap: een bestaand lokaal taalmodel
+voor namen (spaCy of GLiNER) als optionele herkenner; de vaste regels blijven voor BSN, IBAN en telefoon, en de vertaaltabel blijft.

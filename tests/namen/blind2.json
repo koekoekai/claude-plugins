@@ -1,0 +1,19 @@
+{
+  "uitleg": "Tweede blinde set: geschreven na de plaatsenlijst en vóór het meten, met namen, plaatsen en merken die niet in de lijsten staan (gecontroleerd vóór het schrijven niet mogelijk: dus eerlijk). Verzonnen namen.",
+  "zinnen": [
+    {"t": "Vanmiddag belde Hiske Terpstra over de achterstallige factuur.", "namen": ["Hiske", "Terpstra"], "blijven": ["factuur"]},
+    {"t": "Graag nog even overleggen met Evert-Jan voor vrijdag.", "namen": ["Evert-Jan"], "blijven": ["overleggen"]},
+    {"t": "De laptop van Noortje Wassink is gerepareerd.", "namen": ["Noortje", "Wassink"], "blijven": ["laptop"]},
+    {"t": "Ik heb Okonkwo gevraagd de logs te bekijken.", "namen": ["Okonkwo"], "blijven": ["logs"]},
+    {"t": "Thanks to Imogen Hartley the migration finished early.", "namen": ["Imogen", "Hartley"], "blijven": ["migration"]},
+    {"t": "Talk to Bogdan before you merge.", "namen": ["Bogdan"], "blijven": ["merge"]},
+    {"t": "De vestiging in Nunspeet sluit om vijf uur.", "namen": [], "blijven": ["Nunspeet", "vestiging"]},
+    {"t": "Onze leverancier zit in Kortrijk en levert via DHL.", "namen": [], "blijven": ["Kortrijk", "DHL"]},
+    {"t": "We testen Pipedrive naast Salesforce.", "namen": [], "blijven": ["Pipedrive", "Salesforce"]},
+    {"t": "Het magazijn verhuist van Tiel naar Culemborg.", "namen": [], "blijven": ["Tiel", "Culemborg"]},
+    {"t": "Our team in Lisbon now uses Notion and Figma.", "namen": [], "blijven": ["Lisbon", "Figma"]},
+    {"t": "De klant gebruikt AFAS en Visma voor de salarissen.", "namen": [], "blijven": ["AFAS", "Visma"]},
+    {"t": "Het nieuwe kantoor aan de Stationsweg is klaar.", "namen": [], "blijven": ["kantoor"]},
+    {"t": "Na overleg met Gemma is besloten de pilot in Zeist te starten.", "namen": ["Gemma"], "blijven": ["Zeist", "pilot"]}
+  ]
+}

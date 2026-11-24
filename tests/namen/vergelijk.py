@@ -33,6 +33,6 @@ def meet_set(bestand: Path) -> dict:
 if __name__ == "__main__":
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    for naam in ("testset.json", "moeilijk.json", "controle.json", "blind.json"):
+    for naam in ("testset.json", "moeilijk.json", "controle.json", "blind.json", "blind2.json"):
         m = meet_set(HIER / naam)
         print(f"{naam:14} herkend {m['herkend']:4.0%} van {m['n']:2}  vals {m['vals']:4.0%} van {m['b']:2}  gemist {m['gemist']}  onterecht {m['onterecht']}")
