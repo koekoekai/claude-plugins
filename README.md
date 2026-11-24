@@ -1,5 +1,7 @@
 # Koekoek-plugins voor Claude Code
 
+> **English:** Claude Code plugins by [Koekoek](https://koekoek.ai). The free plugin **Nest-privacy** keeps personal data and secrets out of your code and runs fully on your own computer; see [plugins/nest-privacy](plugins/nest-privacy#in-english). Security reports: [SECURITY.md](SECURITY.md).
+
 Plugins van [Koekoek](https://koekoek.ai) voor Claude Code. Ze zorgen dat code veilig en netjes gebouwd wordt, en dat persoonsgegevens niet in je code of bij een ander terechtkomen.
 
 De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents op maat, doet migraties en beheert servers en oplossingen in de EU. Zie [koekoek.ai](https://koekoek.ai).

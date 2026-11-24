@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.2 · 24-11-2026 · Engels en een beveiligingsmeldpunt
+
+- Nest-privacy: README ook in het Engels (voor reviewers en buitenlandse gebruikers).
+- `SECURITY.md`: waar je een beveiligingsprobleem meldt (contactformulier, niet in een openbaar issue).
+
 ## 0.9.1 · 24-11-2026 · Zonder garantie
 
 - README's: in gewone taal dat de plugins hulpmiddelen zijn zonder garantie, en dat je de uitkomst zelf controleert.

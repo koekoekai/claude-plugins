@@ -51,3 +51,26 @@ Wil je ook review en scans met de regels van Koekoek op een eigen, door ons behe
 - Privacy: [koekoek.ai/privacy.html](https://koekoek.ai/privacy.html#plugins). De plugin verwerkt niets buiten je eigen computer.
 - Support: [koekoek.ai/#contact](https://koekoek.ai/#contact).
 - Licentie: MIT, zie [LICENSE](LICENSE).
+
+---
+
+## In English
+
+**Nest-privacy** is a free Claude Code plugin by [Koekoek](https://koekoek.ai) that keeps personal data and secrets out of your code. **It runs entirely on your own computer and sends nothing anywhere** (no server, no telemetry, no network calls).
+
+| | |
+|---|---|
+| `/nest-privacy:controleer` | Checks your code for personal data (Dutch BSN with checksum, IBAN with mod-97, e-mail, phone, address, postcode, IP address, date of birth, names after a title) and for secrets. |
+| `/nest-privacy:anonimiseer <file>` | Turns a text or CSV file with real data into a copy where personal data is replaced by `[TYPE]`, so you can test with it or give it to an AI. Optional keyed pseudonyms. |
+| `/nest-privacy:geheimen` | Looks for API keys (AWS, GitHub, Stripe, Anthropic, OpenAI, Google, Slack), private keys, JWTs and passwords in code or URLs. |
+| **Customer data stays out of Claude** | A `PreToolUse` hook on Claude's Read tool checks data files (CSV, TXT, JSON, LOG, …) locally. If they contain personal data, the file is not read, so its contents never reach the model; Claude suggests anonymising it first. |
+| **Before every push** | A `PreToolUse` hook on `git push` checks the changed files and blocks the push if it finds personal data or secrets. It shows file, line and type, never the value. |
+
+**What it runs:** `scripts/anonimiseren.py` and `scripts/geheimen.py` (Python standard library only), `hooks/voor_lezen.py` and `hooks/voor_push.py` (started by `hooks/py.sh`, which picks `python` or `python3`). The hooks only use local `git` commands. The plugin reads files in your project and writes only the output file you name for `anonimiseer`.
+
+**Requirements:** Python 3.9+ and git. On Windows, Claude Code needs Git for Windows (Git Bash) for hooks.
+
+**Limits:** names without a title are not detected; the secret check is a baseline, so also use a full scanner such as gitleaks in CI. The Read hook guards Claude's Read tool, not every other way of reading a file.
+
+No warranty: use at your own risk and check the results yourself (MIT, see [LICENSE](LICENSE)). Privacy: <https://koekoek.ai/privacy.html#plugins>. Support: <https://koekoek.ai/#contact>. Security: see [SECURITY.md](SECURITY.md).
+
