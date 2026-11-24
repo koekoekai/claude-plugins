@@ -9,6 +9,9 @@ import sys
 from unittest.mock import patch
 
 VELDEN = ("gemarkeerd", "volledig", "gedeeltelijk", "gemist", "onterecht_woorden")
+TEKSTBESTANDEN = {".txt", ".md", ".csv", ".eml"}
+KRITISCH = ("BSN", "IBAN", "GEZONDHEID")  # hier mag niets van gemist worden (lat van de pilot)
+LAT_VOLLEDIG = 0.98
 RAPPORT = "pilotmeting.json"
 
 
@@ -115,8 +118,19 @@ def meet(paden):
             utf16 = data.startswith((codecs.BOM_UTF16_LE, codecs.BOM_UTF16_BE))
             tekst, merken = markeringen(data.decode("utf-16" if utf16 else "utf-8-sig"), soorten)
             tel(tekst, merken, gevoelig.vind(tekst), rijen)
+    totaal = {k: sum(r[k] for r in rijen.values()) for k in VELDEN}
     return {"bestanden": len(paden), "herkenners": ["regels"] + sorted(gebruikt),
-            "per_soort": rijen, "totaal": {k: sum(r[k] for r in rijen.values()) for k in VELDEN}}
+            "per_soort": rijen, "totaal": totaal, "samenvatting": samenvatting(rijen, totaal)}
+
+
+def samenvatting(rijen, totaal):
+    """In een oogopslag: hoeveel procent helemaal weg, en of er iets kritisch is blijven staan."""
+    deel = totaal["volledig"] / totaal["gemarkeerd"] if totaal["gemarkeerd"] else 0.0
+    kritisch = {s: rijen[s]["gedeeltelijk"] + rijen[s]["gemist"] for s in KRITISCH if s in rijen}
+    return {"volledig_weg_procent": round(deel * 100, 1),
+            "kritisch_niet_helemaal_weg": kritisch,
+            "lat_gehaald": deel >= LAT_VOLLEDIG and not any(kritisch.values()),
+            "lat": f"minstens {LAT_VOLLEDIG:.0%} helemaal weg en niets van {', '.join(KRITISCH)} gemist"}
 
 
 def main(args):
@@ -128,7 +142,7 @@ def main(args):
         for arg in args:
             pad = Path(arg)
             if pad.is_dir():
-                paden.update(p.resolve() for p in pad.iterdir() if p.suffix.lower() == ".txt" and p.is_file())
+                paden.update(p.resolve() for p in pad.iterdir() if p.suffix.lower() in TEKSTBESTANDEN and p.is_file())
             elif pad.is_file():
                 paden.add(pad.resolve())
             else:

@@ -44,3 +44,19 @@ def test_pilot_fout_zonder_waarden(tmp_path, tekst):
     assert run.returncode != 0
     assert "proefwaarde" not in run.stdout + run.stderr
     assert not (tmp_path / "pilotmeting.json").exists()
+
+
+def test_pilot_samenvatting_en_csv(tmp_path):
+    (tmp_path / "a.csv").write_text("naam;iban\n[[NAAM:Fien Voorbeeld]];[[IBAN:NL91ABNA0417164300]]\n", encoding="utf-8")
+    (tmp_path / "b.md").write_text("Patient met [[GEZONDHEID:diabetes]] belde.\n", encoding="utf-8")
+    (tmp_path / "negeer.bin").write_text("[[NAAM:Niet Meten]]", encoding="utf-8")
+    run = draai(tmp_path, tmp_path)
+    assert run.returncode == 0
+    data = json.loads((tmp_path / "pilotmeting.json").read_text(encoding="utf-8"))
+    assert data["bestanden"] == 2
+    s = data["samenvatting"]
+    assert set(s) == {"volledig_weg_procent", "kritisch_niet_helemaal_weg", "lat_gehaald", "lat"}
+    assert s["kritisch_niet_helemaal_weg"]["IBAN"] == 0 and s["kritisch_niet_helemaal_weg"]["GEZONDHEID"] == 0
+    assert isinstance(s["lat_gehaald"], bool)
+    for waarde in ("Fien", "NL91ABNA0417164300", "diabetes"):
+        assert waarde not in run.stdout

@@ -1,6 +1,6 @@
 # Meet Nest-privacy op je eigen teksten
 
-**1. Maak een lokale testmap.** Zet hierin kopieën van de teksten die je wilt meten. Bewaar ze als gewone tekst (.txt), in UTF-8 of UTF-16 met bytevolgordemarkering. Geef de map en bestanden neutrale namen, bijvoorbeeld `pilot` en `tekst1.txt`.
+**1. Maak een lokale testmap.** Zet hierin kopieën van de teksten die je wilt meten. Bewaar ze als gewone tekst (.txt, .md, .csv of .eml), in UTF-8 of UTF-16 met bytevolgordemarkering. Geef de map en bestanden neutrale namen, bijvoorbeeld `pilot` en `tekst1.txt`.
 
 **2. Markeer alles wat weg moet.** Zet dubbele blokhaken om elke gevoelige waarde, elke keer dat die voorkomt. Bijvoorbeeld:
 
@@ -16,8 +16,8 @@ Claude laat het lokale script de bestanden lezen. Plak de teksten zelf nooit in 
 
     python plugins/nest-privacy/scripts/pilotmeting.py "pilot"
 
-Op macOS of Linux heet Python soms `python3`. Je kunt ook losse bestandspaden opgeven. Bij een map telt het script de .txt-bestanden direct in die map. De meting gebruikt lokale modellen en regels. Bij afwezigheid van een model gebruikt ze de regels.
+Op macOS of Linux heet Python soms `python3`. Je kunt ook losse bestandspaden opgeven. Bij een map telt het script de .txt-, .md-, .csv- en .eml-bestanden direct in die map. De meting gebruikt lokale modellen en regels. Bij afwezigheid van een model gebruikt ze de regels.
 
-**4. Bekijk de aantallen.** Per soort en in totaal zie je hoeveel markeringen volledig, gedeeltelijk of helemaal gemist zijn. Volledig betekent dat elk teken wordt afgedekt. Bij gedeeltelijk blijft een deel leesbaar. Een woord telt één keer als onterecht weggehaald zodra de herkenner een ongemarkeerd deel van dat woord raakt. Dat telt bij de soort van de treffer. Een vergeten markering kan dit aantal verhogen.
+**4. Bekijk de aantallen.** Bovenaan staat de samenvatting: hoeveel procent helemaal weg is, of er iets van BSN, IBAN of gezondheid is blijven staan, en of de lat van de pilot gehaald is (minstens 98% helemaal weg en niets van die drie gemist). Per soort en in totaal zie je hoeveel markeringen volledig, gedeeltelijk of helemaal gemist zijn. Volledig betekent dat elk teken wordt afgedekt. Bij gedeeltelijk blijft een deel leesbaar. Een woord telt één keer als onterecht weggehaald zodra de herkenner een ongemarkeerd deel van dat woord raakt. Dat telt bij de soort van de treffer. Een vergeten markering kan dit aantal verhogen.
 
 **5. Deel alleen het rapport.** Je ziet het hele rapport op het scherm. In de map waar je de opdracht uitvoerde staat dezelfde inhoud in `pilotmeting.json`. Bekijk de aantallen, de soorten en de gebruikte herkenners. Als je ze wilt delen, stuur je zelf alleen dat bestand naar Koekoek. De teksten blijven bij jou. Verplaats het rapport voordat je opnieuw meet.
