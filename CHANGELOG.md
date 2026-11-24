@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0 · 24-11-2026 · Nest-privacy (gratis)
+
+- Nieuwe plugin **Nest-privacy** (MIT): controleert op persoonsgegevens en geheimen, anonimiseert databestanden en houdt een push tegen als er iets in staat. Leest Claude een databestand met persoonsgegevens, dan houdt een hook dat tegen, zodat de inhoud niet naar het model gaat. Alles lokaal, zonder server. Klaar voor de catalogus van Anthropic: icoon, licentie, links naar privacy en support, en een README.
+
 ## 0.8.1 · 24-11-2026 · Eigen Nest-server per klant
 
 - README: review en scan lopen via een eigen Nest-server op het Hetzner-account van de klant, opgezet en beheerd door Koekoek. Verbinden met `NEST_URL` en `NEST_TOKEN`.

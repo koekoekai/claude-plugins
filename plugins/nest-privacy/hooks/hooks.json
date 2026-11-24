@@ -1,0 +1,37 @@
+{
+  "description": "Nest-privacy: vóór git push controleren op persoonsgegevens en geheimen, en geen databestanden met persoonsgegevens laten lezen. Draait lokaal, stuurt niets naar buiten.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "if": "Bash(git push *)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_push.py",
+            "timeout": 60
+          },
+          {
+            "if": "Bash(git push)",
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_push.py",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/py.sh\" voor_lezen.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

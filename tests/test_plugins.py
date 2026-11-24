@@ -27,7 +27,7 @@ def test_marketplace_en_plugins():
         assert manifest["name"] == p["name"]
         for skill in (map_ / "skills").glob("*/SKILL.md"):
             assert skill.read_text(encoding="utf-8").startswith("---\n"), skill
-    assert {p["name"] for p in m["plugins"]} == {"nest", "nest-anoniem", "nest-pro"}
+    assert {p["name"] for p in m["plugins"]} == {"nest", "nest-anoniem", "nest-pro", "nest-privacy"}
 
 
 def test_beide_plugins_hebben_dezelfde_zoeker():

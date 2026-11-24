@@ -1,10 +1,16 @@
 {
   "name": "koekoek",
-  "description": "Claude Code-plugins van Koekoek. Nest-pro is gratis te gebruiken (controle op persoonsgegevens, offline); met een Nest-sleutel krijg je review en scan via de Nest-server. Nest-local en Nest-anoniem zijn voor teams die met Koekoek werken.",
+  "description": "Claude Code-plugins van Koekoek. Nest-privacy is gratis voor iedereen (persoonsgegevens en geheimen uit je code houden, offline). Nest-pro werkt met een eigen Nest-server. Nest-local en Nest-anoniem zijn voor teams die met Koekoek werken.",
   "owner": {
     "name": "Koekoek"
   },
   "plugins": [
+    {
+      "name": "nest-privacy",
+      "displayName": "Nest-privacy",
+      "source": "./plugins/nest-privacy",
+      "description": "Gratis: houdt persoonsgegevens en geheimen uit je code. Controleren, anonimiseren en automatisch vóór elke push. Alles lokaal, er gaat niets naar buiten."
+    },
     {
       "name": "nest",
       "displayName": "Nest-local",

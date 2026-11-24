@@ -6,6 +6,7 @@ De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents
 
 | Plugin | Voor wie | Wat |
 |---|---|---|
+| **Nest-privacy** (`nest-privacy`) | iedereen, gratis | Houdt persoonsgegevens en geheimen uit je code: controleren, anonimiseren, automatisch vóór elke push, en Claude leest geen databestanden met persoonsgegevens. Alles lokaal. Zie [plugins/nest-privacy](plugins/nest-privacy). |
 | **Nest-pro** (`nest-pro`) | iedereen | **Gratis:** je code offline controleren op persoonsgegevens. **Met een eigen Nest-server:** review en scan met de regels van Koekoek, op je eigen server die wij beheren. |
 | **Nest-local** (`nest`) | teams die met Koekoek werken | De hele fabriek in je eigen Claude: werkregels, bouwstenen, poorten vóór elke push, review met drie agenten, release en deploy. Vraagt toegang tot `koekoekai/bouwstenen`. |
 | **Nest-anoniem** (`nest-anoniem`) | teams die met Koekoek werken | Bestanden anonimiseren, lokaal en offline. Vraagt toegang tot `koekoekai/anonimiseren`. |
@@ -14,8 +15,10 @@ De plugins zijn één van onze diensten. Koekoek bouwt ook software en AI-agents
 
 ```
 /plugin marketplace add koekoekai/claude-plugins
-/plugin install nest-pro@koekoek
+/plugin install nest-privacy@koekoek
 ```
+
+Met een eigen Nest-server installeer je daarnaast `nest-pro@koekoek`.
 
 Teams die met Koekoek werken installeren daarnaast `nest@koekoek` en eventueel `nest-anoniem@koekoek`.
 Bijwerken: `/plugin marketplace update koekoek`, of zet automatisch bijwerken aan onder `/plugin` → Marketplaces.
