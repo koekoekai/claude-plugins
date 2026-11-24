@@ -1,4 +1,5 @@
 """Tests voor Nest-privacy: geheimen-check, push-hook en wat de catalogus van Anthropic vraagt."""
+import pytest
 import json
 import subprocess
 import sys
@@ -219,79 +220,14 @@ def test_naamherkenning_haalt_de_lat():
 
 # ---------- naamherkenning via de eigen Nest-server (taalmodel.py) ----------
 
-class _NepAntwoord:
-    def __init__(self, data):
-        self._data = json.dumps(data).encode()
-
-    def read(self):
-        return self._data
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *a):
-        return False
-
-
-def test_server_alleen_met_eigen_adres_en_sleutel(monkeypatch):
+def test_server_blijft_lokaal(monkeypatch):
     import taalmodel
-    gevraagd = []
-    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: gevraagd.append(req) or _NepAntwoord({}))
-    monkeypatch.delenv("NEST_URL", raising=False)
-    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
-    assert taalmodel._via_server("tekst") is None and gevraagd == []  # geen standaardadres: nooit per ongeluk naar buiten
-    monkeypatch.setenv("NEST_URL", "http://onveilig.voorbeeld/mcp")
-    assert taalmodel._via_server("tekst") is None and gevraagd == []  # alleen https
-
-
-def test_server_geeft_personen(monkeypatch):
-    import taalmodel
-    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
-    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
-    gevraagd = []
-
-    def nep(req, timeout=0):
-        gevraagd.append(json.loads(req.data))
-        return _NepAntwoord({"result": {"structuredContent": {"personen": ["Kowalski", "Priya Sharma"]}}})
-    monkeypatch.setattr("urllib.request.urlopen", nep)
-    assert taalmodel._via_server("Volgens Kowalski ...") == {"Kowalski", "Priya Sharma"}
-    assert gevraagd[0]["params"]["name"] == "herken_personen"
-
-
-def test_server_uit_of_onbereikbaar_valt_terug(monkeypatch):
-    import taalmodel
-    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
-    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
-    uit = {"result": {"content": [{"type": "text", "text": json.dumps({"fout": "Naamherkenning staat uit op deze server."})}]}}
-    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: _NepAntwoord(uit))
-    assert taalmodel._via_server("tekst") is None
-
-    def kapot(req, timeout=0):
-        raise OSError("geen verbinding")
-    monkeypatch.setattr("urllib.request.urlopen", kapot)
-    assert taalmodel._via_server("tekst") is None
-
-
-def test_auto_stuurt_nooit_naar_een_server(monkeypatch):
-    import taalmodel
-    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
-    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
-    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "auto")
-    gevraagd = []
-    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: gevraagd.append(req) or _NepAntwoord({}))
-    taalmodel.personen("Volgens Kowalski werkt het.")
-    assert gevraagd == []
-
-
-def test_server_geeft_alle_soorten(monkeypatch):
-    import taalmodel
-    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
-    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
     monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "server")
-    antwoord = {"result": {"structuredContent": {"stukken": [
-        {"begin": 0, "eind": 8, "soort": "PERSON_NAME"}, {"begin": 99, "eind": 120, "soort": "HEALTH_DATA"}]}}}
-    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: _NepAntwoord(antwoord))
-    assert taalmodel.spans("Kowalski heeft diabetes.") == [(0, 8, "PERSON_NAME")]  # posities buiten de tekst vallen af
+    monkeypatch.setenv("NEST_URL", "https://example.org")
+    monkeypatch.setenv("NEST_TOKEN", "nep" + "waarde")
+    monkeypatch.setattr("urllib.request.urlopen", lambda *a, **kw: pytest.fail("netwerk"))
+    assert taalmodel.spans("tekst") is None
+    assert taalmodel.personen("tekst") is None
 
 
 def test_alle_avg_soorten_zonder_model():
@@ -361,3 +297,58 @@ def test_model_status_zonder_installatie(monkeypatch, tmp_path):
     monkeypatch.setattr(model_installeren, "python_van_model", lambda: tmp_path / "geen")
     assert model_installeren.test() is False
     assert model_installeren.main(["--status"]) == 1
+
+
+def test_review_maskeropdracht(tmp_path):
+    skill = (PLUGIN / "skills/anonimiseer/SKILL.md").read_text(encoding="utf-8")
+    assert 'scripts/pseudoniem.py" maak "<invoer>" -o "<uitvoer>" --maskeren' in skill
+    bron, uit = tmp_path / "bron.txt", tmp_path / "uit.txt"
+    bron.write_text("diabetes", encoding="utf-8")
+    subprocess.run([sys.executable, str(PLUGIN / "scripts/pseudoniem.py"), "maak",
+                    str(bron), "-o", str(uit), "--maskeren"], check=True)
+    assert uit.read_text() == "[GEZONDHEID]"
+
+
+def test_review_medische_hooks(tmp_path):
+    project = _project(tmp_path)
+    _commit(project, "hersteld.txt", "diabetes")
+    assert _lees_hook(project / "hersteld.txt").returncode == 2
+    assert _hook(project).returncode == 2
+
+
+def test_review_tabel(tmp_path):
+    tabel = tmp_path / "oud.tabel"
+    tabel.write_text("{}")
+    assert _lees_hook(tabel).returncode == 2
+
+
+def test_review_geheimen():
+    import gevoelig
+    pem = SLEUTEL_KOP + "\n" + "nep" * 10 + "\n" + SLEUTEL_KOP.replace("BEGIN", "END")
+    assert gevoelig.vervang(pem, "maskeren")[0] == "[GEHEIM]"
+    waarde = "een " + "twee drie"
+    uit = gevoelig.vervang(f'password: "{waarde}"', "maskeren")[0]
+    assert all(w not in uit for w in waarde.split())
+
+
+def test_review_gliner_posities(monkeypatch):
+    import taalmodel
+
+    class Model:
+        def predict_entities(self, stuk, labels, threshold):
+            if "DOC" in stuk:
+                begin = stuk.index("DOC")
+                return [dict(start=begin, end=begin + 3, label="passport number")]
+            return []
+
+    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "gliner")
+    monkeypatch.setattr(taalmodel, "_gliner", Model)
+    tekst = "zin.  " * 400 + " DOC"
+    assert taalmodel.spans(tekst) == [(tekst.index("DOC"), len(tekst), "DOCUMENT_IDENTIFIER")]
+
+
+def test_review_regelovergang_en_overlap():
+    import gevoelig
+    assert gevoelig.vervang("Jan\nPiet", "maskeren")[0] == "[NAAM]\n[NAAM]"
+    uit = gevoelig.vervang("Jan Jansen project [DIABETES]", "maskeren", eigen_woorden=["Jansen project"])[0]
+    assert all(w not in uit for w in ("Jan", "project", "DIABETES"))

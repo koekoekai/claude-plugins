@@ -7,9 +7,7 @@ argument-hint: "<bestand> [uitvoerbestand]"
 1. Bepaal het invoerbestand uit `$ARGUMENTS`. Uitvoer: het tweede argument, anders `<naam>.anoniem.<ext>` naast het origineel.
 2. **Lees het invoerbestand zelf niet** (ook niet met cat, head of grep): dan gaan de persoonsgegevens alsnog naar het model. Laat alleen het script ermee werken. Lees daarna alleen de uitvoer.
 3. Draai (bestaat `python` niet, gebruik `python3`):
-   `python "${CLAUDE_PLUGIN_ROOT}/scripts/anonimiseren.py" "<invoer>" -o "<uitvoer>"`
-   - CSV: alleen bepaalde kolommen met `--kolommen a,b`; kolommen met namen met `--naamkolommen voornaam,achternaam`.
-   - Namen die altijd weg moeten (zonder aanhef worden losse namen niet herkend): een bestand met één naam per regel via `--namen <bestand>`.
+   `python "${CLAUDE_PLUGIN_ROOT}/scripts/pseudoniem.py" maak "<invoer>" -o "<uitvoer>" --maskeren`
    - **Wil je later terug naar de echte gegevens** (bijv. een antwoord aan een echte klant), of moet dezelfde persoon overal dezelfde code krijgen? Gebruik dan pseudoniemen:
      `python "${CLAUDE_PLUGIN_ROOT}/scripts/pseudoniem.py" maak "<invoer>" -o "<uitvoer>"`
      Dan wordt `Jan Jansen` bijv. `[NAAM-3cd5a9aa4bca]`, overal dezelfde code. De sleutel en de vertaaltabel staan alleen op deze computer, beschermd. Terugzetten: `/nest-privacy:terugzetten`. Let op: zolang de tabel bestaat, blijven het voor de AVG persoonsgegevens.

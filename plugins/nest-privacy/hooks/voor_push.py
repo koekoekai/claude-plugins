@@ -47,11 +47,27 @@ def main() -> int:
     try:
         import anonimiseren
         import geheimen
+        import gevoelig
+        from voor_lezen import DATA
+        import fnmatch
 
         ref = basis(root)
         os.chdir(root)
         paden = geheimen.git_bestanden(".", ref)
         pii = anonimiseren.controleer_bestanden(paden, basis=ref)
+        negeer = anonimiseren._negeer_patronen(".", ref)
+        for pad in paden:
+            bestand = Path(pad)
+            if bestand.suffix.lower() not in DATA or bestand.is_symlink() or not bestand.is_file():
+                continue
+            if bestand.stat().st_size > anonimiseren.MAX_CONTROLE_BYTES or any(fnmatch.fnmatch(bestand.as_posix(), p) for p in negeer):
+                continue
+            with bestand.open("rb") as bron:
+                codering = anonimiseren._utf16(bron.read(8192))
+                bron.seek(0)
+                for regel, zin in enumerate(anonimiseren._regels(bron, codering), 1):
+                    if "pii: ok" not in zin:
+                        pii.extend(anonimiseren.Melding(pad, regel, soort) for _, _, soort in gevoelig.vind(zin))
         sleutels = geheimen.controleer_bestanden(paden)
     except Exception:  # noqa: BLE001 - de hook mag een push nooit door een eigen fout tegenhouden
         return 0

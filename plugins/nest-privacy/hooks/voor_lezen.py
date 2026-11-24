@@ -48,15 +48,18 @@ def main() -> int:
     if not pad:
         return 0
     bestand = Path(pad) if os.path.isabs(pad) else Path(data.get("cwd") or ".") / pad
+    import kluis
+    if bestand.resolve().suffix.lower() == ".tabel" or bestand.resolve() == (kluis.MAP / "sleutel").resolve():
+        return 2
     if bestand.suffix.lower() not in DATA or not bestand.is_file() or bestand.stat().st_size > MAX_BYTES:
         return 0
     try:
         if _negeer(bestand):
             return 0
-        import anonimiseren
+        import gevoelig
 
         tekst = bestand.read_bytes().decode("utf-8", errors="replace")
-        soorten = sorted({m.soort for m in anonimiseren.controleer_tekst(tekst, bestand.name)})
+        soorten = sorted({soort for _, _, soort in gevoelig.vind(tekst)})
     except Exception:  # noqa: BLE001 - nooit blokkeren door een eigen fout
         return 0
     if not soorten:

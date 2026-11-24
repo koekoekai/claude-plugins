@@ -81,7 +81,7 @@ AANHEF = re.compile(rf"\b(?:Beste|Hoi|Hallo|Hey|Lieve|Dag|Goedemorgen|Goedemidda
                     rf"(?:(?:Mr|Mrs|Ms|Dr|dhr|mevr|mw)\.?\s+)?({_HOOFDWOORD}(?:\s+(?:van|de|der|den|ter|ten|el|al)?\s*{_HOOFDWOORD})*)\s*[,!]")
 GEEN_NAAM = {"team", "allen", "allemaal", "collega", "collega's", "klant", "klanten", "all", "everyone", "there", "folks", "heren", "dames"}
 # Achternaam direct na een gevonden voornaam: "[NAAM] Lefèvre", "[NAAM] El Amrani", "[NAAM] van Wageningen"
-NA_NAAM = re.compile(rf"\s(?:(?:van|de|der|den|ter|ten|el|al|van 't|van de|van der|van den)\s)?{_HOOFDWOORD}(?:-{_HOOFDWOORD})?")
+NA_NAAM = re.compile(rf"[ \t](?:(?:van|de|der|den|ter|ten|el|al|van 't|van de|van der|van den)\s)?{_HOOFDWOORD}(?:-{_HOOFDWOORD})?")
 
 
 def _luhn(cijfers: str) -> bool:
@@ -126,7 +126,7 @@ def _bijsnijden(tekst: str, b: int, e: int) -> tuple[int, int]:
 def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | None = None) -> list[tuple[int, int, str]]:
     """Alle gevoelige stukken: (begin, eind, soort), zonder overlap."""
     s: list[tuple[int, int, str, int]] = []  # (begin, eind, soort, voorrang: hoger wint bij gelijke lengte)
-    al_code = [(m.start(), m.end()) for m in re.finditer(r"\[[A-Z]+(?:-[0-9a-f]{12})?\]", tekst)]  # bestaande codes laten staan
+    al_code = [(m.start(), m.end()) for m in re.finditer(r"\[[A-Z]+-[0-9a-f]{12}\]", tekst)]  # bestaande codes laten staan
 
     def zet(b: int, e: int, soort: str, voorrang: int) -> None:
         if e > b:
@@ -140,8 +140,14 @@ def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | Non
         for m in patroon.finditer(tekst):
             if soort == "WACHTWOORD":  # alleen de waarde, niet het woord "password"
                 zet(m.start(1), m.end(1), "GEHEIM", 3)
+            elif soort == "PRIVESLEUTEL":
+                sluiting = m.group().replace("BEGIN", "END", 1)
+                eind = tekst.find(sluiting, m.end())
+                zet(m.start(), len(tekst) if eind < 0 else eind + len(sluiting), "GEHEIM", 3)
             else:
                 zet(m.start(), m.end(), "GEHEIM", 3)
+    for m in re.finditer(r"""(?i)\b(?:wachtwoord|password|passwd|pincode|pin)(?:\s*[:=]\s*|\s+(?:(?:is|was)\s+)?)(["'])(.*?)\1""", tekst, re.DOTALL):
+        zet(m.start(2), m.end(2), "GEHEIM", 3)
     for m in WACHTWOORD.finditer(tekst):
         g = 1 if m.group(1) else 2
         zet(m.start(g), m.end(g), "GEHEIM", 3)
@@ -153,8 +159,13 @@ def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | Non
         if _luhn(m.group(0)):
             zet(m.start(), m.start() + len(m.group(0).rstrip(" -")), "BETAALKAART", 3)
     # 3. namen (ook spelvarianten): elke vindplaats
-    gevonden = namen.zoek_namen(tekst)
-    for naam in sorted(set(gevonden.namen) | set(gevonden.varianten), key=len, reverse=True):
+    document = namen.zoek_namen(tekst)
+    kandidaten = set(document.namen) | set(document.varianten)
+    for regel in tekst.splitlines() if "\n" in tekst or "\r" in tekst else ():
+        gevonden = namen.zoek_namen(regel)
+        kandidaten.update(gevonden.namen)
+        kandidaten.update(gevonden.varianten)
+    for naam in kandidaten:
         for m in re.finditer(rf"(?<!\w){re.escape(naam)}(?!\w)", tekst, re.IGNORECASE):
             zet(m.start(), m.end(), "NAAM", 2)
     # 4. taalmodel (alle soorten)
@@ -197,10 +208,16 @@ def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | Non
     bezet: list[tuple[int, int]] = list(al_code)
     gekozen = []
     for b, e, soort, _ in s:
-        if any(b < be and e > bb for bb, be in bezet):
-            continue
+        pos = b
+        for bb, be in sorted(bezet):
+            if be <= pos or bb >= e:
+                continue
+            if pos < bb:
+                gekozen.append((pos, bb, soort))
+            pos = max(pos, be)
+        if pos < e:
+            gekozen.append((pos, e, soort))
         bezet.append((b, e))
-        gekozen.append((b, e, soort))
     return sorted(gekozen)
 
 
