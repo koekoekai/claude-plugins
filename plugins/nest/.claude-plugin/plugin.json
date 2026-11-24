@@ -2,6 +2,7 @@
   "name": "nest",
   "displayName": "Nest-local",
   "description": "De Koekoek software factory in Claude Code: Nest-werkregels, bouwstenen, CI/CD-poorten vóór elke push, code-review, nieuw project en aansluiten.",
+  "version": "0.1.0",
   "author": {
     "name": "Koekoek"
   },
