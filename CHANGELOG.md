@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0 · 24-11-2026 · Nest-privacy 0.3.0: alle AVG-gegevens in de vertaaltabel
+
+- Niet alleen namen en BSN: alle AVG-soorten worden codes die je lokaal terugzet, ook gezondheid en andere bijzondere persoonsgegevens, betaalkaarten, wachtwoorden, kentekens en accounts (`scripts/gevoelig.py`).
+- Namen zonder aanhef, spelvarianten en afgeleide achternamen (`namen.py`), met een plaatsenlijst (`plaatsen.py`).
+- Optioneel lokaal taalmodel: Privacy Kit (standaard), GLiNER of spaCy (`taalmodel.py`); of de eigen Nest-server van de klant, alleen expliciet (`NEST_PRIVACY_HERKENNER=server`).
+- Eigen woordenlijst (`.nest-privacy-woorden`), optie `--ook bedrag,organisatie,plaats`.
+- Testsets en meting in `tests/namen/` (met model: 100% weg, 0% vals op alle sets; zie UITSLAG.md voor de grenzen).
+
 ## 0.10.0 · 24-11-2026 · Nest-privacy 0.2.0: codes en terugzetten
 
 - `/nest-privacy:anonimiseer` kan codes maken in plaats van `[SOORT]`: dezelfde persoon krijgt overal dezelfde code (`scripts/pseudoniem.py maak`).

@@ -281,3 +281,23 @@ def test_auto_stuurt_nooit_naar_een_server(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: gevraagd.append(req) or _NepAntwoord({}))
     taalmodel.personen("Volgens Kowalski werkt het.")
     assert gevraagd == []
+
+
+def test_server_geeft_alle_soorten(monkeypatch):
+    import taalmodel
+    monkeypatch.setenv("NEST_URL", "https://nest.voorbeeld.nl/mcp")
+    monkeypatch.setenv("NEST_TOKEN", "nest_" + "x" * 20)
+    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "server")
+    antwoord = {"result": {"structuredContent": {"stukken": [
+        {"begin": 0, "eind": 8, "soort": "PERSON_NAME"}, {"begin": 99, "eind": 120, "soort": "HEALTH_DATA"}]}}}
+    monkeypatch.setattr("urllib.request.urlopen", lambda req, timeout=0: _NepAntwoord(antwoord))
+    assert taalmodel.spans("Kowalski heeft diabetes.") == [(0, 8, "PERSON_NAME")]  # posities buiten de tekst vallen af
+
+
+def test_alle_avg_soorten_zonder_model():
+    sys.path.insert(0, str(HIER / "tests" / "namen"))
+    import os
+    os.environ["NEST_PRIVACY_HERKENNER"] = "regels"
+    import meet_gevoelig
+    m = meet_gevoelig.meet()
+    assert m["weg"] >= 0.75 and m["vals"] <= 0.05

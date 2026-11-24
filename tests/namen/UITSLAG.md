@@ -81,3 +81,18 @@ Model `bardsai/eu-pii-anonimization-multilang`: Apache-2.0.
 
 **Eerlijke grens:** de sets zijn klein (105 namen, 136 woorden die moeten blijven) en door ons geschreven. Vóór verkoop:
 een grotere, onafhankelijke testset (bijv. geanonimiseerde echte mails van een pilotklant, met toestemming).
+
+## Ronde 6: alle AVG-soorten (gevoelig.py)
+
+`python tests/namen/meet_gevoelig.py` op gevoelig.json (27 gevoelige stukken, 26 woorden die moeten blijven):
+
+| | weg | vals |
+|---|---|---|
+| alleen regels en woordenlijsten | 85% | 4% |
+| met Privacy Kit | **100%** | **0%** |
+
+Soorten: naam, geboortedatum, adres, postcode, BSN, paspoort, telefoon, e-mail, IBAN, betaalkaart, CVC, wachtwoord, sleutel,
+IP, kenteken, account, gezondheid, vakbond, politiek, geloof, geaardheid, strafrecht. Bedragen, bedrijven en plaatsen blijven
+standaard staan (geen persoonsgegevens). **Let op:** de set is vóór het bouwen geschreven, maar de woordenlijsten voor
+bijzondere persoonsgegevens zijn aangevuld nadat ik zag wat het model miste. Vóór verkoop: een nieuwe, onafhankelijke set.
+Van begin tot eind getest: maken, terugzetten geeft exact het origineel terug.

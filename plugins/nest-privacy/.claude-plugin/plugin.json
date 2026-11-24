@@ -1,8 +1,8 @@
 {
   "name": "nest-privacy",
   "displayName": "Nest-privacy",
-  "version": "0.2.0",
-  "description": "Houdt persoonsgegevens en geheimen uit je code. Controleert op BSN, IBAN, e-mail, telefoon, adressen en API-sleutels, anonimiseert klantdata (ook met codes die je later lokaal terugzet), en houdt een git push tegen als er iets in staat. Alles draait op je eigen computer; er gaat niets naar buiten.",
+  "version": "0.3.0",
+  "description": "Houdt alle gevoelige gegevens volgens de AVG uit je code en uit Claude: namen, adressen, nummers, gezondheid en andere bijzondere persoonsgegevens, IBAN, betaalkaarten, wachtwoorden en sleutels. Vervangt ze door codes die je lokaal terugzet, en houdt een git push tegen als er iets in staat. Alles draait op je eigen computer.",
   "author": {
     "name": "Koekoek",
     "url": "https://koekoek.ai"

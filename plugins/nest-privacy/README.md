@@ -22,6 +22,19 @@ Gratis plugin van [Koekoek](https://koekoek.ai) voor Claude Code. Houdt persoons
 
 Nodig: Python 3.9 of nieuwer (`python` of `python3`) en git. Op Windows heeft Claude Code Git for Windows (Git Bash) nodig voor de hook.
 
+## Welke gegevens
+
+Alles wat volgens de AVG gevoelig is, wordt een code (bijv. `[NAAM-3cd5a9aa4bca]`, `[GEZONDHEID-f64c84a9171a]`):
+naam, geboortedatum, adres, postcode, BSN en andere persoonsnummers, paspoort, telefoon, e-mail, IBAN, betaalkaart en CVC,
+wachtwoorden en sleutels, IP-adres, kenteken, accounts, en de bijzondere persoonsgegevens (gezondheid, vakbond, politiek,
+geloof, afkomst, geaardheid, strafrecht). Bedragen, bedrijfsnamen en plaatsen blijven standaard staan; aanzetten kan met
+`--ook bedrag,organisatie,plaats`. Eigen termen (klanten, projecten, servers) die altijd weg moeten: één per regel in
+`.nest-privacy-woorden` in je project, of in `~/.koekoek/nest-privacy/woorden.txt`.
+
+**Beter met een lokaal taalmodel (optioneel):** installeer Privacy Kit (`pip install "privacy-kit @ git+https://github.com/bards-ai/privacy-kit"`,
+Apache-2.0, geen torch). Dan herkent de plugin ook onbekende namen en meer soorten. Gemeten op onze Nederlandse en Engelse
+testsets: zonder model 85% van de gevoelige gegevens weg, met model 100%, zonder valse treffers (zie `tests/namen/UITSLAG.md`).
+
 ## Hoe anonimiseren werkt zonder dat Claude de data leest
 
 1. **Een programma op je eigen computer doet het werk.** Claude start alleen `anonimiseren.py` of `pseudoniem.py` met de bestandsnaam. Het programma leest het bestand, vervangt de persoonsgegevens en schrijft een nieuw bestand. Claude ziet alleen aantallen, zoals `vervangen: NAAM 12, EMAIL 30`.

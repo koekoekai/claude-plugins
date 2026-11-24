@@ -1,0 +1,23 @@
+{
+  "uitleg": "Alle AVG-soorten in gewone zakelijke zinnen. Geschreven vóór het bouwen van gevoelig.py. Alle gegevens zijn nep (geldig formaat). 'weg' moet uit de tekst; 'blijven' moet blijven staan (bedrijven, bedragen en producten zijn geen persoonsgegevens).",
+  "zinnen": [
+    {"t": "Mevrouw Karin Bosma, geboren op 14-03-1978, woont op de Lindelaan 12, 3721 AB Bilthoven.", "weg": ["Karin Bosma", "14-03-1978", "Lindelaan 12", "3721 AB"], "blijven": ["woont"]},
+    {"t": "Haar BSN is 271000004 en haar paspoortnummer NW8F3K2P1.", "weg": ["271000004", "NW8F3K2P1"], "blijven": ["paspoortnummer"]},
+    {"t": "Bel hem op 06 87654321 of mail naar r.vanderveen@voorbeeldbedrijf.nl.", "weg": ["87654321", "r.vanderveen@voorbeeldbedrijf.nl"], "blijven": ["mail"]},
+    {"t": "Het bedrag van € 1.250,00 wordt afgeschreven van NL02ABNA0123456789.", "weg": ["NL02ABNA0123456789"], "blijven": ["1.250,00", "afgeschreven"]},
+    {"t": "Betaald met creditcard 4111 1111 1111 1111, CVC 737.", "weg": ["4111 1111 1111 1111", "737"], "blijven": ["Betaald"]},
+    {"t": "Patiënt heeft diabetes type 2 en gebruikt insuline.", "weg": ["diabetes"], "blijven": ["Patiënt"]},
+    {"t": "Medewerker meldde dat hij lid is van de FNV en moslim is.", "weg": ["FNV", "moslim"], "blijven": ["Medewerker"]},
+    {"t": "De kandidaat heeft een strafblad wegens diefstal in 2019.", "weg": ["diefstal"], "blijven": ["kandidaat"]},
+    {"t": "Zij is lesbisch en stemt op de Partij voor de Dieren, vertelde ze.", "weg": ["lesbisch", "Partij voor de Dieren"], "blijven": ["vertelde"]},
+    {"t": "De leaseauto met kenteken XK-123-B is ingeleverd.", "weg": ["XK-123-B"], "blijven": ["leaseauto"]},
+    {"t": "Inloggen ging met wachtwoord Zomer2026!secret en api_key = 'K9x2Lp8Qz7Wv3Rt6Yb1N'.", "weg": ["Zomer2026!secret", "K9x2Lp8Qz7Wv3Rt6Yb1N"], "blijven": ["Inloggen"]},
+    {"t": "Het verzoek kwam van IP-adres 145.12.88.201 om 14:02.", "weg": ["145.12.88.201"], "blijven": ["verzoek"]},
+    {"t": "Klant kan je vinden op Instagram als @lisa.dekker.design.", "weg": ["@lisa.dekker.design"], "blijven": ["Instagram"]},
+    {"t": "Dear Mr. Patel, your date of birth (02/11/1985) and phone +44 7700 900123 are on file.", "weg": ["Patel", "02/11/1985", "+44 7700 900123"], "blijven": ["file"]},
+    {"t": "He disclosed a depression diagnosis and is a member of Unite the Union.", "weg": ["depression", "Unite the Union"], "blijven": ["disclosed"]},
+    {"t": "Coolblue levert de laptops; de offerte van € 8.400 is goedgekeurd door de directie.", "weg": [], "blijven": ["Coolblue", "8.400", "offerte", "directie"]},
+    {"t": "Microsoft 365 en Exact Online zijn gekoppeld aan ons ERP.", "weg": [], "blijven": ["Microsoft", "Exact", "ERP"]},
+    {"t": "Het kantoor in Utrecht opent maandag om 9 uur.", "weg": [], "blijven": ["kantoor", "Utrecht", "maandag"]}
+  ]
+}

@@ -27,7 +27,24 @@ def keuze() -> str:
 
 
 def _via_server(tekst: str) -> set[str] | None:
-    """Vraag de eigen Nest-server (MCP-tool herken_personen). Alleen als NEST_URL én NEST_TOKEN expliciet gezet zijn:
+    """Namen van personen via de eigen Nest-server (tool herken_personen)."""
+    inhoud = _server("herken_personen", tekst)
+    personen = inhoud.get("personen") if isinstance(inhoud, dict) else None
+    return {str(p) for p in personen} if isinstance(personen, list) else None
+
+
+def _spans_via_server(tekst: str) -> list[tuple[int, int, str]] | None:
+    """Alle gevoelige stukken via de eigen Nest-server (tool herken_gevoelig): posities en soort."""
+    inhoud = _server("herken_gevoelig", tekst)
+    stukken = inhoud.get("stukken") if isinstance(inhoud, dict) else None
+    if not isinstance(stukken, list):
+        return None
+    return [(int(s["begin"]), int(s["eind"]), str(s["soort"])) for s in stukken
+            if isinstance(s, dict) and 0 <= int(s.get("begin", -1)) < int(s.get("eind", -1)) <= len(tekst)]
+
+
+def _server(tool: str, tekst: str) -> dict | None:
+    """Roep een tool aan op de eigen Nest-server. Alleen als NEST_URL én NEST_TOKEN expliciet gezet zijn:
     er is bewust geen standaardadres, zodat tekst nooit per ongeluk naar een gedeelde server gaat."""
     import json
     import urllib.request
@@ -38,7 +55,7 @@ def _via_server(tekst: str) -> set[str] | None:
     verzoek = urllib.request.Request(
         url,
         data=json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
-                         "params": {"name": "herken_personen", "arguments": {"tekst": tekst}}}).encode(),
+                         "params": {"name": tool, "arguments": {"tekst": tekst}}}).encode(),
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
                  "Accept": "application/json, text/event-stream", "User-Agent": "nest-privacy/0.3"},
     )
@@ -55,8 +72,7 @@ def _via_server(tekst: str) -> set[str] | None:
             inhoud = json.loads(teksten[0]) if teksten else {}
         except ValueError:
             inhoud = {}
-    personen = inhoud.get("personen") if isinstance(inhoud, dict) else None
-    return {str(p) for p in personen} if isinstance(personen, list) else None
+    return inhoud if isinstance(inhoud, dict) else None
 
 
 @lru_cache(maxsize=1)
@@ -121,6 +137,40 @@ def personen(tekst: str) -> set[str] | None:
         nlp = _spacy(_taal(tekst))
         if nlp is not None:
             return {e.text.strip() for e in nlp(tekst).ents if e.label_ in ("PER", "PERSON")}
+    return None
+
+
+GLINER_LABELS = {"person": "PERSON_NAME", "email": "EMAIL_ADDRESS", "phone number": "PHONE_NUMBER",
+                 "address": "POSTAL_ADDRESS", "date of birth": "DATE_OF_BIRTH", "bank account number": "BANK_ACCOUNT_IDENTIFIER",
+                 "credit card number": "PAYMENT_CARD", "passport number": "DOCUMENT_IDENTIFIER",
+                 "license plate": "VEHICLE_IDENTIFIER", "medical condition": "HEALTH_DATA"}
+
+
+def spans(tekst: str) -> list[tuple[int, int, str]] | None:
+    """Alle gevoelige stukken volgens een lokaal model: (begin, eind, label) met labels zoals Privacy Kit ze noemt
+    (PERSON_NAME, PHONE_NUMBER, HEALTH_DATA, ...). None als er geen model is."""
+    k = keuze()
+    if k == "regels":
+        return None
+    if k == "server":  # alleen expliciet, zie _server
+        return _spans_via_server(tekst)
+    if k in ("auto", "privacykit"):
+        detector = _privacykit()
+        if detector is not None:
+            return [(s.start, s.end, s.label) for s in detector.detect(tekst)]
+        if k == "privacykit":
+            return None
+    if k in ("auto", "gliner"):
+        model = _gliner()
+        if model is not None:
+            uit, pos = [], 0
+            for stuk in _stukken(tekst):
+                begin = tekst.find(stuk.strip(), pos)
+                begin = pos if begin < 0 else begin
+                for e in model.predict_entities(stuk, list(GLINER_LABELS), threshold=0.5):
+                    uit.append((begin + e["start"], begin + e["end"], GLINER_LABELS[e["label"]]))
+                pos = begin + len(stuk.strip())
+            return uit
     return None
 
 

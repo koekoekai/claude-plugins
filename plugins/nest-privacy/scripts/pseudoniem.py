@@ -2,6 +2,7 @@
 
     python pseudoniem.py maak <invoer> -o <uitvoer>            # persoonsgegevens -> [SOORT-code], tabel lokaal bewaard
     python pseudoniem.py maak <invoer> -o <uitvoer> --maskeren # persoonsgegevens -> [SOORT], niet terug te zetten, geen tabel
+    python pseudoniem.py maak <invoer> -o <uitvoer> --ook bedrag,organisatie,plaats   # ook die (standaard blijven ze staan)
     python pseudoniem.py terugzetten <invoer> -o <uitvoer>     # [SOORT-code] -> echte waarden (uitvoer bevat weer persoonsgegevens!)
     python pseudoniem.py wis [--alles]                         # tabellen ouder dan 30 dagen weg, of alles
 
@@ -25,6 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import anonimiseren  # noqa: E402
 import kluis  # noqa: E402
+import gevoelig  # noqa: E402
 import namen  # noqa: E402
 
 BEWAARTERMIJN = 30 * 86400
@@ -52,9 +54,10 @@ def opruimen(alles: bool = False) -> int:
     return weg
 
 
-def maak(invoer: Path, uitvoer: Path, maskeren: bool = False) -> tuple[dict, int]:
-    """Pseudonimiseert (of maskeert) het bestand en bewaart bij pseudoniemen de vertaaltabel.
-    Herkent ook namen zonder aanhef en spelvarianten (namen.py). Geeft (aantallen per soort, aantal codes in de tabel)."""
+def maak(invoer: Path, uitvoer: Path, maskeren: bool = False, extra: tuple[str, ...] = ()) -> tuple[dict, int]:
+    """Pseudonimiseert (of maskeert) alle AVG-gevoelige gegevens en bewaart bij pseudoniemen de vertaaltabel.
+    extra: ook BEDRAG, ORGANISATIE en/of PLAATS (geen persoonsgegevens, standaard blijven ze staan).
+    Geeft (aantallen per soort, aantal codes in de tabel)."""
     tabel: dict[str, str] = {}
     origineel = anonimiseren._vervanging
 
@@ -74,13 +77,14 @@ def maak(invoer: Path, uitvoer: Path, maskeren: bool = False) -> tuple[dict, int
             scheiding = max((";", ",", "	"), key=kop.count)
             kolommen = [k.strip().strip('"') for k in kop.split(scheiding)]
             r = anonimiseren.anonimiseer_csv(tekst, naam_kolommen=[k for k in kolommen if NAAMKOLOM.match(k)], **opties)
-            # vrije tekst in andere kolommen: ook de gevonden namen eruit
-            if gevonden.namen:
-                r2 = anonimiseren.anonimiseer(r.tekst, soorten=["NAAM"], extra_termen=gevonden.namen, **opties)
-                r.vondsten.update(r2.vondsten)
-                r = anonimiseren.Resultaat(r2.tekst, r.vondsten)
+            # vrije tekst in andere kolommen: alle overige gevoelige gegevens eruit (codes die er al staan, blijven staan)
+            rest, telling = gevoelig.vervang(r.tekst, extra=extra, **opties)
+            r.vondsten.update(telling)
+            r = anonimiseren.Resultaat(rest, r.vondsten)
         else:
-            r = anonimiseren.anonimiseer(tekst, extra_termen=gevonden.namen, **opties)
+            # alle AVG-soorten: onze controles, namen, taalmodel, bijzondere persoonsgegevens en de eigen woordenlijst
+            uit, telling = gevoelig.vervang(tekst, extra=extra, **opties)
+            r = anonimiseren.Resultaat(uit, anonimiseren.Counter(telling))
     finally:
         anonimiseren._vervanging = origineel
     if maskeren:
@@ -129,7 +133,7 @@ def main(argv: list[str]) -> int:
         weg = opgeruimd + opruimen(alles="--alles" in argv)
         print(f"Gewist: {weg} vertaaltabel(len).")
         return 0
-    pos = [a for i, a in enumerate(argv[1:], 1) if not a.startswith("-") and argv[i - 1] != "-o"]
+    pos = [a for i, a in enumerate(argv[1:], 1) if not a.startswith("-") and argv[i - 1] not in ("-o", "--ook")]
     if not pos or "-o" not in argv or argv.index("-o") + 1 >= len(argv):
         print(f"Gebruik: pseudoniem.py {argv[0]} <invoer> -o <uitvoer>", file=sys.stderr)
         return 2
@@ -141,7 +145,9 @@ def main(argv: list[str]) -> int:
         print("Kies een ander uitvoerbestand dan het invoerbestand.", file=sys.stderr)
         return 2
     if argv[0] == "maak":
-        vondsten, codes = maak(invoer, uitvoer, maskeren="--maskeren" in argv)
+        ook = argv[argv.index("--ook") + 1].upper().split(",") if "--ook" in argv and argv.index("--ook") + 1 < len(argv) else []
+        extra = tuple(o for o in ook if o in gevoelig.OPTIONEEL)
+        vondsten, codes = maak(invoer, uitvoer, maskeren="--maskeren" in argv, extra=extra)
         samenvatting = ", ".join(f"{s} {n}" for s, n in sorted(vondsten.items())) or "niets gevonden"
         print(f"vervangen: {samenvatting} · {codes} code(s) in de lokale vertaaltabel · uitvoer: {uitvoer.name}")
     else:
