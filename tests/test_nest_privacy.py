@@ -301,3 +301,63 @@ def test_alle_avg_soorten_zonder_model():
     import meet_gevoelig
     m = meet_gevoelig.meet()
     assert m["weg"] >= 0.75 and m["vals"] <= 0.05
+
+
+def _zonder_model(monkeypatch):
+    monkeypatch.setenv("NEST_PRIVACY_HERKENNER", "regels")
+
+
+def test_aanhef_en_achternaam_na_voornaam(monkeypatch):
+    _zonder_model(monkeypatch)
+    import gevoelig
+
+    uit, _ = gevoelig.vervang("Beste Caoimhe, de factuur staat klaar. Groet, team", modus="maskeren", eigen_woorden=[])
+    assert "Caoimhe" not in uit and "factuur" in uit
+    uit, _ = gevoelig.vervang("Hi team, de release staat klaar.", modus="maskeren", eigen_woorden=[])
+    assert "team" in uit
+
+
+def test_adres_zonder_gewone_woorden(monkeypatch):
+    _zonder_model(monkeypatch)
+    import gevoelig
+
+    uit, _ = gevoelig.vervang("Het nieuwe adres is Roerdompweg 193 in Wapenveld.", modus="maskeren", eigen_woorden=[])
+    assert uit.startswith("Het nieuwe adres is [ADRES] in")
+
+
+def test_bijsnijden_houdt_tussenvoegsel():
+    import gevoelig
+
+    t = "Het nieuwe adres is Brem 12 in"
+    assert t[slice(*gevoelig._bijsnijden(t, 0, len(t)))] == "Brem 12"
+    t = "met van Wageningen gebeld"
+    assert t[slice(*gevoelig._bijsnijden(t, 0, len(t)))] == "van Wageningen"
+
+
+def test_taalmodel_via_eigen_omgeving(monkeypatch, tmp_path):
+    """Zonder privacy_kit in deze Python gebruikt de plugin het model in de eigen omgeving, als lokaal proces."""
+    import model_installeren
+    import taalmodel
+
+    nep = tmp_path / "python"
+    nep.write_text("", encoding="utf-8")
+    monkeypatch.setattr(model_installeren, "python_van_model", lambda: nep)
+    monkeypatch.setitem(sys.modules, "privacy_kit", None)
+    taalmodel._privacykit.cache_clear()
+    try:
+        d = taalmodel._privacykit()
+        assert isinstance(d, taalmodel._ProcesDetector) and d.python == str(nep)
+    finally:
+        taalmodel._privacykit.cache_clear()
+    monkeypatch.setattr(model_installeren, "python_van_model", lambda: tmp_path / "bestaat-niet")
+    taalmodel._privacykit.cache_clear()
+    assert taalmodel._privacykit() is None
+    taalmodel._privacykit.cache_clear()
+
+
+def test_model_status_zonder_installatie(monkeypatch, tmp_path):
+    import model_installeren
+
+    monkeypatch.setattr(model_installeren, "python_van_model", lambda: tmp_path / "geen")
+    assert model_installeren.test() is False
+    assert model_installeren.main(["--status"]) == 1

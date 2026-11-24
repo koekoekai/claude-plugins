@@ -75,6 +75,13 @@ WACHTWOORD = re.compile(r"(?i)\b(?:wachtwoord|password|passwd|pincode|pin)(?:\s*
 WACHTWOORD_LOS = re.compile(r"(?i)\b(?:wachtwoord|password|passwd)\s+((?=\S*[\d!@#$%^&*?_])\S{6,}?)['\".,;]?(?=\s|$)")
 CVC = re.compile(r"(?i)\b(?:cvc|cvv|cvc2|beveiligingscode)\s*:?\s*(\d{3,4})\b")
 KAART = re.compile(r"(?<!\d)(?:\d[ -]?){13,19}(?!\d)")
+_HOOFDWOORD = r"[A-ZÀ-ÖØ-Þ][a-zß-öø-ÿ'’-]+"
+# Aanhef met komma: "Beste Mei," "Hi Rhys," "Dear Ms Okafor,"; de naam is elk woord met een hoofdletter erna.
+AANHEF = re.compile(rf"\b(?:Beste|Hoi|Hallo|Hey|Lieve|Dag|Goedemorgen|Goedemiddag|Dear|Hi|Hello)\s+"
+                    rf"(?:(?:Mr|Mrs|Ms|Dr|dhr|mevr|mw)\.?\s+)?({_HOOFDWOORD}(?:\s+(?:van|de|der|den|ter|ten|el|al)?\s*{_HOOFDWOORD})*)\s*[,!]")
+GEEN_NAAM = {"team", "allen", "allemaal", "collega", "collega's", "klant", "klanten", "all", "everyone", "there", "folks", "heren", "dames"}
+# Achternaam direct na een gevonden voornaam: "[NAAM] Lefèvre", "[NAAM] El Amrani", "[NAAM] van Wageningen"
+NA_NAAM = re.compile(rf"\s(?:(?:van|de|der|den|ter|ten|el|al|van 't|van de|van der|van den)\s)?{_HOOFDWOORD}(?:-{_HOOFDWOORD})?")
 
 
 def _luhn(cijfers: str) -> bool:
@@ -91,6 +98,29 @@ def woordenlijst(map_: Path | None = None) -> list[str]:
         if pad.is_file():
             termen += [r.strip() for r in pad.read_text(encoding="utf-8").splitlines() if r.strip() and not r.startswith("#")]
     return termen
+
+
+LIDWOORD = {"het", "de", "een", "dit", "deze", "ons", "onze", "mijn", "the", "a", "an", "this", "our", "my"}
+TUSSENVOEGSEL = {"van", "de", "der", "den", "ter", "ten", "te", "'t", "het", "op", "in", "la", "le", "di", "da", "el", "al", "bin"}
+
+
+def _bijsnijden(tekst: str, b: int, e: int) -> tuple[int, int]:
+    """Het model pakt soms te veel ("Het nieuwe adres is Brem 12 in"): haal gewone woorden met een kleine letter
+    aan het begin en eind weg. Een tussenvoegsel vóór een hoofdletter ("van Dijk", "de Wolff") blijft staan."""
+    woorden = [(m.start() + b, m.end() + b, m.group()) for m in re.finditer(r"\S+", tekst[b:e])]
+    while len(woorden) > 1:
+        w = woorden[0][2]
+        volgende = woorden[1][2]
+        lidwoord = w.lower() in LIDWOORD and volgende[:1].islower()  # "Het nieuwe adres": hoofdletter door zinsbegin
+        if lidwoord or (w[:1].islower() and not (w.lower() in TUSSENVOEGSEL and volgende[:1].isupper())):
+            woorden.pop(0)
+        else:
+            break
+    while len(woorden) > 1 and woorden[-1][2][:1].islower() and not any(c.isdigit() for c in woorden[-1][2]):
+        woorden.pop()
+    if not woorden:
+        return b, e
+    return woorden[0][0], woorden[-1][1]
 
 
 def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | None = None) -> list[tuple[int, int, str]]:
@@ -136,7 +166,21 @@ def vind(tekst: str, extra: tuple[str, ...] = (), eigen_woorden: list[str] | Non
             soort = "ADRES"  # straat met huisnummer is een adres, een losse plaats niet
         if soort in OPTIONEEL and soort not in extra:
             continue
+        if soort in ("ADRES", "PLAATS", "NAAM"):
+            b, e = _bijsnijden(tekst, b, e)
         zet(b, e, soort, 1)
+    # 4b. aanhef, en achternamen die direct na een gevonden naam staan; daarna elke andere vindplaats van die namen
+    for m in AANHEF.finditer(tekst):
+        if m.group(1).lower() not in GEEN_NAAM:
+            zet(m.start(1), m.end(1), "NAAM", 2)
+    for i, (b, e, soort, v) in enumerate(list(s)):
+        if soort == "NAAM":
+            m = NA_NAAM.match(tekst, e)
+            if m and not re.match(r"\s*[.!?]", tekst[e:e + 2]):
+                s[i] = (b, m.end(), soort, v)
+    for naam in {tekst[b:e] for b, e, soort, _ in s if soort == "NAAM" and len(tekst[b:e]) >= 3}:
+        for m in re.finditer(rf"(?<!\w){re.escape(naam)}(?!\w)", tekst):
+            zet(m.start(), m.end(), "NAAM", 2)
     # 5. bijzondere persoonsgegevens
     for soort, patroon in BIJZONDER_RE.items():
         for m in patroon.finditer(tekst):

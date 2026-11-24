@@ -96,3 +96,21 @@ IP, kenteken, account, gezondheid, vakbond, politiek, geloof, geaardheid, strafr
 standaard staan (geen persoonsgegevens). **Let op:** de set is vóór het bouwen geschreven, maar de woordenlijsten voor
 bijzondere persoonsgegevens zijn aangevuld nadat ik zag wat het model miste. Vóór verkoop: een nieuwe, onafhankelijke set.
 Van begin tot eind getest: maken, terugzetten geeft exact het origineel terug.
+
+## Ronde 7: grote set en blinde set (600 zinnen)
+
+`python tests/namen/grote_set.py 300 --meet` en `... --blind`: zinnen uit sjablonen (mails, tickets, HR, notities, NL en EN) met
+namen, straten en plaatsen die niet in namen.py of plaatsen.py staan. De blinde set (andere zinsbouw, andere namen) is
+vastgelegd vóór het meten.
+
+| Set | zonder model (weg / te veel) | met Privacy Kit (weg / te veel) |
+|---|---|---|
+| groot.json (455 gevoelig, 446 blijven) | 82% / 24% | **98,2% / 0%** |
+| groot_blind.json (348 gevoelig, 555 blijven) | 93% / 13% | **99,7% / 0%** |
+
+Gevonden en opgelost met de grote set (dus daarna niet meer blind): de adresregel van de bouwsteen pakte gewone woorden mee
+("Het nieuwe adres is Roerdompweg 193 in"), ook gerepareerd in Nest; aanhef met komma ("Beste Mei,"); achternaam direct na een
+gevonden voornaam. "ziek" zelf blijft weg: een ziekmelding is ook een gezondheidsgegeven.
+
+Nog gemist: een enkele onbekende voornaam aan het begin van een zin (Thijmen, Caoimhe), en een straat zonder straatwoord
+(Ossekop 231). **Eerlijke grens:** de zinnen zijn nog steeds door ons gemaakt. Vóór verkoop een pilot met echte, toegestane data.

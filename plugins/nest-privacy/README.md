@@ -31,9 +31,17 @@ geloof, afkomst, geaardheid, strafrecht). Bedragen, bedrijfsnamen en plaatsen bl
 `--ook bedrag,organisatie,plaats`. Eigen termen (klanten, projecten, servers) die altijd weg moeten: één per regel in
 `.nest-privacy-woorden` in je project, of in `~/.koekoek/nest-privacy/woorden.txt`.
 
-**Beter met een lokaal taalmodel (optioneel):** installeer Privacy Kit (`pip install "privacy-kit @ git+https://github.com/bards-ai/privacy-kit"`,
-Apache-2.0, geen torch). Dan herkent de plugin ook onbekende namen en meer soorten. Gemeten op onze Nederlandse en Engelse
-testsets: zonder model 85% van de gevoelige gegevens weg, met model 100%, zonder valse treffers (zie `tests/namen/UITSLAG.md`).
+**Beter met het lokale taalmodel (aanbevolen):** typ `/nest-privacy:taalmodel`, of draai
+`python scripts/model_installeren.py`. Dat zet Privacy Kit (bards-ai, Apache-2.0, geen torch) eenmalig in een eigen omgeving
+in `~/.koekoek/nest-privacy/model` (een paar minuten, ongeveer 0,5 GB). Daarna werkt het offline; er gaat geen tekst over het netwerk.
+Gemeten op 600 nieuwe Nederlandse en Engelse zinnen met namen die niet in onze lijsten staan (zie `tests/namen/UITSLAG.md`):
+
+| | weg | te veel weg |
+|---|---|---|
+| zonder model | 82 tot 93% | 13 tot 24% |
+| met model | **98 tot 99,7%** | **0%** |
+
+Geen enkel hulpmiddel vindt alles. Controleer de uitkomst bij belangrijke data zelf.
 
 ## Hoe anonimiseren werkt zonder dat Claude de data leest
 
@@ -84,6 +92,7 @@ Wil je ook review en scans met de regels van Koekoek op een eigen, door ons behe
 | `/nest-privacy:controleer` | Checks your code for personal data (Dutch BSN with checksum, IBAN with mod-97, e-mail, phone, address, postcode, IP address, date of birth, names after a title) and for secrets. |
 | `/nest-privacy:anonimiseer <file>` | Turns a text or CSV file with real data into a copy where personal data is replaced by `[TYPE]`, so you can test with it or give it to an AI. Optional keyed pseudonyms. |
 | `/nest-privacy:terugzetten <file>` | Turns codes like `[NAAM-3cd5a9aa4bca]` back into the real data, on your own computer. Let Claude draft a reply with codes, then put the real names back locally. |
+| `/nest-privacy:taalmodel` | Installs the local language model (Privacy Kit, Apache-2.0) once, in its own environment (~0.5 GB). Then it runs offline and also finds unknown names. Measured on 600 new Dutch and English sentences: 98–99.7% removed, 0% removed by mistake (without the model: 82–93%). |
 | `/nest-privacy:geheimen` | Looks for API keys (AWS, GitHub, Stripe, Anthropic, OpenAI, Google, Slack), private keys, JWTs and passwords in code or URLs. |
 | **Customer data stays out of Claude** | A `PreToolUse` hook on Claude's Read tool checks data files (CSV, TXT, JSON, LOG, …) locally. If they contain personal data, the file is not read, so its contents never reach the model; Claude suggests anonymising it first. |
 | **Before every push** | A `PreToolUse` hook on `git push` checks the changed files and blocks the push if it finds personal data or secrets. It shows file, line and type, never the value. |
@@ -94,7 +103,7 @@ Wil je ook review en scans met de regels van Koekoek op een eigen, door ons behe
 
 **Requirements:** Python 3.9+ and git. On Windows, Claude Code needs Git for Windows (Git Bash) for hooks.
 
-**Limits:** names without a title are not detected; the secret check is a baseline, so also use a full scanner such as gitleaks in CI. The Read hook guards Claude's Read tool, not every other way of reading a file.
+**Limits:** no tool finds everything, so check important data yourself; without the language model, names without a title are often missed; the secret check is a baseline, so also use a full scanner such as gitleaks in CI. The Read hook guards Claude's Read tool, not every other way of reading a file.
 
 No warranty: use at your own risk and check the results yourself (MIT, see [LICENSE](LICENSE)). Privacy: <https://koekoek.ai/privacy.html#plugins>. Support: <https://koekoek.ai/#contact>. Security: see [SECURITY.md](SECURITY.md).
 

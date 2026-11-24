@@ -1,0 +1,2935 @@
+{
+ "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De namen, straten en plaatsen\nhieronder staan bewust NIET in de lijsten van namen.py en plaatsen.py, zodat we generalisatie meten en niet het opzoeken.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
+ "zinnen": [
+  {
+   "t": "Notitie: Zeynep Dekker wil voortaan op dinsdag werken.",
+   "weg": [
+    "Zeynep",
+    "Dekker"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Ik heb Nikita gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Controleer BSN 190937865 van Gareth voor de loonstrook.",
+   "weg": [
+    "190937865",
+    "Gareth"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Notitie: Aafke Patel wil voortaan op dinsdag werken.",
+   "weg": [
+    "Aafke",
+    "Patel"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Zendesk en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Teamleader staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "Release"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 129, tel. 06-32329304.",
+   "weg": [
+    "Esdoornhof 129",
+    "06-32329304"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Dear Aafke, thanks for your patience with the Moneybird migration.",
+   "weg": [
+    "Aafke"
+   ],
+   "blijven": [
+    "Moneybird",
+    "migration"
+   ]
+  },
+  {
+   "t": "Dear Mirjam, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Mirjam"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Mirjam Hughes last week.",
+   "weg": [
+    "Mirjam",
+    "Hughes"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Shopify en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Controleer BSN 750047434 van Nikita voor de loonstrook.",
+   "weg": [
+    "750047434",
+    "Nikita"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Shopify en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Hoi Bram,\nKun je morgen even naar Teamleader kijken? Groet, team support",
+   "weg": [
+    "Bram"
+   ],
+   "blijven": [
+    "Teamleader",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Iris Scholten is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Iris",
+    "Scholten"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Bitrix en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Controleer BSN 807290221 van Aafke voor de loonstrook.",
+   "weg": [
+    "807290221",
+    "Aafke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Mirjam Kramer last week.",
+   "weg": [
+    "Mirjam",
+    "Kramer"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Monday.com staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "Release"
+   ]
+  },
+  {
+   "t": "Notitie: Hanneke Demir wil voortaan op dinsdag werken.",
+   "weg": [
+    "Hanneke",
+    "Demir"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Dear Iris, thanks for your patience with the Odoo migration.",
+   "weg": [
+    "Iris"
+   ],
+   "blijven": [
+    "Odoo",
+    "migration"
+   ]
+  },
+  {
+   "t": "Hoi Douwe,\nKun je morgen even naar Zendesk kijken? Groet, team support",
+   "weg": [
+    "Douwe"
+   ],
+   "blijven": [
+    "Zendesk",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Notitie: Floor Demir wil voortaan op dinsdag werken.",
+   "weg": [
+    "Floor",
+    "Demir"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ik heb Iris gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Iris"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Kofi Doornbos last week.",
+   "weg": [
+    "Kofi",
+    "Doornbos"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Notitie: Aleksander de Graaf wil voortaan op dinsdag werken.",
+   "weg": [
+    "Aleksander",
+    "de Graaf"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Dear Bilal, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Bilal"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Molenweg 64, tel. 06-51546818.",
+   "weg": [
+    "Molenweg 64",
+    "06-51546818"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Hoi Hanneke,\nKun je morgen even naar Teamleader kijken? Groet, team support",
+   "weg": [
+    "Hanneke"
+   ],
+   "blijven": [
+    "Teamleader",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Notitie: Ilse Boer wil voortaan op dinsdag werken.",
+   "weg": [
+    "Ilse",
+    "Boer"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Moneybird en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Zendesk en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Ik heb Koen gevraagd de rapportage in Odoo af te ronden.",
+   "weg": [
+    "Koen"
+   ],
+   "blijven": [
+    "Odoo",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Imogen,\nKun je morgen even naar Asana kijken? Groet, team support",
+   "weg": [
+    "Imogen"
+   ],
+   "blijven": [
+    "Asana",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Dear Floor, thanks for your patience with the Shopify migration.",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Shopify",
+    "migration"
+   ]
+  },
+  {
+   "t": "Notitie: Siobhan Kramer wil voortaan op dinsdag werken.",
+   "weg": [
+    "Siobhan",
+    "Kramer"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Monday.com staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "Release"
+   ]
+  },
+  {
+   "t": "Ik heb Bram gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Bram"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Aleksander Demir last week.",
+   "weg": [
+    "Aleksander",
+    "Demir"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Spoorstraat 117, tel. 06 54672257.",
+   "weg": [
+    "Spoorstraat 117",
+    "06 54672257"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Demir verplaatst naar vrijdag.",
+   "weg": [
+    "Demir"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Asana staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "Release"
+   ]
+  },
+  {
+   "t": "Notitie: Ewout Scholten wil voortaan op dinsdag werken.",
+   "weg": [
+    "Ewout",
+    "Scholten"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Douwe Wesselink last week.",
+   "weg": [
+    "Douwe",
+    "Wesselink"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Aafke de Graaf last week.",
+   "weg": [
+    "Aafke",
+    "de Graaf"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Hoi Nikita,\nKun je morgen even naar Bitrix kijken? Groet, team support",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Bitrix",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Controleer BSN 481373433 van Ilse voor de loonstrook.",
+   "weg": [
+    "481373433",
+    "Ilse"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Hoi Nikita,\nKun je morgen even naar Monday.com kijken? Groet, team support",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Monday.com",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Mirjam Dekker is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Mirjam",
+    "Dekker"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Monday.com en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Ik heb Siobhan gevraagd de rapportage in Odoo af te ronden.",
+   "weg": [
+    "Siobhan"
+   ],
+   "blijven": [
+    "Odoo",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Dear Teun, thanks for your patience with the Monday.com migration.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Monday.com",
+    "migration"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Patel verplaatst naar vrijdag.",
+   "weg": [
+    "Patel"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Monday.com staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "Release"
+   ]
+  },
+  {
+   "t": "Ik heb Douwe gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Douwe"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Controleer BSN 831701079 van Aafke voor de loonstrook.",
+   "weg": [
+    "831701079",
+    "Aafke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Zendesk en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Hoi Lotte,\nKun je morgen even naar Monday.com kijken? Groet, team support",
+   "weg": [
+    "Lotte"
+   ],
+   "blijven": [
+    "Monday.com",
+    "morgen"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Asana en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Douwe Dekker is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Douwe",
+    "Dekker"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Notitie: Gareth Doornbos wil voortaan op dinsdag werken.",
+   "weg": [
+    "Gareth",
+    "Doornbos"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van der Meulen verplaatst naar vrijdag.",
+   "weg": [
+    "van der Meulen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ruben Wesselink is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Ruben",
+    "Wesselink"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Siobhan Hughes is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Siobhan",
+    "Hughes"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Hoi Koen,\nKun je morgen even naar Moneybird kijken? Groet, team support",
+   "weg": [
+    "Koen"
+   ],
+   "blijven": [
+    "Moneybird",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Dear Priya, thanks for your patience with the Shopify migration.",
+   "weg": [
+    "Priya"
+   ],
+   "blijven": [
+    "Shopify",
+    "migration"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Sanne de Graaf last week.",
+   "weg": [
+    "Sanne",
+    "de Graaf"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Controleer BSN 546592557 van Hanneke voor de loonstrook.",
+   "weg": [
+    "546592557",
+    "Hanneke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Nikita van Leeuwen is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Nikita",
+    "van Leeuwen"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Lindelaan 35, tel. +31 6 92210966.",
+   "weg": [
+    "Lindelaan 35",
+    "+31 6 92210966"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Hoi Kofi,\nKun je morgen even naar Odoo kijken? Groet, team support",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Odoo",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Yara Nijenhuis is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Yara",
+    "Nijenhuis"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Floor Sahin last week.",
+   "weg": [
+    "Floor",
+    "Sahin"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Molenweg 162, tel. 06 16508321.",
+   "weg": [
+    "Molenweg 162",
+    "06 16508321"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Wesselink verplaatst naar vrijdag.",
+   "weg": [
+    "Wesselink"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Hoi Priya,\nKun je morgen even naar Odoo kijken? Groet, team support",
+   "weg": [
+    "Priya"
+   ],
+   "blijven": [
+    "Odoo",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Dear Gareth, thanks for your patience with the Teamleader migration.",
+   "weg": [
+    "Gareth"
+   ],
+   "blijven": [
+    "Teamleader",
+    "migration"
+   ]
+  },
+  {
+   "t": "Notitie: Iris Doornbos wil voortaan op dinsdag werken.",
+   "weg": [
+    "Iris",
+    "Doornbos"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Nikita de Graaf is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Nikita",
+    "de Graaf"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Priya Doornbos last week.",
+   "weg": [
+    "Priya",
+    "Doornbos"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Hoi Koen,\nKun je morgen even naar Zendesk kijken? Groet, team support",
+   "weg": [
+    "Koen"
+   ],
+   "blijven": [
+    "Zendesk",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Hughes verplaatst naar vrijdag.",
+   "weg": [
+    "Hughes"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Ik heb Koen gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Koen"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Priya Ivanova last week.",
+   "weg": [
+    "Priya",
+    "Ivanova"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Patel verplaatst naar vrijdag.",
+   "weg": [
+    "Patel"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Notitie: Nikita O'Brien wil voortaan op dinsdag werken.",
+   "weg": [
+    "Nikita",
+    "O'Brien"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ik heb Teun gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Yara,\nKun je morgen even naar Shopify kijken? Groet, team support",
+   "weg": [
+    "Yara"
+   ],
+   "blijven": [
+    "Shopify",
+    "morgen"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Siobhan Tanaka last week.",
+   "weg": [
+    "Siobhan",
+    "Tanaka"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Lotte Hughes is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Lotte",
+    "Hughes"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Siobhan Wesselink is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Siobhan",
+    "Wesselink"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Controleer BSN 832567486 van Imogen voor de loonstrook.",
+   "weg": [
+    "832567486",
+    "Imogen"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ilse van der Meulen is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Ilse",
+    "van der Meulen"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Dear Nikita, thanks for your patience with the Teamleader migration.",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Teamleader",
+    "migration"
+   ]
+  },
+  {
+   "t": "Notitie: Imogen Scholten wil voortaan op dinsdag werken.",
+   "weg": [
+    "Imogen",
+    "Scholten"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Ik heb Hanneke gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Hanneke"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Gareth,\nKun je morgen even naar Moneybird kijken? Groet, team support",
+   "weg": [
+    "Gareth"
+   ],
+   "blijven": [
+    "Moneybird",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van der Meulen verplaatst naar vrijdag.",
+   "weg": [
+    "van der Meulen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Notitie: Aleksander Nijenhuis wil voortaan op dinsdag werken.",
+   "weg": [
+    "Aleksander",
+    "Nijenhuis"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Moneybird en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Controleer BSN 113127042 van Ewout voor de loonstrook.",
+   "weg": [
+    "113127042",
+    "Ewout"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Odoo en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van der Meulen verplaatst naar vrijdag.",
+   "weg": [
+    "van der Meulen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ik heb Teun gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Priya Ivanova is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Priya",
+    "Ivanova"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Notitie: Ruben Sahin wil voortaan op dinsdag werken.",
+   "weg": [
+    "Ruben",
+    "Sahin"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Dear Nikita, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Dear Aafke, thanks for your patience with the Odoo migration.",
+   "weg": [
+    "Aafke"
+   ],
+   "blijven": [
+    "Odoo",
+    "migration"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Kowalczyk verplaatst naar vrijdag.",
+   "weg": [
+    "Kowalczyk"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Teamleader en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 51, tel. 06 14833527.",
+   "weg": [
+    "Beukenlaan 51",
+    "06 14833527"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Dear Teun, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 29, tel. 06 52690210.",
+   "weg": [
+    "Esdoornhof 29",
+    "06 52690210"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Kofi Ivanova last week.",
+   "weg": [
+    "Kofi",
+    "Ivanova"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Ik heb Iris gevraagd de rapportage in Bitrix af te ronden.",
+   "weg": [
+    "Iris"
+   ],
+   "blijven": [
+    "Bitrix",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Dear Floor, thanks for your patience with the Shopify migration.",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Shopify",
+    "migration"
+   ]
+  },
+  {
+   "t": "Dear Aleksander, thanks for your patience with the Odoo migration.",
+   "weg": [
+    "Aleksander"
+   ],
+   "blijven": [
+    "Odoo",
+    "migration"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Hanneke Patel last week.",
+   "weg": [
+    "Hanneke",
+    "Patel"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Notitie: Douwe Dekker wil voortaan op dinsdag werken.",
+   "weg": [
+    "Douwe",
+    "Dekker"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Kofi Kramer last week.",
+   "weg": [
+    "Kofi",
+    "Kramer"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Aafke Sahin is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Aafke",
+    "Sahin"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Sanne Hughes is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Sanne",
+    "Hughes"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Bitrix en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Lindelaan 166, tel. 06-45671313.",
+   "weg": [
+    "Lindelaan 166",
+    "06-45671313"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Ik heb Sanne gevraagd de rapportage in Zendesk af te ronden.",
+   "weg": [
+    "Sanne"
+   ],
+   "blijven": [
+    "Zendesk",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Dear Ewout, thanks for your patience with the Monday.com migration.",
+   "weg": [
+    "Ewout"
+   ],
+   "blijven": [
+    "Monday.com",
+    "migration"
+   ]
+  },
+  {
+   "t": "Dear Douwe, thanks for your patience with the Asana migration.",
+   "weg": [
+    "Douwe"
+   ],
+   "blijven": [
+    "Asana",
+    "migration"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Bilal Hughes last week.",
+   "weg": [
+    "Bilal",
+    "Hughes"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Dear Aafke, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Aafke"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ik heb Siobhan gevraagd de rapportage in Bitrix af te ronden.",
+   "weg": [
+    "Siobhan"
+   ],
+   "blijven": [
+    "Bitrix",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Odoo en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Shopify staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "Release"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Hanneke Hofstede last week.",
+   "weg": [
+    "Hanneke",
+    "Hofstede"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Zendesk staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "Release"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Ilse Nijenhuis last week.",
+   "weg": [
+    "Ilse",
+    "Nijenhuis"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Dear Hanneke, thanks for your patience with the Monday.com migration.",
+   "weg": [
+    "Hanneke"
+   ],
+   "blijven": [
+    "Monday.com",
+    "migration"
+   ]
+  },
+  {
+   "t": "Priya van Leeuwen is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Priya",
+    "van Leeuwen"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Dear Mirjam, thanks for your patience with the Teamleader migration.",
+   "weg": [
+    "Mirjam"
+   ],
+   "blijven": [
+    "Teamleader",
+    "migration"
+   ]
+  },
+  {
+   "t": "Siobhan van Leeuwen is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Siobhan",
+    "van Leeuwen"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 8, tel. +31 6 42453807.",
+   "weg": [
+    "Beukenlaan 8",
+    "+31 6 42453807"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Hughes verplaatst naar vrijdag.",
+   "weg": [
+    "Hughes"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Lindelaan 140, tel. +31 6 13854304.",
+   "weg": [
+    "Lindelaan 140",
+    "+31 6 13854304"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Bilal Kramer is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Bilal",
+    "Kramer"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Lotte Patel is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Lotte",
+    "Patel"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Hoi Ruben,\nKun je morgen even naar Shopify kijken? Groet, team support",
+   "weg": [
+    "Ruben"
+   ],
+   "blijven": [
+    "Shopify",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Ik heb Koen gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Koen"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Hanneke,\nKun je morgen even naar Monday.com kijken? Groet, team support",
+   "weg": [
+    "Hanneke"
+   ],
+   "blijven": [
+    "Monday.com",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Molenweg 46, tel. 06 83337034.",
+   "weg": [
+    "Molenweg 46",
+    "06 83337034"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Controleer BSN 297631408 van Aafke voor de loonstrook.",
+   "weg": [
+    "297631408",
+    "Aafke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Ik heb Ruben gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Ruben"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Floor,\nKun je morgen even naar Shopify kijken? Groet, team support",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Shopify",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Dear Kofi, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Ik heb Floor gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Wesselink verplaatst naar vrijdag.",
+   "weg": [
+    "Wesselink"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Dear Ilse, thanks for your patience with the Asana migration.",
+   "weg": [
+    "Ilse"
+   ],
+   "blijven": [
+    "Asana",
+    "migration"
+   ]
+  },
+  {
+   "t": "Hoi Bram,\nKun je morgen even naar Moneybird kijken? Groet, team support",
+   "weg": [
+    "Bram"
+   ],
+   "blijven": [
+    "Moneybird",
+    "morgen"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Monday.com en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Ik heb Teun gevraagd de rapportage in Asana af te ronden.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Asana",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Koen Sahin last week.",
+   "weg": [
+    "Koen",
+    "Sahin"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Controleer BSN 172888189 van Aafke voor de loonstrook.",
+   "weg": [
+    "172888189",
+    "Aafke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Hoi Bilal,\nKun je morgen even naar Odoo kijken? Groet, team support",
+   "weg": [
+    "Bilal"
+   ],
+   "blijven": [
+    "Odoo",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Shopify staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "Release"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Controleer BSN 284629480 van Imogen voor de loonstrook.",
+   "weg": [
+    "284629480",
+    "Imogen"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Ik heb Lotte gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Lotte"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Dear Aafke, thanks for your patience with the Zendesk migration.",
+   "weg": [
+    "Aafke"
+   ],
+   "blijven": [
+    "Zendesk",
+    "migration"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Kerkplein 164, tel. +31 6 83919095.",
+   "weg": [
+    "Kerkplein 164",
+    "+31 6 83919095"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Ik heb Kofi gevraagd de rapportage in Zendesk af te ronden.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Zendesk",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Asana staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "Release"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Ik heb Aleksander gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Aleksander"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Doornbos verplaatst naar vrijdag.",
+   "weg": [
+    "Doornbos"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Spoorstraat 55, tel. 06-81065889.",
+   "weg": [
+    "Spoorstraat 55",
+    "06-81065889"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Ik heb Teun gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Teun"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Lotte Nijenhuis last week.",
+   "weg": [
+    "Lotte",
+    "Nijenhuis"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Ik heb Floor gevraagd de rapportage in Odoo af te ronden.",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Odoo",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Ik heb Lotte gevraagd de rapportage in Bitrix af te ronden.",
+   "weg": [
+    "Lotte"
+   ],
+   "blijven": [
+    "Bitrix",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Monday.com staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "Release"
+   ]
+  },
+  {
+   "t": "Dear Kofi, thanks for your patience with the Asana migration.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Asana",
+    "migration"
+   ]
+  },
+  {
+   "t": "Notitie: Sanne Scholten wil voortaan op dinsdag werken.",
+   "weg": [
+    "Sanne",
+    "Scholten"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Notitie: Koen Kramer wil voortaan op dinsdag werken.",
+   "weg": [
+    "Koen",
+    "Kramer"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Ik heb Kofi gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Hanneke Demir last week.",
+   "weg": [
+    "Hanneke",
+    "Demir"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Bilal O'Brien is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Bilal",
+    "O'Brien"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Nikita Dekker is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Nikita",
+    "Dekker"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Ik heb Kofi gevraagd de rapportage in Asana af te ronden.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Asana",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Ik heb Imogen gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Imogen"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Dear Nikita, thanks for your patience with the Asana migration.",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Asana",
+    "migration"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Moneybird en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Ruben O'Brien is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Ruben",
+    "O'Brien"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Hoi Ewout,\nKun je morgen even naar Asana kijken? Groet, team support",
+   "weg": [
+    "Ewout"
+   ],
+   "blijven": [
+    "Asana",
+    "morgen"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Yara Dekker last week.",
+   "weg": [
+    "Yara",
+    "Dekker"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Siobhan Boer last week.",
+   "weg": [
+    "Siobhan",
+    "Boer"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Yara Hughes is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Yara",
+    "Hughes"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw O'Brien verplaatst naar vrijdag.",
+   "weg": [
+    "O'Brien"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Hoi Gareth,\nKun je morgen even naar Moneybird kijken? Groet, team support",
+   "weg": [
+    "Gareth"
+   ],
+   "blijven": [
+    "Moneybird",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Ik heb Gareth gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Gareth"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Dear Priya, thanks for your patience with the Odoo migration.",
+   "weg": [
+    "Priya"
+   ],
+   "blijven": [
+    "Odoo",
+    "migration"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 136, tel. 06-19789083.",
+   "weg": [
+    "Beukenlaan 136",
+    "06-19789083"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Dear Iris, thanks for your patience with the Teamleader migration.",
+   "weg": [
+    "Iris"
+   ],
+   "blijven": [
+    "Teamleader",
+    "migration"
+   ]
+  },
+  {
+   "t": "Kofi Patel is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Kofi",
+    "Patel"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Ik heb Yara gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Yara"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Koen Kramer last week.",
+   "weg": [
+    "Koen",
+    "Kramer"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Bitrix staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "Release"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 60, tel. 06-32988474.",
+   "weg": [
+    "Beukenlaan 60",
+    "06-32988474"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Bram van der Meulen is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Bram",
+    "van der Meulen"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Hoi Gareth,\nKun je morgen even naar Bitrix kijken? Groet, team support",
+   "weg": [
+    "Gareth"
+   ],
+   "blijven": [
+    "Bitrix",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Ewout Boer is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Ewout",
+    "Boer"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Controleer BSN 143339783 van Yara voor de loonstrook.",
+   "weg": [
+    "143339783",
+    "Yara"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Controleer BSN 613596407 van Aafke voor de loonstrook.",
+   "weg": [
+    "613596407",
+    "Aafke"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Mirjam Doornbos is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Mirjam",
+    "Doornbos"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Zendesk staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "Release"
+   ]
+  },
+  {
+   "t": "Ik heb Kofi gevraagd de rapportage in Shopify af te ronden.",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Shopify",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Teamleader staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "Release"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Zendesk en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Hoi Nikita,\nKun je morgen even naar Bitrix kijken? Groet, team support",
+   "weg": [
+    "Nikita"
+   ],
+   "blijven": [
+    "Bitrix",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Ik heb Douwe gevraagd de rapportage in Teamleader af te ronden.",
+   "weg": [
+    "Douwe"
+   ],
+   "blijven": [
+    "Teamleader",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Shopify staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "Release"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Teamleader en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 102, tel. 06-63684082.",
+   "weg": [
+    "Esdoornhof 102",
+    "06-63684082"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 19, tel. +31 6 87019229.",
+   "weg": [
+    "Esdoornhof 19",
+    "+31 6 87019229"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Hoi Ruben,\nKun je morgen even naar Odoo kijken? Groet, team support",
+   "weg": [
+    "Ruben"
+   ],
+   "blijven": [
+    "Odoo",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Lindelaan 125, tel. 06-49480081.",
+   "weg": [
+    "Lindelaan 125",
+    "06-49480081"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Kerkplein 70, tel. +31 6 18463268.",
+   "weg": [
+    "Kerkplein 70",
+    "+31 6 18463268"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Zendesk staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "Release"
+   ]
+  },
+  {
+   "t": "Notitie: Lotte van der Meulen wil voortaan op dinsdag werken.",
+   "weg": [
+    "Lotte",
+    "van der Meulen"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Spoorstraat 95, tel. 06-75232544.",
+   "weg": [
+    "Spoorstraat 95",
+    "06-75232544"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Hoi Kofi,\nKun je morgen even naar Asana kijken? Groet, team support",
+   "weg": [
+    "Kofi"
+   ],
+   "blijven": [
+    "Asana",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 13, tel. 06 37374906.",
+   "weg": [
+    "Esdoornhof 13",
+    "06 37374906"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Kofi Kowalczyk is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Kofi",
+    "Kowalczyk"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Notitie: Teun Sahin wil voortaan op dinsdag werken.",
+   "weg": [
+    "Teun",
+    "Sahin"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "The invoice was sent to Ilse Kramer last week.",
+   "weg": [
+    "Ilse",
+    "Kramer"
+   ],
+   "blijven": [
+    "invoice",
+    "week"
+   ]
+  },
+  {
+   "t": "Notitie: Douwe van der Meulen wil voortaan op dinsdag werken.",
+   "weg": [
+    "Douwe",
+    "van der Meulen"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Moneybird en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van der Meulen verplaatst naar vrijdag.",
+   "weg": [
+    "van der Meulen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 67, tel. 06-43909618.",
+   "weg": [
+    "Esdoornhof 67",
+    "06-43909618"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Controleer BSN 210565512 van Douwe voor de loonstrook.",
+   "weg": [
+    "210565512",
+    "Douwe"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Asana staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "Release"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Moneybird staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "Release"
+   ]
+  },
+  {
+   "t": "Bram Nijenhuis is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Bram",
+    "Nijenhuis"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van Leeuwen verplaatst naar vrijdag.",
+   "weg": [
+    "van Leeuwen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw Dekker verplaatst naar vrijdag.",
+   "weg": [
+    "Dekker"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Kerkplein 47, tel. 06-59576972.",
+   "weg": [
+    "Kerkplein 47",
+    "06-59576972"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Controleer BSN 716177237 van Yara voor de loonstrook.",
+   "weg": [
+    "716177237",
+    "Yara"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Controleer BSN 828531171 van Mirjam voor de loonstrook.",
+   "weg": [
+    "828531171",
+    "Mirjam"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Odoo en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Esdoornhof 8, tel. 06-11692566.",
+   "weg": [
+    "Esdoornhof 8",
+    "06-11692566"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Hoi Ewout,\nKun je morgen even naar Monday.com kijken? Groet, team support",
+   "weg": [
+    "Ewout"
+   ],
+   "blijven": [
+    "Monday.com",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Afspraak met mevrouw van der Meulen verplaatst naar vrijdag.",
+   "weg": [
+    "van der Meulen"
+   ],
+   "blijven": [
+    "vrijdag",
+    "Afspraak"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Teamleader staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "Release"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Zendesk en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Controleer BSN 841097355 van Siobhan voor de loonstrook.",
+   "weg": [
+    "841097355",
+    "Siobhan"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Notitie: Ewout O'Brien wil voortaan op dinsdag werken.",
+   "weg": [
+    "Ewout",
+    "O'Brien"
+   ],
+   "blijven": [
+    "dinsdag",
+    "Notitie"
+   ]
+  },
+  {
+   "t": "Dear Sanne, thanks for your patience with the Asana migration.",
+   "weg": [
+    "Sanne"
+   ],
+   "blijven": [
+    "Asana",
+    "migration"
+   ]
+  },
+  {
+   "t": "Overleg over de planning van Q3 staat op donderdag.",
+   "weg": [],
+   "blijven": [
+    "planning",
+    "donderdag",
+    "Overleg"
+   ]
+  },
+  {
+   "t": "Hoi Douwe,\nKun je morgen even naar Monday.com kijken? Groet, team support",
+   "weg": [
+    "Douwe"
+   ],
+   "blijven": [
+    "Monday.com",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Hoi Lotte,\nKun je morgen even naar Shopify kijken? Groet, team support",
+   "weg": [
+    "Lotte"
+   ],
+   "blijven": [
+    "Shopify",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Ik heb Bram gevraagd de rapportage in Monday.com af te ronden.",
+   "weg": [
+    "Bram"
+   ],
+   "blijven": [
+    "Monday.com",
+    "rapportage"
+   ]
+  },
+  {
+   "t": "Hoi Bram,\nKun je morgen even naar Teamleader kijken? Groet, team support",
+   "weg": [
+    "Bram"
+   ],
+   "blijven": [
+    "Teamleader",
+    "morgen"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Spoorstraat 29, tel. 06-71379721.",
+   "weg": [
+    "Spoorstraat 29",
+    "06-71379721"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Shopify staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "Release"
+   ]
+  },
+  {
+   "t": "De koppeling tussen Teamleader en de webshop is hersteld.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "webshop"
+   ]
+  },
+  {
+   "t": "Nikita Patel is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Nikita",
+    "Patel"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Controleer BSN 765875901 van Ewout voor de loonstrook.",
+   "weg": [
+    "765875901",
+    "Ewout"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Bram Demir is sinds maandag met zwangerschapsverlof.",
+   "weg": [
+    "Bram",
+    "Demir"
+   ],
+   "blijven": [
+    "maandag"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 15, tel. 06 14279872.",
+   "weg": [
+    "Beukenlaan 15",
+    "06 14279872"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Controleer BSN 811467326 van Floor voor de loonstrook.",
+   "weg": [
+    "811467326",
+    "Floor"
+   ],
+   "blijven": [
+    "loonstrook"
+   ]
+  },
+  {
+   "t": "Dear Siobhan, thanks for your patience with the Shopify migration.",
+   "weg": [
+    "Siobhan"
+   ],
+   "blijven": [
+    "Shopify",
+    "migration"
+   ]
+  },
+  {
+   "t": "Bezorgadres: Beukenlaan 50, tel. 06 98536921.",
+   "weg": [
+    "Beukenlaan 50",
+    "06 98536921"
+   ],
+   "blijven": [
+    "Bezorgadres"
+   ]
+  },
+  {
+   "t": "Release 2.4 van Odoo staat klaar voor de test.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "Release"
+   ]
+  },
+  {
+   "t": "Dear Floor, thanks for your patience with the Teamleader migration.",
+   "weg": [
+    "Floor"
+   ],
+   "blijven": [
+    "Teamleader",
+    "migration"
+   ]
+  },
+  {
+   "t": "Hoi Iris,\nKun je morgen even naar Shopify kijken? Groet, team support",
+   "weg": [
+    "Iris"
+   ],
+   "blijven": [
+    "Shopify",
+    "morgen"
+   ]
+  }
+ ]
+}

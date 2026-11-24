@@ -1,0 +1,2936 @@
+{
+ "uitleg": "Grote, herhaalbare testset: python tests/namen/grote_set.py [aantal] [--meet]\nMaakt realistische Nederlandse en Engelse zinnen (mails, tickets, notities, HR) met nep-gegevens. De namen, straten en plaatsen\nhieronder staan bewust NIET in de lijsten van namen.py en plaatsen.py, zodat we generalisatie meten en niet het opzoeken.\nVaste ruis (seed 2026): elke keer dezelfde set. Alle gegevens zijn verzonnen; geldig formaat (elfproef, mod-97, Luhn).",
+ "zinnen": [
+  {
+   "t": "Beste Siebren, je factuur van € 9460,70 van Kade Analytics staat klaar.",
+   "weg": [
+    "Siebren"
+   ],
+   "blijven": [
+    "9460,70",
+    "Kade"
+   ]
+  },
+  {
+   "t": "De offerte van Grafiet & Co voor € 1987,54 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Grafiet",
+    "directie"
+   ]
+  },
+  {
+   "t": "De offerte van Zuiderlicht BV voor € 622,19 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Zuiderlicht",
+    "directie"
+   ]
+  },
+  {
+   "t": "Ticket #3217: Asana geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Please ask Youssef Veldkamp-Mulder to send the signed contract to Hapax Software.",
+   "weg": [
+    "Youssef",
+    "Veldkamp-Mulder"
+   ],
+   "blijven": [
+    "contract",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL78TRIO3702838222 t.n.v. Harriet Adeyemi.",
+   "weg": [
+    "Harriet",
+    "NL78TRIO3702838222"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "De offerte van Nordvik Logistiek voor € 1629,27 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Nordvik",
+    "directie"
+   ]
+  },
+  {
+   "t": "Marit heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Marit",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Beste Anouar, je factuur van € 8292,87 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Anouar"
+   ],
+   "blijven": [
+    "8292,87",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Klant Tirza Romano (tirza.romano@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Tirza",
+    "Romano",
+    "tirza.romano@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Please ask Rhys Klinkhamer to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Rhys",
+    "Klinkhamer"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Klant Wiebe Romano (wiebe.romano@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Wiebe",
+    "Romano",
+    "wiebe.romano@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Klant Samira Petrenko (samira.petrenko@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Samira",
+    "Petrenko",
+    "samira.petrenko@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 951117440. Telefoon 06-40339638.",
+   "weg": [
+    "951117440",
+    "06-40339638"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL11INGB6963279264 t.n.v. Jurre van 't Hek.",
+   "weg": [
+    "Jurre",
+    "NL11INGB6963279264"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL61ABNA7883655062 t.n.v. Samira de Wolff.",
+   "weg": [
+    "Samira",
+    "NL61ABNA7883655062"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 210460283. Telefoon +31 6 73185648.",
+   "weg": [
+    "210460283",
+    "+31 6 73185648"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Please ask Anouar ter Horst to send the signed contract to Zuiderlicht BV.",
+   "weg": [
+    "Anouar",
+    "ter Horst"
+   ],
+   "blijven": [
+    "contract",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Kievitsbloem 20 in Lochem-Oost, schreef Anouar.",
+   "weg": [
+    "Kievitsbloem 20",
+    "Anouar"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Klant Folkert Yılmaz (folkert.ylmaz@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Folkert",
+    "Yılmaz",
+    "folkert.ylmaz@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Anouar mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Anouar",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 445607877. Telefoon 06 46652985.",
+   "weg": [
+    "445607877",
+    "06 46652985"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Gisteren belde Mei Llewellyn over de levering via Moneybird.",
+   "weg": [
+    "Mei",
+    "Llewellyn"
+   ],
+   "blijven": [
+    "Moneybird",
+    "levering"
+   ]
+  },
+  {
+   "t": "Wojciech mentioned an cancer diagnosis during the meeting.",
+   "weg": [
+    "Wojciech",
+    "cancer"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Beste Hidde, je factuur van € 2378,37 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Hidde"
+   ],
+   "blijven": [
+    "2378,37",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Roerdompweg 193 in Wapenveld, schreef Okan.",
+   "weg": [
+    "Roerdompweg 193",
+    "Okan"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Zeeltstraat 138 in Oudewater-Noord, schreef Camille.",
+   "weg": [
+    "Zeeltstraat 138",
+    "Camille"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ruinerwold ships orders via Moneybird on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Our warehouse in Oudewater-Noord ships orders via Bitrix on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 362958634. Telefoon +31 6 50651813.",
+   "weg": [
+    "362958634",
+    "+31 6 50651813"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Ananya mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Ananya",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Gisteren belde Declan Llewellyn over de levering via Monday.com.",
+   "weg": [
+    "Declan",
+    "Llewellyn"
+   ],
+   "blijven": [
+    "Monday.com",
+    "levering"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 718621074. Telefoon 06-18417304.",
+   "weg": [
+    "718621074",
+    "06-18417304"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Kievitsbloem 110 in Wapenveld, schreef Jildou.",
+   "weg": [
+    "Kievitsbloem 110",
+    "Jildou"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Ticket #7951: Zendesk geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Beste Mei, je factuur van € 5395,72 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Mei"
+   ],
+   "blijven": [
+    "5395,72",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Boudewijn heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Boudewijn",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Gisteren belde Dmitri van Wageningen over de levering via Teamleader.",
+   "weg": [
+    "Dmitri",
+    "van Wageningen"
+   ],
+   "blijven": [
+    "Teamleader",
+    "levering"
+   ]
+  },
+  {
+   "t": "Klant Nadine de Wolff (nadine.dewolff@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Nadine",
+    "de Wolff",
+    "nadine.dewolff@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ouddorp ships orders via Odoo on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Gisteren belde Callum Adeyemi over de levering via Bitrix.",
+   "weg": [
+    "Callum",
+    "Adeyemi"
+   ],
+   "blijven": [
+    "Bitrix",
+    "levering"
+   ]
+  },
+  {
+   "t": "Ticket #4524: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Caoimhe heeft zich ziek gemeld met kanker.",
+   "weg": [
+    "Caoimhe",
+    "kanker"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Gijsbert heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Gijsbert",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Akkerwindestraat 15 in Vorden, schreef Rhys.",
+   "weg": [
+    "Akkerwindestraat 15",
+    "Rhys"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Fluitekruidlaan 218 in Vorden, schreef Matteo.",
+   "weg": [
+    "Fluitekruidlaan 218",
+    "Matteo"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 147067558. Telefoon 06 44867731.",
+   "weg": [
+    "147067558",
+    "06 44867731"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Our warehouse in Lochem-Oost ships orders via Teamleader on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 987041514. Telefoon 06 72083883.",
+   "weg": [
+    "987041514",
+    "06 72083883"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Ticket #7432: Bitrix geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Beste Ngozi, je factuur van € 6558,40 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Ngozi"
+   ],
+   "blijven": [
+    "6558,40",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 418341904. Telefoon +31 6 38742313.",
+   "weg": [
+    "418341904",
+    "+31 6 38742313"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL57TRIO7604054246 t.n.v. Tirza Kuiperij.",
+   "weg": [
+    "Tirza",
+    "NL57TRIO7604054246"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL12RABO6055049657 t.n.v. Elif van Wageningen.",
+   "weg": [
+    "Elif",
+    "NL12RABO6055049657"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Ticket #5077: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Our warehouse in Hollandscheveld ships orders via Bitrix on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Klant Oksana Yılmaz (oksana.ylmaz@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Oksana",
+    "Yılmaz",
+    "oksana.ylmaz@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Klant Thijmen Romano (thijmen.romano@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Thijmen",
+    "Romano",
+    "thijmen.romano@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 606450117. Telefoon 06-60305242.",
+   "weg": [
+    "606450117",
+    "06-60305242"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Esmée heeft zich ziek gemeld met depressie.",
+   "weg": [
+    "Esmée",
+    "depressie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Brem 240 in Vorden, schreef Ilona.",
+   "weg": [
+    "Brem 240",
+    "Ilona"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Gisteren belde Thijmen Llewellyn over de levering via Asana.",
+   "weg": [
+    "Thijmen",
+    "Llewellyn"
+   ],
+   "blijven": [
+    "Asana",
+    "levering"
+   ]
+  },
+  {
+   "t": "Please ask Ines Pemberton to send the signed contract to Pelikaan Zorggroep.",
+   "weg": [
+    "Ines",
+    "Pemberton"
+   ],
+   "blijven": [
+    "contract",
+    "Pelikaan"
+   ]
+  },
+  {
+   "t": "Beste Ananya, je factuur van € 9370,09 van Kade Analytics staat klaar.",
+   "weg": [
+    "Ananya"
+   ],
+   "blijven": [
+    "9370,09",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Ananya mentioned an cancer diagnosis during the meeting.",
+   "weg": [
+    "Ananya",
+    "cancer"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Camille mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Camille",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Please ask Mei Bergsma to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Mei",
+    "Bergsma"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Gisteren belde Declan Hoogland over de levering via Teamleader.",
+   "weg": [
+    "Declan",
+    "Hoogland"
+   ],
+   "blijven": [
+    "Teamleader",
+    "levering"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 430964286. Telefoon 06 31450922.",
+   "weg": [
+    "430964286",
+    "06 31450922"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 204265113. Telefoon +31 6 62825150.",
+   "weg": [
+    "204265113",
+    "+31 6 62825150"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL74SNSB6594605518 t.n.v. Callum Wijnstra.",
+   "weg": [
+    "Callum",
+    "NL74SNSB6594605518"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Our warehouse in Wapenveld ships orders via Shopify on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Please ask Dmitri Bouzid to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Dmitri",
+    "Bouzid"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "De offerte van Nordvik Logistiek voor € 6372,20 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Nordvik",
+    "directie"
+   ]
+  },
+  {
+   "t": "Beste Fenna, je factuur van € 6569,82 van Zuiderlicht BV staat klaar.",
+   "weg": [
+    "Fenna"
+   ],
+   "blijven": [
+    "6569,82",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "Harriet heeft zich ziek gemeld met astma.",
+   "weg": [
+    "Harriet",
+    "astma"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Klant Fenna Nowak (fenna.nowak@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Fenna",
+    "Nowak",
+    "fenna.nowak@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 317367511. Telefoon 06-76641147.",
+   "weg": [
+    "317367511",
+    "06-76641147"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL91ABNA2026627973 t.n.v. Siebren van Wageningen.",
+   "weg": [
+    "Siebren",
+    "NL91ABNA2026627973"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL44TRIO4962245900 t.n.v. Caoimhe Zwart.",
+   "weg": [
+    "Caoimhe",
+    "NL44TRIO4962245900"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ruinerwold ships orders via Shopify on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 492845220. Telefoon 06 32089393.",
+   "weg": [
+    "492845220",
+    "06 32089393"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Please ask Gijsbert van Wageningen to send the signed contract to Hapax Software.",
+   "weg": [
+    "Gijsbert",
+    "van Wageningen"
+   ],
+   "blijven": [
+    "contract",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "Our warehouse in Lochem-Oost ships orders via Teamleader on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL88SNSB8144337600 t.n.v. Camille El Amrani.",
+   "weg": [
+    "Camille",
+    "NL88SNSB8144337600"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL43SNSB1381146203 t.n.v. Agnieszka Fitzgerald.",
+   "weg": [
+    "Agnieszka",
+    "NL43SNSB1381146203"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Youssef heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Youssef",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Ticket #1474: Moneybird geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Gisteren belde Caoimhe Adeyemi over de levering via Zendesk.",
+   "weg": [
+    "Caoimhe",
+    "Adeyemi"
+   ],
+   "blijven": [
+    "Zendesk",
+    "levering"
+   ]
+  },
+  {
+   "t": "Beste Bethany, je factuur van € 4905,51 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Bethany"
+   ],
+   "blijven": [
+    "4905,51",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Ticket #3318: Odoo geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Gisteren belde Okan Hoogland over de levering via Odoo.",
+   "weg": [
+    "Okan",
+    "Hoogland"
+   ],
+   "blijven": [
+    "Odoo",
+    "levering"
+   ]
+  },
+  {
+   "t": "Beste Jorien, je factuur van € 6066,87 van Zuiderlicht BV staat klaar.",
+   "weg": [
+    "Jorien"
+   ],
+   "blijven": [
+    "6066,87",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 345462683. Telefoon 06 55216600.",
+   "weg": [
+    "345462683",
+    "06 55216600"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL87RABO6517033699 t.n.v. Jildou Harcourt.",
+   "weg": [
+    "Jildou",
+    "NL87RABO6517033699"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Tirza mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Tirza",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL56SNSB9322693109 t.n.v. Dmitri Lefèvre.",
+   "weg": [
+    "Dmitri",
+    "NL56SNSB9322693109"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Our warehouse in Vorden ships orders via Shopify on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Gisteren belde Oksana Iyer over de levering via Moneybird.",
+   "weg": [
+    "Oksana",
+    "Iyer"
+   ],
+   "blijven": [
+    "Moneybird",
+    "levering"
+   ]
+  },
+  {
+   "t": "Callum heeft zich ziek gemeld met depressie.",
+   "weg": [
+    "Callum",
+    "depressie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 254412117. Telefoon 06 73033875.",
+   "weg": [
+    "254412117",
+    "06 73033875"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Gisteren belde Caoimhe Yılmaz over de levering via Odoo.",
+   "weg": [
+    "Caoimhe",
+    "Yılmaz"
+   ],
+   "blijven": [
+    "Odoo",
+    "levering"
+   ]
+  },
+  {
+   "t": "Esmée mentioned an depression diagnosis during the meeting.",
+   "weg": [
+    "Esmée",
+    "depression"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Ticket #7713: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL76ABNA9272432989 t.n.v. Matteo Adeyemi.",
+   "weg": [
+    "Matteo",
+    "NL76ABNA9272432989"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Beste Hidde, je factuur van € 2440,29 van Hapax Software staat klaar.",
+   "weg": [
+    "Hidde"
+   ],
+   "blijven": [
+    "2440,29",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "Please ask Callum Okafor to send the signed contract to Hapax Software.",
+   "weg": [
+    "Callum",
+    "Okafor"
+   ],
+   "blijven": [
+    "contract",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ruinerwold ships orders via Moneybird on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Kievitsbloem 237 in Wapenveld, schreef Thijmen.",
+   "weg": [
+    "Kievitsbloem 237",
+    "Thijmen"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Ticket #8232: Teamleader geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Jorien mentioned an diabetes diagnosis during the meeting.",
+   "weg": [
+    "Jorien",
+    "diabetes"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Gisteren belde Elif Klinkhamer over de levering via Asana.",
+   "weg": [
+    "Elif",
+    "Klinkhamer"
+   ],
+   "blijven": [
+    "Asana",
+    "levering"
+   ]
+  },
+  {
+   "t": "Gisteren belde Ilona Zwart over de levering via Zendesk.",
+   "weg": [
+    "Ilona",
+    "Zwart"
+   ],
+   "blijven": [
+    "Zendesk",
+    "levering"
+   ]
+  },
+  {
+   "t": "Gisteren belde Boudewijn Zwart over de levering via Teamleader.",
+   "weg": [
+    "Boudewijn",
+    "Zwart"
+   ],
+   "blijven": [
+    "Teamleader",
+    "levering"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Brem 128 in Wapenveld, schreef Jurre.",
+   "weg": [
+    "Brem 128",
+    "Jurre"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 461866948. Telefoon 06 21206461.",
+   "weg": [
+    "461866948",
+    "06 21206461"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Youssef mentioned an diabetes diagnosis during the meeting.",
+   "weg": [
+    "Youssef",
+    "diabetes"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Klant Tirza Nowak (tirza.nowak@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Tirza",
+    "Nowak",
+    "tirza.nowak@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Akkerwindestraat 185 in Ouddorp, schreef Mehmet.",
+   "weg": [
+    "Akkerwindestraat 185",
+    "Mehmet"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "De offerte van Kade Analytics voor € 986,17 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Kade",
+    "directie"
+   ]
+  },
+  {
+   "t": "Ticket #6954: Teamleader geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Beste Hiroshi, je factuur van € 1886,84 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Hiroshi"
+   ],
+   "blijven": [
+    "1886,84",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Beste Dmitri, je factuur van € 4127,08 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Dmitri"
+   ],
+   "blijven": [
+    "4127,08",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Please ask Folkert Nakamura to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Folkert",
+    "Nakamura"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL31TRIO4113974150 t.n.v. Elif Oosterbeek.",
+   "weg": [
+    "Elif",
+    "NL31TRIO4113974150"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Elif heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Elif",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Klant Ngozi Iyer (ngozi.iyer@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Ngozi",
+    "Iyer",
+    "ngozi.iyer@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 559022293. Telefoon 06-76890159.",
+   "weg": [
+    "559022293",
+    "06-76890159"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Roerdompweg 118 in Ruinerwold, schreef Wojciech.",
+   "weg": [
+    "Roerdompweg 118",
+    "Wojciech"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Declan heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Declan",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Please ask Rutger Bouzid to send the signed contract to Zuiderlicht BV.",
+   "weg": [
+    "Rutger",
+    "Bouzid"
+   ],
+   "blijven": [
+    "contract",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "Folkert heeft zich ziek gemeld met kanker.",
+   "weg": [
+    "Folkert",
+    "kanker"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Beste Fenna, je factuur van € 1645,60 van Kade Analytics staat klaar.",
+   "weg": [
+    "Fenna"
+   ],
+   "blijven": [
+    "1645,60",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Youssef heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Youssef",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Mehmet mentioned an diabetes diagnosis during the meeting.",
+   "weg": [
+    "Mehmet",
+    "diabetes"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Our warehouse in Hollandscheveld ships orders via Teamleader on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Ticket #3060: Asana geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Ossekop 189 in Ouddorp, schreef Wiebe.",
+   "weg": [
+    "Ossekop 189",
+    "Wiebe"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Our warehouse in Oudewater-Noord ships orders via Bitrix on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Our warehouse in Hollandscheveld ships orders via Odoo on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL40RABO3932071166 t.n.v. Ngozi Okafor.",
+   "weg": [
+    "Ngozi",
+    "NL40RABO3932071166"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "De offerte van Pelikaan Zorggroep voor € 5365,96 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Pelikaan",
+    "directie"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ouddorp ships orders via Bitrix on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "De offerte van Grafiet & Co voor € 7420,47 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Grafiet",
+    "directie"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Brem 238 in Hollandscheveld, schreef Matteo.",
+   "weg": [
+    "Brem 238",
+    "Matteo"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL44TRIO8609462972 t.n.v. Rutger Nowak.",
+   "weg": [
+    "Rutger",
+    "NL44TRIO8609462972"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "De offerte van Grafiet & Co voor € 1949,23 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Grafiet",
+    "directie"
+   ]
+  },
+  {
+   "t": "Gisteren belde Camille Oosterbeek over de levering via Bitrix.",
+   "weg": [
+    "Camille",
+    "Oosterbeek"
+   ],
+   "blijven": [
+    "Bitrix",
+    "levering"
+   ]
+  },
+  {
+   "t": "Liesbeth heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Liesbeth",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Please ask Esmée Romano to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Esmée",
+    "Romano"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "De offerte van Zuiderlicht BV voor € 1639,07 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Zuiderlicht",
+    "directie"
+   ]
+  },
+  {
+   "t": "Ticket #9419: Asana geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 365700344. Telefoon +31 6 24532169.",
+   "weg": [
+    "365700344",
+    "+31 6 24532169"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL52TRIO3213944237 t.n.v. Wiebe Kuiperij.",
+   "weg": [
+    "Wiebe",
+    "NL52TRIO3213944237"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 434139361. Telefoon +31 6 66689591.",
+   "weg": [
+    "434139361",
+    "+31 6 66689591"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Caoimhe heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Caoimhe",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "De offerte van Kade Analytics voor € 5124,76 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Kade",
+    "directie"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Fluitekruidlaan 204 in Ruinerwold, schreef Marit.",
+   "weg": [
+    "Fluitekruidlaan 204",
+    "Marit"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Beste Mehmet, je factuur van € 1540,72 van Nordvik Logistiek staat klaar.",
+   "weg": [
+    "Mehmet"
+   ],
+   "blijven": [
+    "1540,72",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 242693015. Telefoon 06-34870358.",
+   "weg": [
+    "242693015",
+    "06-34870358"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Rutger heeft zich ziek gemeld met burn-out.",
+   "weg": [
+    "Rutger",
+    "burn-out"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Ticket #3798: Shopify geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL14SNSB3322503270 t.n.v. Agnieszka Brouwershaven.",
+   "weg": [
+    "Agnieszka",
+    "NL14SNSB3322503270"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Raj heeft zich ziek gemeld met depressie.",
+   "weg": [
+    "Raj",
+    "depressie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Gisteren belde Marit Iyer over de levering via Monday.com.",
+   "weg": [
+    "Marit",
+    "Iyer"
+   ],
+   "blijven": [
+    "Monday.com",
+    "levering"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Ossekop 18 in Ouddorp, schreef Hidde.",
+   "weg": [
+    "Ossekop 18",
+    "Hidde"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Gisteren belde Hidde Wiśniewska over de levering via Zendesk.",
+   "weg": [
+    "Hidde",
+    "Wiśniewska"
+   ],
+   "blijven": [
+    "Zendesk",
+    "levering"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Akkerwindestraat 38 in Ruinerwold, schreef Matteo.",
+   "weg": [
+    "Akkerwindestraat 38",
+    "Matteo"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Gagelweg 31 in Oudewater-Noord, schreef Raj.",
+   "weg": [
+    "Gagelweg 31",
+    "Raj"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Klant Sietske Klinkhamer (sietske.klinkhamer@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Sietske",
+    "Klinkhamer",
+    "sietske.klinkhamer@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 903852585. Telefoon 06-89489842.",
+   "weg": [
+    "903852585",
+    "06-89489842"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Please ask Folkert El Amrani to send the signed contract to Hapax Software.",
+   "weg": [
+    "Folkert",
+    "El Amrani"
+   ],
+   "blijven": [
+    "contract",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 197931996. Telefoon +31 6 75984922.",
+   "weg": [
+    "197931996",
+    "+31 6 75984922"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Gisteren belde Agnieszka Yılmaz over de levering via Shopify.",
+   "weg": [
+    "Agnieszka",
+    "Yılmaz"
+   ],
+   "blijven": [
+    "Shopify",
+    "levering"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL88RABO5524189599 t.n.v. Camille Harcourt.",
+   "weg": [
+    "Camille",
+    "NL88RABO5524189599"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Folkert heeft zich ziek gemeld met kanker.",
+   "weg": [
+    "Folkert",
+    "kanker"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Dmitri mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Dmitri",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "De offerte van Zuiderlicht BV voor € 1147,57 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Zuiderlicht",
+    "directie"
+   ]
+  },
+  {
+   "t": "Ticket #3683: Asana geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Please ask Marit Brouwershaven to send the signed contract to Grafiet & Co.",
+   "weg": [
+    "Marit",
+    "Brouwershaven"
+   ],
+   "blijven": [
+    "contract",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Rutger heeft zich ziek gemeld met kanker.",
+   "weg": [
+    "Rutger",
+    "kanker"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 265899552. Telefoon +31 6 96011332.",
+   "weg": [
+    "265899552",
+    "+31 6 96011332"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Klant Hiroshi Yılmaz (hiroshi.ylmaz@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Hiroshi",
+    "Yılmaz",
+    "hiroshi.ylmaz@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Gisteren belde Gijsbert Brouwershaven over de levering via Asana.",
+   "weg": [
+    "Gijsbert",
+    "Brouwershaven"
+   ],
+   "blijven": [
+    "Asana",
+    "levering"
+   ]
+  },
+  {
+   "t": "Thijmen heeft zich ziek gemeld met burn-out.",
+   "weg": [
+    "Thijmen",
+    "burn-out"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Klant Rhys Wijnstra (rhys.wijnstra@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Rhys",
+    "Wijnstra",
+    "rhys.wijnstra@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "De offerte van Hapax Software voor € 6608,57 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Hapax",
+    "directie"
+   ]
+  },
+  {
+   "t": "De offerte van Kade Analytics voor € 1101,43 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Kade",
+    "directie"
+   ]
+  },
+  {
+   "t": "Beste Jildou, je factuur van € 8836,31 van Hapax Software staat klaar.",
+   "weg": [
+    "Jildou"
+   ],
+   "blijven": [
+    "8836,31",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 605113245. Telefoon 06 86100840.",
+   "weg": [
+    "605113245",
+    "06 86100840"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Klant Camille Bergsma (camille.bergsma@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Camille",
+    "Bergsma",
+    "camille.bergsma@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Beste Liesbeth, je factuur van € 8962,37 van Hapax Software staat klaar.",
+   "weg": [
+    "Liesbeth"
+   ],
+   "blijven": [
+    "8962,37",
+    "Hapax"
+   ]
+  },
+  {
+   "t": "Klant Hidde Fitzgerald (hidde.fitzgerald@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Hidde",
+    "Fitzgerald",
+    "hidde.fitzgerald@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Please ask Gijsbert Bergsma to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Gijsbert",
+    "Bergsma"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Our warehouse in Vorden ships orders via Teamleader on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "De offerte van Zuiderlicht BV voor € 2937,53 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Zuiderlicht",
+    "directie"
+   ]
+  },
+  {
+   "t": "Ticket #4831: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Gisteren belde Thijmen El Amrani over de levering via Monday.com.",
+   "weg": [
+    "Thijmen",
+    "El Amrani"
+   ],
+   "blijven": [
+    "Monday.com",
+    "levering"
+   ]
+  },
+  {
+   "t": "Klant Ananya Haverkamp (ananya.haverkamp@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Ananya",
+    "Haverkamp",
+    "ananya.haverkamp@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Please ask Folkert Romano to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Folkert",
+    "Romano"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Ananya mentioned an cancer diagnosis during the meeting.",
+   "weg": [
+    "Ananya",
+    "cancer"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "De offerte van Nordvik Logistiek voor € 4552,61 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Nordvik",
+    "directie"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL43SNSB5457720292 t.n.v. Youssef Lefèvre.",
+   "weg": [
+    "Youssef",
+    "NL43SNSB5457720292"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Please ask Harriet Haverkamp to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Harriet",
+    "Haverkamp"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 550024979. Telefoon +31 6 67175798.",
+   "weg": [
+    "550024979",
+    "+31 6 67175798"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 991169396. Telefoon +31 6 48273645.",
+   "weg": [
+    "991169396",
+    "+31 6 48273645"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Please ask Marit Okafor to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Marit",
+    "Okafor"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Klant Rutger Klinkhamer (rutger.klinkhamer@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Rutger",
+    "Klinkhamer",
+    "rutger.klinkhamer@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Zeeltstraat 73 in Lochem-Oost, schreef Wojciech.",
+   "weg": [
+    "Zeeltstraat 73",
+    "Wojciech"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Rutger mentioned an depression diagnosis during the meeting.",
+   "weg": [
+    "Rutger",
+    "depression"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL75INGB8116134461 t.n.v. Samira Llewellyn.",
+   "weg": [
+    "Samira",
+    "NL75INGB8116134461"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Please ask Anouar Klinkhamer to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Anouar",
+    "Klinkhamer"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Our warehouse in Wapenveld ships orders via Monday.com on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Esmée heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Esmée",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL53ABNA3359277028 t.n.v. Agnieszka Wiśniewska.",
+   "weg": [
+    "Agnieszka",
+    "NL53ABNA3359277028"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Beste Ilona, je factuur van € 3659,15 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Ilona"
+   ],
+   "blijven": [
+    "3659,15",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Klant Tunde van 't Hek (tunde.vanthek@testpost.com) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Tunde",
+    "van 't Hek",
+    "tunde.vanthek@testpost.com"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 891815892. Telefoon 06-77217502.",
+   "weg": [
+    "891815892",
+    "06-77217502"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Gisteren belde Ngozi Bergsma over de levering via Zendesk.",
+   "weg": [
+    "Ngozi",
+    "Bergsma"
+   ],
+   "blijven": [
+    "Zendesk",
+    "levering"
+   ]
+  },
+  {
+   "t": "De offerte van Grafiet & Co voor € 6789,67 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Grafiet",
+    "directie"
+   ]
+  },
+  {
+   "t": "De offerte van Nordvik Logistiek voor € 7967,46 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Nordvik",
+    "directie"
+   ]
+  },
+  {
+   "t": "Our warehouse in Vorden ships orders via Zendesk on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Zendesk",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 302864817. Telefoon 06 53267724.",
+   "weg": [
+    "302864817",
+    "06 53267724"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ouddorp ships orders via Odoo on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Kievitsbloem 104 in Oudewater-Noord, schreef Ilona.",
+   "weg": [
+    "Kievitsbloem 104",
+    "Ilona"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Gisteren belde Sietske Kuiperij over de levering via Teamleader.",
+   "weg": [
+    "Sietske",
+    "Kuiperij"
+   ],
+   "blijven": [
+    "Teamleader",
+    "levering"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 147318361. Telefoon 06-58081890.",
+   "weg": [
+    "147318361",
+    "06-58081890"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Beste Jorien, je factuur van € 2395,56 van Kade Analytics staat klaar.",
+   "weg": [
+    "Jorien"
+   ],
+   "blijven": [
+    "2395,56",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ouddorp ships orders via Shopify on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Shopify",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Our warehouse in Vorden ships orders via Moneybird on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Moneybird",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL32ABNA2332931173 t.n.v. Wojciech Wiśniewska.",
+   "weg": [
+    "Wojciech",
+    "NL32ABNA2332931173"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL49INGB5283633370 t.n.v. Folkert Wijnstra.",
+   "weg": [
+    "Folkert",
+    "NL49INGB5283633370"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Ticket #2478: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Gagelweg 216 in Wapenveld, schreef Ananya.",
+   "weg": [
+    "Gagelweg 216",
+    "Ananya"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 391958537. Telefoon 06 92978406.",
+   "weg": [
+    "391958537",
+    "06 92978406"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 655021978. Telefoon 06-33246525.",
+   "weg": [
+    "655021978",
+    "06-33246525"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Sietske heeft zich ziek gemeld met burn-out.",
+   "weg": [
+    "Sietske",
+    "burn-out"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Please ask Ilona Oosterbeek to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Ilona",
+    "Oosterbeek"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Gisteren belde Marit Klinkhamer over de levering via Shopify.",
+   "weg": [
+    "Marit",
+    "Klinkhamer"
+   ],
+   "blijven": [
+    "Shopify",
+    "levering"
+   ]
+  },
+  {
+   "t": "Please ask Tunde Fitzgerald to send the signed contract to Nordvik Logistiek.",
+   "weg": [
+    "Tunde",
+    "Fitzgerald"
+   ],
+   "blijven": [
+    "contract",
+    "Nordvik"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL22ABNA5971853567 t.n.v. Ilona Wijnstra.",
+   "weg": [
+    "Ilona",
+    "NL22ABNA5971853567"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Beste Siebren, je factuur van € 3516,08 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Siebren"
+   ],
+   "blijven": [
+    "3516,08",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL30ABNA2837290469 t.n.v. Matteo Fitzgerald.",
+   "weg": [
+    "Matteo",
+    "NL30ABNA2837290469"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Jurre heeft zich ziek gemeld met diabetes.",
+   "weg": [
+    "Jurre",
+    "diabetes"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 925147321. Telefoon 06 97406571.",
+   "weg": [
+    "925147321",
+    "06 97406571"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 743693048. Telefoon 06 81335941.",
+   "weg": [
+    "743693048",
+    "06 81335941"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Ossekop 231 in Vorden, schreef Callum.",
+   "weg": [
+    "Ossekop 231",
+    "Callum"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL81TRIO7211918995 t.n.v. Nadine van 't Hek.",
+   "weg": [
+    "Nadine",
+    "NL81TRIO7211918995"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Ticket #9193: Odoo geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Odoo",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "De offerte van Kade Analytics voor € 9096,52 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Kade",
+    "directie"
+   ]
+  },
+  {
+   "t": "Beste Youssef, je factuur van € 6787,91 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Youssef"
+   ],
+   "blijven": [
+    "6787,91",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL44ABNA9959310644 t.n.v. Elif Bouzid.",
+   "weg": [
+    "Elif",
+    "NL44ABNA9959310644"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Our warehouse in Wapenveld ships orders via Monday.com on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Our warehouse in Wapenveld ships orders via Monday.com on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL74ABNA4358907046 t.n.v. Camille Oosterbeek.",
+   "weg": [
+    "Camille",
+    "NL74ABNA4358907046"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "De offerte van Zuiderlicht BV voor € 5047,70 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Zuiderlicht",
+    "directie"
+   ]
+  },
+  {
+   "t": "De offerte van Pelikaan Zorggroep voor € 4604,92 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Pelikaan",
+    "directie"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL60ABNA7470572820 t.n.v. Elif Petrenko.",
+   "weg": [
+    "Elif",
+    "NL60ABNA7470572820"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Roerdompweg 92 in Ouddorp, schreef Agnieszka.",
+   "weg": [
+    "Roerdompweg 92",
+    "Agnieszka"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Please ask Thijmen Hoogland to send the signed contract to Grafiet & Co.",
+   "weg": [
+    "Thijmen",
+    "Hoogland"
+   ],
+   "blijven": [
+    "contract",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Mei mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Mei",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Gisteren belde Jorien Lefèvre over de levering via Zendesk.",
+   "weg": [
+    "Jorien",
+    "Lefèvre"
+   ],
+   "blijven": [
+    "Zendesk",
+    "levering"
+   ]
+  },
+  {
+   "t": "Our warehouse in Lochem-Oost ships orders via Bitrix on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Bitrix",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Bethany heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Bethany",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Our warehouse in Ouddorp ships orders via Monday.com on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Oksana mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Oksana",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Gisteren belde Camille Pemberton over de levering via Moneybird.",
+   "weg": [
+    "Camille",
+    "Pemberton"
+   ],
+   "blijven": [
+    "Moneybird",
+    "levering"
+   ]
+  },
+  {
+   "t": "Klant Youssef Oosterbeek (youssef.oosterbeek@voorbeeldmail.nl) vraagt om een terugbelverzoek.",
+   "weg": [
+    "Youssef",
+    "Oosterbeek",
+    "youssef.oosterbeek@voorbeeldmail.nl"
+   ],
+   "blijven": [
+    "terugbelverzoek"
+   ]
+  },
+  {
+   "t": "Our warehouse in Lochem-Oost ships orders via Teamleader on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Teamleader",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "De offerte van Kade Analytics voor € 4095,83 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Kade",
+    "directie"
+   ]
+  },
+  {
+   "t": "De offerte van Pelikaan Zorggroep voor € 7653,85 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Pelikaan",
+    "directie"
+   ]
+  },
+  {
+   "t": "Please ask Rutger Wijnstra to send the signed contract to Kade Analytics.",
+   "weg": [
+    "Rutger",
+    "Wijnstra"
+   ],
+   "blijven": [
+    "contract",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Please ask Marit Wiśniewska to send the signed contract to Grafiet & Co.",
+   "weg": [
+    "Marit",
+    "Wiśniewska"
+   ],
+   "blijven": [
+    "contract",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Ticket #1679: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 924849095. Telefoon 06 10962147.",
+   "weg": [
+    "924849095",
+    "06 10962147"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "De offerte van Grafiet & Co voor € 8765,81 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Grafiet",
+    "directie"
+   ]
+  },
+  {
+   "t": "Mehmet heeft zich ziek gemeld met astma.",
+   "weg": [
+    "Mehmet",
+    "astma"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Beste Boudewijn, je factuur van € 2234,69 van Kade Analytics staat klaar.",
+   "weg": [
+    "Boudewijn"
+   ],
+   "blijven": [
+    "2234,69",
+    "Kade"
+   ]
+  },
+  {
+   "t": "Jurre mentioned an cancer diagnosis during the meeting.",
+   "weg": [
+    "Jurre",
+    "cancer"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Camille heeft zich ziek gemeld met epilepsie.",
+   "weg": [
+    "Camille",
+    "epilepsie"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Roerdompweg 223 in Ouddorp, schreef Gijsbert.",
+   "weg": [
+    "Roerdompweg 223",
+    "Gijsbert"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "Jorien mentioned an asthma diagnosis during the meeting.",
+   "weg": [
+    "Jorien",
+    "asthma"
+   ],
+   "blijven": [
+    "meeting"
+   ]
+  },
+  {
+   "t": "Our warehouse in Hollandscheveld ships orders via Asana on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Asana",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "De offerte van Nordvik Logistiek voor € 2271,93 is goedgekeurd door de directie.",
+   "weg": [],
+   "blijven": [
+    "Nordvik",
+    "directie"
+   ]
+  },
+  {
+   "t": "Beste Caoimhe, je factuur van € 2166,17 van Grafiet & Co staat klaar.",
+   "weg": [
+    "Caoimhe"
+   ],
+   "blijven": [
+    "2166,17",
+    "Grafiet"
+   ]
+  },
+  {
+   "t": "Beste Youssef, je factuur van € 577,52 van Zuiderlicht BV staat klaar.",
+   "weg": [
+    "Youssef"
+   ],
+   "blijven": [
+    "577,52",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "Ticket #1887: Monday.com geeft een foutmelding bij het exporteren.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "foutmelding"
+   ]
+  },
+  {
+   "t": "Samira heeft zich ziek gemeld met astma.",
+   "weg": [
+    "Samira",
+    "astma"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Our warehouse in Wapenveld ships orders via Monday.com on weekdays.",
+   "weg": [],
+   "blijven": [
+    "Monday.com",
+    "warehouse"
+   ]
+  },
+  {
+   "t": "Youssef heeft zich ziek gemeld met burn-out.",
+   "weg": [
+    "Youssef",
+    "burn-out"
+   ],
+   "blijven": [
+    "gemeld"
+   ]
+  },
+  {
+   "t": "Gisteren belde Liesbeth Petrenko over de levering via Odoo.",
+   "weg": [
+    "Liesbeth",
+    "Petrenko"
+   ],
+   "blijven": [
+    "Odoo",
+    "levering"
+   ]
+  },
+  {
+   "t": "Gisteren belde Ines Bouzid over de levering via Asana.",
+   "weg": [
+    "Ines",
+    "Bouzid"
+   ],
+   "blijven": [
+    "Asana",
+    "levering"
+   ]
+  },
+  {
+   "t": "Gisteren belde Ngozi van 't Hek over de levering via Asana.",
+   "weg": [
+    "Ngozi",
+    "van 't Hek"
+   ],
+   "blijven": [
+    "Asana",
+    "levering"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 821773239. Telefoon +31 6 68608411.",
+   "weg": [
+    "821773239",
+    "+31 6 68608411"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  },
+  {
+   "t": "Please ask Ngozi Kaya to send the signed contract to Pelikaan Zorggroep.",
+   "weg": [
+    "Ngozi",
+    "Kaya"
+   ],
+   "blijven": [
+    "contract",
+    "Pelikaan"
+   ]
+  },
+  {
+   "t": "Beste Callum, je factuur van € 7447,78 van Pelikaan Zorggroep staat klaar.",
+   "weg": [
+    "Callum"
+   ],
+   "blijven": [
+    "7447,78",
+    "Pelikaan"
+   ]
+  },
+  {
+   "t": "Please ask Mei Kuiperij to send the signed contract to Zuiderlicht BV.",
+   "weg": [
+    "Mei",
+    "Kuiperij"
+   ],
+   "blijven": [
+    "contract",
+    "Zuiderlicht"
+   ]
+  },
+  {
+   "t": "Graag het salaris overmaken naar NL56SNSB3594495267 t.n.v. Matteo Bouzid.",
+   "weg": [
+    "Matteo",
+    "NL56SNSB3594495267"
+   ],
+   "blijven": [
+    "salaris"
+   ]
+  },
+  {
+   "t": "Het nieuwe adres is Roerdompweg 167 in Hollandscheveld, schreef Siebren.",
+   "weg": [
+    "Roerdompweg 167",
+    "Siebren"
+   ],
+   "blijven": [
+    "nieuwe"
+   ]
+  },
+  {
+   "t": "BSN van de medewerker: 226961734. Telefoon 06 45717898.",
+   "weg": [
+    "226961734",
+    "06 45717898"
+   ],
+   "blijven": [
+    "medewerker"
+   ]
+  }
+ ]
+}

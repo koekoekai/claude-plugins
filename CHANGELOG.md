@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0 · 24-11-2026 · Nest-privacy 0.4.0: taalmodel met één opdracht
+
+- `/nest-privacy:taalmodel` (`scripts/model_installeren.py`): zet Privacy Kit eenmalig in een eigen omgeving; daarna offline, via een lokaal proces (`model_proces.py`).
+- Eén modelaanroep per tekst voor namen en alle andere soorten (twee keer zo snel).
+- Beter: aanhef met komma, achternaam na een gevonden voornaam, adresregel pakt geen gewone woorden meer mee (ook in Nest).
+- Grote en blinde testset van 600 zinnen (`tests/namen/grote_set.py`): met model 98 tot 99,7% weg, 0% te veel.
+
 ## 0.11.0 · 24-11-2026 · Nest-privacy 0.3.0: alle AVG-gegevens in de vertaaltabel
 
 - Niet alleen namen en BSN: alle AVG-soorten worden codes die je lokaal terugzet, ook gezondheid en andere bijzondere persoonsgegevens, betaalkaarten, wachtwoorden, kentekens en accounts (`scripts/gevoelig.py`).

@@ -57,7 +57,7 @@ def _server(tool: str, tekst: str) -> dict | None:
         data=json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
                          "params": {"name": tool, "arguments": {"tekst": tekst}}}).encode(),
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
-                 "Accept": "application/json, text/event-stream", "User-Agent": "nest-privacy/0.3"},
+                 "Accept": "application/json, text/event-stream", "User-Agent": "nest-privacy/0.4"},
     )
     try:
         with urllib.request.urlopen(verzoek, timeout=60) as r:  # noqa: S310 - https-adres van de eigen server
@@ -75,13 +75,46 @@ def _server(tool: str, tekst: str) -> dict | None:
     return inhoud if isinstance(inhoud, dict) else None
 
 
+class _Stuk:
+    def __init__(self, start: int, end: int, label: str):
+        self.start, self.end, self.label = start, end, label
+
+
+class _ProcesDetector:
+    """Privacy Kit in de eigen modelomgeving (model_installeren.py), als lokaal proces. Geen netwerk."""
+
+    def __init__(self, python: str):
+        self.python = python
+
+    def detect(self, tekst: str) -> list:
+        import json
+        import subprocess
+        from pathlib import Path
+
+        import model_installeren
+
+        r = subprocess.run([self.python, str(Path(__file__).with_name("model_proces.py"))], input=tekst.encode("utf-8"),
+                           capture_output=True, timeout=600, env={**model_installeren.omgeving(), "HF_HUB_OFFLINE": "1"})
+        if r.returncode != 0:
+            raise RuntimeError("het lokale taalmodel gaf een fout")
+        return [_Stuk(int(s["begin"]), int(s["eind"]), str(s["soort"])) for s in json.loads(r.stdout.decode("utf-8") or "[]")]
+
+
 @lru_cache(maxsize=1)
 def _privacykit():
-    """Privacy Kit (bards-ai, Apache-2.0): EU-model met Nederlands, ONNX, geen torch nodig."""
+    """Privacy Kit (bards-ai, Apache-2.0): EU-model met Nederlands, ONNX, geen torch nodig.
+    Eerst in deze Python; anders in de eigen modelomgeving (python model_installeren.py)."""
     try:
         from privacy_kit.core.detectors import BardsAiOnnxDetector  # type: ignore
         return BardsAiOnnxDetector()
-    except Exception:  # noqa: BLE001 - niet geïnstalleerd of model niet te laden
+    except Exception:  # noqa: BLE001 - niet in deze Python
+        pass
+    try:
+        import model_installeren
+
+        py = model_installeren.python_van_model()
+        return _ProcesDetector(str(py)) if py.is_file() else None
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -110,6 +143,15 @@ def _taal(tekst: str) -> str:
     return "nl" if len(NL_WOORDEN.findall(tekst)) >= len(EN_WOORDEN.findall(tekst)) else "en"
 
 
+@lru_cache(maxsize=32)
+def _pk_stukken(tekst: str) -> tuple[tuple[int, int, str], ...] | None:
+    """Eén keer het model per tekst: namen en alle andere soorten komen uit dezelfde aanroep."""
+    detector = _privacykit()
+    if detector is None:
+        return None
+    return tuple((s.start, s.end, s.label) for s in detector.detect(tekst))
+
+
 def personen(tekst: str) -> set[str] | None:
     """Namen van personen volgens een lokaal taalmodel, of None als er geen model is (of als 'regels' gekozen is)."""
     k = keuze()
@@ -118,9 +160,9 @@ def personen(tekst: str) -> set[str] | None:
     if k == "server":  # alleen als dat expliciet zo is ingesteld: NEST_URL kan ook naar een gedeelde server wijzen
         return _via_server(tekst)
     if k in ("auto", "privacykit"):
-        detector = _privacykit()
-        if detector is not None:
-            return {tekst[s.start:s.end].strip() for s in detector.detect(tekst) if s.label == "PERSON_NAME"}
+        gevonden_pk = _pk_stukken(tekst)
+        if gevonden_pk is not None:
+            return {tekst[b:e].strip() for b, e, label in gevonden_pk if label == "PERSON_NAME"}
         if k == "privacykit":
             return None
     if k in ("auto", "gliner"):
@@ -155,9 +197,9 @@ def spans(tekst: str) -> list[tuple[int, int, str]] | None:
     if k == "server":  # alleen expliciet, zie _server
         return _spans_via_server(tekst)
     if k in ("auto", "privacykit"):
-        detector = _privacykit()
-        if detector is not None:
-            return [(s.start, s.end, s.label) for s in detector.detect(tekst)]
+        gevonden_pk = _pk_stukken(tekst)
+        if gevonden_pk is not None:
+            return list(gevonden_pk)
         if k == "privacykit":
             return None
     if k in ("auto", "gliner"):

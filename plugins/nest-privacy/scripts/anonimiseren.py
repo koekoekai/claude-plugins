@@ -117,9 +117,12 @@ HERKENNERS: tuple[Herkenner, ...] = (
     Herkenner(
         "ADRES",
         re.compile(
-            rf"(?:\b[{_HOOFD}][{_KLEIN}]+(?:[\s-][{_HOOFD}]?[{_KLEIN}]+)*{_STRAAT}"  # Kerkstraat, Van der Valklaan
+            # Kerkstraat, Van der Valklaan. Alleen woorden met een hoofdletter of een tussenvoegsel ervoor, anders pakt
+            # hij gewone woorden mee ("Het nieuwe adres is Kerkstraat 1").
+            rf"(?:\b[{_HOOFD}][{_KLEIN}]+(?:[\s-](?:[{_HOOFD}][{_KLEIN}]+|{_TUSSENVOEGSEL}(?=[\s-][{_HOOFD}])))*{_STRAAT}"
             rf"|\b(?:Laan|Plein|Kade|Weg|Dijk|Hof|Singel|Gracht|Burgwal)\s+(?:{_TUSSENVOEGSEL}\s)*{_NAAMDEEL}(?:\s{_NAAMDEEL})*)"
-            rf"\s+\d{{1,5}}(?:\s?-?\s?[A-Za-z]{{1,2}}\b|\s?-\s?\d{{1,4}})?\b"
+            # toevoeging: 12a, 12-bis, 12 A of 12-3; niet "12 in" of "12 of"
+            rf"\s+\d{{1,5}}(?:-?[A-Za-z]{{1,3}}\b|\s-?\s?[A-Z]\b|\s?-\s?\d{{1,4}})?\b"
         ),
     ),
     Herkenner("POSTCODE", re.compile(r"\b[1-9]\d{3}[ ]?(?![Ss][AaDdSs]\b)[A-Za-z]{2}\b")),
