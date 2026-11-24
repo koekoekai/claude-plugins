@@ -1,0 +1,25 @@
+{
+  "uitleg": "Controleset: geschreven vóór de verbeteringen en niet gebruikt om op te bouwen. Verzonnen namen; geen echte klantdata.",
+  "zinnen": [
+    {"t": "Vanochtend sprak ik Roelof Brandsma over de nieuwe planning.", "namen": ["Roelof", "Brandsma"], "blijven": ["planning"]},
+    {"t": "Kun je Tjitske even bellen? Ze wacht op de offerte.", "namen": ["Tjitske"], "blijven": ["offerte"]},
+    {"t": "Het dossier van mevrouw Ouwehand is compleet.", "namen": ["Ouwehand"], "blijven": ["dossier"]},
+    {"t": "Graag een afspraak met Gerritsen volgende week.", "namen": ["Gerritsen"], "blijven": ["afspraak"]},
+    {"t": "zie mail van hendriksen hierboven", "namen": ["hendriksen"], "blijven": ["mail"]},
+    {"t": "Onze collega Svetlana Ivanova begint maandag.", "namen": ["Svetlana", "Ivanova"], "blijven": ["collega", "maandag"]},
+    {"t": "De klacht van Achmed el Idrissi is doorgestuurd naar Wilma.", "namen": ["Achmed", "Idrissi", "Wilma"], "blijven": ["klacht"]},
+    {"t": "Dit is afgestemd met Joost Kloppenburg en Ria Schuurman.", "namen": ["Joost", "Kloppenburg", "Ria", "Schuurman"], "blijven": ["afgestemd"]},
+    {"t": "We received a complaint from Hannah Whitfield yesterday.", "namen": ["Hannah", "Whitfield"], "blijven": ["complaint"]},
+    {"t": "Can Ravi forward the logs to Chen Wei?", "namen": ["Ravi", "Chen", "Wei"], "blijven": ["logs"]},
+    {"t": "Johnson approved it after talking to Margaret.", "namen": ["Johnson", "Margaret"], "blijven": ["approved"]},
+    {"t": "Thanks again,\nGeert-Jan", "namen": ["Geert-Jan"], "blijven": []},
+    {"t": "De Belastingdienst stuurt de aanslag naar het kantoor in Zwolle.", "namen": [], "blijven": ["Belastingdienst", "Zwolle", "aanslag"]},
+    {"t": "We bestellen via Coolblue en betalen met iDEAL.", "namen": [], "blijven": ["Coolblue", "iDEAL"]},
+    {"t": "Na de update van Windows werkt SharePoint weer.", "namen": [], "blijven": ["Windows", "SharePoint"]},
+    {"t": "Het team in Amersfoort gebruikt Slack en Jira.", "namen": [], "blijven": ["Amersfoort", "Slack", "Jira"]},
+    {"t": "Our office in London uses Zoom on Fridays.", "namen": [], "blijven": ["London", "Zoom", "Fridays"]},
+    {"t": "Vanaf Oktober geldt de nieuwe Werkwijze voor alle Klanten.", "namen": [], "blijven": ["Oktober", "Werkwijze", "Klanten"]},
+    {"t": "De Gemeente Haarlem en de Provincie zijn akkoord.", "namen": [], "blijven": ["Gemeente", "Haarlem", "Provincie"]},
+    {"t": "Kies in het menu Instellingen voor Beveiliging.", "namen": [], "blijven": ["Instellingen", "Beveiliging"]}
+  ]
+}

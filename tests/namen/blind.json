@@ -1,0 +1,19 @@
+{
+  "uitleg": "Blinde set: geschreven na de verbeteringen, met namen, plaatsen en merken die niet in de lijsten van namen.py staan. Hier is niet op getuned. Verzonnen namen; geen echte klantdata.",
+  "zinnen": [
+    {"t": "Gisteren heeft Wiebren Hofstede de sleutels ingeleverd.", "namen": ["Wiebren", "Hofstede"], "blijven": ["sleutels"]},
+    {"t": "Stuur de nota naar Karlijn, zij regelt de betaling.", "namen": ["Karlijn"], "blijven": ["betaling"]},
+    {"t": "Het gesprek met Bartholomeus ging goed.", "namen": ["Bartholomeus"], "blijven": ["gesprek"]},
+    {"t": "Volgens Dragomir Petrović is alles getest.", "namen": ["Dragomir", "Petrović"], "blijven": ["getest"]},
+    {"t": "Please loop in Aoife Brennan and Kwame Mensah.", "namen": ["Aoife", "Brennan", "Kwame", "Mensah"], "blijven": ["loop"]},
+    {"t": "Ik heb het besproken met van Leeuwaarden.", "namen": ["Leeuwaarden"], "blijven": ["besproken"]},
+    {"t": "De levering gaat naar het magazijn in Veenendaal.", "namen": [], "blijven": ["Veenendaal", "magazijn"]},
+    {"t": "We stappen over van Exact naar Twinfield.", "namen": [], "blijven": ["Exact", "Twinfield"]},
+    {"t": "Het filiaal in Harderwijk gebruikt Lightspeed.", "namen": [], "blijven": ["Harderwijk", "Lightspeed"]},
+    {"t": "De koppeling met Mailchimp en HubSpot is klaar.", "namen": [], "blijven": ["Mailchimp", "HubSpot"]},
+    {"t": "Our partner in Dublin switched to Xero last year.", "namen": [], "blijven": ["Dublin", "Xero"]},
+    {"t": "Bestellingen uit Antwerpen komen via PostNL binnen.", "namen": [], "blijven": ["Antwerpen", "PostNL"]},
+    {"t": "Het project Zonnepark Noord start in het voorjaar.", "namen": [], "blijven": ["Zonnepark", "Noord"]},
+    {"t": "Sinds de update werkt Snelstart niet meer met de bank.", "namen": [], "blijven": ["Snelstart", "bank"]}
+  ]
+}

@@ -65,6 +65,23 @@ oktober november december monday tuesday wednesday thursday friday saturday sund
 july august september october november december nederland amsterdam rotterdam utrecht den haag eindhoven groningen
 factuur offerte klant bestelling order invoice project team bedrijf afdeling""".split())
 
+# Plaatsen, organisaties, merken en software: midden in een zin met hoofdletter, maar geen persoon.
+GEEN_PERSOON = set("""
+nederland belgië duitsland frankrijk engeland europa benelux amsterdam rotterdam utrecht haarlem leiden delft zwolle
+amersfoort eindhoven groningen tilburg breda nijmegen arnhem apeldoorn enschede almere maastricht leeuwarden den bosch
+hilversum loosdrecht london paris berlin brussel brussels antwerpen new york
+gemeente provincie belastingdienst rijksoverheid overheid politie ministerie kamer van koophandel kvk uwv svb duo
+microsoft google apple amazon meta facebook instagram whatsapp linkedin twitter youtube tiktok netflix spotify
+windows office outlook excel word powerpoint teams sharepoint onedrive azure aws gmail chrome edge firefox safari
+slack jira confluence trello asana notion zoom github gitlab claude chatgpt openai anthropic stripe mollie ideal paypal
+coolblue bol albert heijn jumbo lidl aldi ikea hema kpn ziggo vodafone ing rabobank abn amro
+portal dashboard app website menu instellingen beveiliging werkwijze klanten klant support helpdesk servicedesk
+financiën hr it sales marketing directie team afdeling
+lente zomer herfst winter spring summer autumn fall winter
+""".split())
+# Achtervoegsels van afgeleide achternamen: Pieter+sen, Hendrik+sen, John+son
+AFGELEID = ("ssen", "sen", "sz", "szoon", "son", "sson", "se", "s")
+
 _HOOFD = "A-ZÀ-ÖØ-Þ"
 _KLEIN = "a-zß-öø-ÿ"
 WOORD = rf"[{_HOOFD}][{_KLEIN}'’-]+"
@@ -122,6 +139,23 @@ def _schoon(naam: str) -> str | None:
     return naam if len(naam) >= 2 else None
 
 
+def _midden_in_zin(tekst: str, begin: int) -> bool:
+    """Staat dit woord midden in een zin (dus niet aan het begin, na een punt, uitroepteken, vraagteken of dubbele punt)?"""
+    regel = tekst[:begin].rsplit("\n", 1)[-1]  # alleen de huidige regel: een nieuwe regel is een nieuw begin
+    voor = regel.rstrip(" \t\"'(“‘")
+    return bool(voor) and voor[-1] not in ".!?:;•-–—"
+
+
+def _afgeleid(woord: str) -> bool:
+    """Pietersen, Hendriksen, Gerritsen, Johnson: een voornaam met een achtervoegsel."""
+    w = woord.lower()
+    for eind in AFGELEID:
+        stam = w[: -len(eind)] if w.endswith(eind) else None
+        if stam and len(stam) >= 3 and (stam in VOORNAMEN or stam.rstrip("s") in VOORNAMEN):
+            return True
+    return False
+
+
 def zoek_namen(tekst: str) -> Namen:
     r = Namen()
 
@@ -151,13 +185,25 @@ def zoek_namen(tekst: str) -> Namen:
                 voeg_toe(tekst[m.start():volgende.end()])
             elif laag not in TWIJFEL:
                 voeg_toe(w)
-        elif laag in ACHTERNAMEN:
+        elif laag in ACHTERNAMEN or _afgeleid(w):
             voeg_toe(w)
+        elif (_midden_in_zin(tekst, m.start()) and laag not in GEWONE_WOORDEN and laag not in GEEN_PERSOON
+              and len(w) >= 3 and not GEEN_NAAM_EINDE.search(w)):
+            # Midden in een zin met hoofdletter: in het Nederlands bijna altijd een naam, plaats of merk.
+            # Plaatsen en merken staan in GEEN_PERSOON; wat overblijft behandelen we als naam (liever te veel dan te weinig).
+            begin = m.start()
+            j = i
+            while j + 1 < len(woorden) and re.fullmatch(rf"\s+(?:{TUSSEN}\s+)?|'", tekst[woorden[j].end():woorden[j + 1].start()]) and woorden[j + 1].group(0).lower() not in GEWONE_WOORDEN | GEEN_PERSOON:
+                j += 1
+            voeg_toe(tekst[begin:woorden[j].end()])
     # Meerdelige achternamen uit de lijst (van der Meer)
     for achternaam in (a for a in ACHTERNAMEN if " " in a):
         for m in re.finditer(rf"\b{re.escape(achternaam)}\b", tekst, re.IGNORECASE):
             if any(deel[:1].isupper() for deel in m.group(0).split()):
                 voeg_toe(m.group(0))
+    for m in re.finditer(rf"(?<![\w@.])[{_KLEIN}]{{5,}}(?![\w@])", tekst):
+        if m.group(0) not in GEWONE_WOORDEN and _afgeleid(m.group(0)):
+            r.namen.add(m.group(0))
     # 4. Spelfouten: hoofdletterwoorden die bijna gelijk zijn aan een gevonden naamdeel
     delen = {d for n in r.namen for d in re.split(r"[\s-]", n) if len(d) >= 4 and d.lower() not in GEWONE_WOORDEN
              and not re.fullmatch(TUSSEN, d.lower())}
