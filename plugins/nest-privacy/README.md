@@ -46,6 +46,8 @@ Eerlijk: de zinnen zijn door ons gemaakt, en een deel van de voornamen in de bli
 
 Geen enkel hulpmiddel vindt alles. Controleer de uitkomst bij belangrijke data zelf.
 
+**AVG-verantwoording:** een [handleiding](../../docs/dpia-handleiding.md) en een invulbaar [DPIA-sjabloon](../../docs/dpia-sjabloon.md) voor je eigen gebruik.
+
 ## Hoe anonimiseren werkt zonder dat Claude de data leest
 
 1. **Een programma op je eigen computer doet het werk.** Claude start alleen `anonimiseren.py` of `pseudoniem.py` met de bestandsnaam. Het programma leest het bestand, vervangt de persoonsgegevens en schrijft een nieuw bestand. Claude ziet alleen aantallen, zoals `vervangen: NAAM 12, EMAIL 30`.
